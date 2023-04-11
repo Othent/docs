@@ -4,7 +4,7 @@
 
 ## Overview
 
-* [🥗 What we do](overview/what-we-do.md)
+* [🥗 Othents features ](overview/othents-features.md)
 
 ## Demo's
 

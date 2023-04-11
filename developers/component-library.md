@@ -1,8 +1,8 @@
 ---
-description: See code at https://github.com/Othent/react-components
+description: https://github.com/Othent/react-components
 ---
 
-# 🪟 Component Library
+# 🍜 Component Library
 
 The Othent component library is a collection of functions that enable interaction with the Othent walletless protocol.&#x20;
 

@@ -1,8 +1,8 @@
 ---
-description: See code at https://github.com/Othent/package or live demo at SDK.Othent.io
+description: https://github.com/Othent/package
 ---
 
-# ⚙ SDK
+# 🥪 SDK
 
 The Othent Library is a collection of functions that enable interaction with the Othent walletless protocol. These functions are designed to make it seamless for developers to integrate Othent into their applications.
 
@@ -152,12 +152,10 @@ try {
 _**initializeJWK(JWK\_public\_key\_PEM)**: backup a Othent account with a JWK public key._
 
 ```javascript
-// Initalize JWK
-
-const JWK_public_key_PEM = 'example_public_key_pem';
+// Initalize JWK to user
 
 try {
-  const response = await othent.initializeJWK(JWK_public_key_PEM);
+  const response = await othent.initializeJWK(JWK_public_key_PEM );
   console.log(response);
 } catch (error) {
   console.error(error);
@@ -169,10 +167,8 @@ _**JWKBackupTxn(JWT)**: Send a transaction with the specified JWK._
 ```javascript
 // JWK backup transaction
 
-const JWT = 'example_jwt';
-
 try {
-  const response = await othent.JWKBackupTxn(JWT);
+  const response = await othent.JWKBackupTxn(signedJWTByJWK );
   console.log(response);
 } catch (error) {
   console.error(error);

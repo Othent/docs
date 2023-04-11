@@ -4,17 +4,17 @@
 
 ## Overview
 
-* [💡 What we do](overview/what-we-do.md)
+* [🥗 What we do](overview/what-we-do.md)
 
 ## Demo's
 
-* [🕹 SDK demo](https://sdk.othent.io)
-* [🕶 Example app using Othent](https://weavetransfer.com)
+* [🍏 SDK demo](https://sdk.othent.io)
+* [🍎 Example app using Othent](https://weavetransfer.com)
 
 ## Developers
 
-* [⚙ SDK](developers/sdk.md)
-* [🪟 Component Library](developers/component-library.md)
+* [🥪 SDK](developers/sdk.md)
+* [🍜 Component Library](developers/component-library.md)
 
 ***
 

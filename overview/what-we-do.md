@@ -2,7 +2,7 @@
 
 **Existing private key wallets to onboard through social logins:**
 
-Similarly, for users who already have a private key wallet set up, allowing them to onboard through social logins can provide a more convenient and streamlined user experience. This can also help to reduce the risk of users losing access to their funds if they forget their private key or lose access to their wallet.
+Othent can be integrated by wallets into their app to offer social logins and alternative authentications like API keys in addition to private keys. This can make the onboarding process smoother for users and enhance their reach to Web2.
 
 **Allow dApps onboard through web2:**
 
@@ -12,7 +12,7 @@ One of the biggest barriers to entry for many people when it comes to using dApp
 
 By using web2 apps as a channel to connect users to web3 dApps and blockchains, we can help to bridge the gap between the two worlds and make it easier for more people to start using decentralized applications. This can also help to increase the overall adoption of blockchain technology and provide more opportunities for developers to create innovative new dApps.
 
-**Automatable money: smart contract wallets have numerous benefits over traditional wallets:**
+**Automatable money, smart contract wallets have numerous benefits over traditional wallets:**
 
 Smart contract wallets have several advantages over traditional wallets, including increased security, transparency, and programmability. With smart contract wallets, it's possible to automate many of the processes involved in managing and transferring funds, which can help to reduce the risk of human error and improve the overall efficiency of the system.
 

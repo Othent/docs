@@ -1,13 +1,9 @@
----
-description: Merging Web2 to Web3 Logins with a familiar and simple interface
----
-
 # 👋 Welcome to Othent
 
-## Overview
+## Othent&#x20;
 
-Welcome to Othent, a protocol that is dedicated to simplifying and securing the process of signing blockchain transactions.&#x20;
+Pronounced OH-thent is a neologism of "OAuth" and "Authenticate".
 
-Hello
+Othent is a protocol that enables access to blockchain networks using alternative methods beyond private keys, making them more widely accessible by customizing the authentication process.
 
-We've put together some helpful guides for you to get setup with our product quickly and easily.
+\

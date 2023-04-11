@@ -8,14 +8,8 @@
 
 ## Demo's
 
-* [🏁 SDK demo](demos/sdk-demo.md)
-* [➡ Example app](demos/example-app.md)
-
-## Use Cases
-
-* [👤 For Users](use-cases/for-users.md)
-* [⚖ For dApps](use-cases/for-dapps.md)
-* [🖥 For Web2 Platforms](use-cases/for-web2-platforms.md)
+* [🕹 SDK demo](https://sdk.othent.io)
+* [🕶 Example app using Othent](https://weavetransfer.com)
 
 ## Developers
 

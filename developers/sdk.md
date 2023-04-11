@@ -96,17 +96,44 @@ _**signTransaction(othentFunction, toContractId, toContractFunction, txnData)**:
 ```javascript
 // Sign transaction
 
-const othentFunction = 'example_function';
-const toContractId = 'example_contract_id';
-const toContractFunction = 'example_contract_function';
-const txnData = 'example_transaction_data';
 
-try {
-  const response = await othent.signTransaction(othentFunction, toContractId, toContractFunction, txnData);
-  console.log(response);
-} catch (error) {
-  console.error(error);
+// Arweave transaction
+async function arweaveTransaction(file) {
+  try {
+    const signedTransaction = await othent.signTransaction({
+      method: 'arweave', 
+      data: { 
+        othentFunction: 'uploadData', 
+        file: file
+      }, 
+      tags: [ {name: 'Test': value: 'Tag'} ]
+    });
+    console.log(signedTransaction);
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+
+// Warp transaction
+async function warpTransaction() {
+  try {
+    const signedTransaction = await othent.signTransaction({
+      method: 'warp', 
+      data: { 
+        othentFunction: 'sendTransaction', 
+        toContractId: 'XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI', 
+        toContractFunction: 'createPost', 
+        txnData: { blog_entry_18: 'Hello World!'} 
+      }, 
+      tags: [ {name: 'Test': value: 'Tag'} ]
+    });
+    console.log(signedTransaction);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 ```
 
 _**sendTransaction(JWT)**: Send a signed transaction to Othent._
@@ -114,25 +141,8 @@ _**sendTransaction(JWT)**: Send a signed transaction to Othent._
 ```javascript
 // Send transaction
 
-const JWT = 'example_jwt';
-
 try {
-  const response = await othent.sendTransaction(JWT);
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
-```
-
-_**uploadData(file)**: Upload a file to Arweave and create a Othent users files hash._
-
-```javascript
-// Upload data
-
-const file = '';
-
-try {
-  const response = await othent.uploadData(file);
+  const response = await othent.sendTransaction(signedTransaction);
   console.log(response);
 } catch (error) {
   console.error(error);

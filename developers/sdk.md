@@ -91,7 +91,7 @@ try {
 }
 ```
 
-_**signTransaction(othentFunction, toContractId, toContractFunction, txnData)**: Sign a transaction with the current user's account._
+_**signTransaction({ method, data, tags })**: Sign a transaction with the current user's account._
 
 ```javascript
 // Sign transaction

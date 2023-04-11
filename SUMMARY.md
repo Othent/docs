@@ -5,20 +5,23 @@
 ## Overview
 
 * [💡 What we do](overview/what-we-do.md)
-* [✨ Our Features](overview/our-features.md)
 
-## Product Guides
+## Demo's
 
-* [📪 Making a post](product-guides/making-a-post.md)
-* [📎 Understanding Projects](product-guides/understanding-projects.md)
-
-## Fundamentals
-
-* [🛠 Getting set up](fundamentals/getting-set-up/README.md)
-  * [📝 Setting permissions](fundamentals/getting-set-up/setting-permissions.md)
-  * [🧑 Inviting Members](fundamentals/getting-set-up/inviting-members.md)
+* [🏁 SDK demo](demos/sdk-demo.md)
+* [➡ Example app](demos/example-app.md)
 
 ## Use Cases
 
-* [🎨 For Designers](use-cases/for-designers.md)
-* [🖥 For Developers](use-cases/for-developers.md)
+* [👤 For Users](use-cases/for-users.md)
+* [⚖ For dApps](use-cases/for-dapps.md)
+* [🖥 For Web2 Platforms](use-cases/for-web2-platforms.md)
+
+## Developers
+
+* [⚙ SDK](developers/sdk.md)
+* [🪟 Component Library](developers/component-library.md)
+
+***
+
+* [🌐 Othent.io](https://othent.io)

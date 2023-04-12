@@ -124,7 +124,7 @@ async function warpTransaction() {
         othentFunction: 'sendTransaction', 
         toContractId: 'XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI', 
         toContractFunction: 'createPost', 
-        txnData: { blog_entry_18: 'Hello World!'} 
+        txnData: { blog_entry: 'Hello World!'} 
       }, 
       tags: [ {name: 'Test', value: 'Tag'} ]
     });

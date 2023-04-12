@@ -106,7 +106,7 @@ async function arweaveTransaction(file) {
         othentFunction: 'uploadData', 
         file: file
       }, 
-      tags: [ {name: 'Test': value: 'Tag'} ]
+      tags: [ {name: 'Test', value: 'Tag'} ]
     });
     console.log(signedTransaction);
   } catch (error) {
@@ -126,7 +126,7 @@ async function warpTransaction() {
         toContractFunction: 'createPost', 
         txnData: { blog_entry_18: 'Hello World!'} 
       }, 
-      tags: [ {name: 'Test': value: 'Tag'} ]
+      tags: [ {name: 'Test', value: 'Tag'} ]
     });
     console.log(signedTransaction);
   } catch (error) {

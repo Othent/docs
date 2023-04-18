@@ -31,25 +31,19 @@ _**ping()**: Ping the Othent server._
 ```javascript
 // Ping Othent
 
-try {
-  const response = await othent.ping();
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const response = await othent.ping();
+console.log(response);
+
 ```
 
 _**logIn()**: Log in a user and return their details._
 
 ```javascript
-// Log in
+// Log in / create account
 
-try {
-  const response = await othent.logIn();
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const userDetails = await othent.logIn();
+console.log(userDetails);
+
 ```
 
 _**logOut()**: Log out the current user._
@@ -57,12 +51,9 @@ _**logOut()**: Log out the current user._
 ```javascript
 // Log out
 
-try {
-  const response = await othent.logOut();
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const response = await othent.logOut();
+console.log(response);
+
 ```
 
 _**userDetails()**: Retrieve the details of the current user._
@@ -70,12 +61,9 @@ _**userDetails()**: Retrieve the details of the current user._
 ```javascript
 // User details
 
-try {
-  const response = await othent.userDetails();
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const userDetails = await othent.userDetails();
+console.log(userDetails);
+
 ```
 
 _**readContract()**: Read data from the current user's contract._
@@ -83,96 +71,80 @@ _**readContract()**: Read data from the current user's contract._
 ```javascript
 // Read contract
 
-try {
-  const response = await othent.readContract();
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const contract = await othent.readContract();
+console.log(contract);
+
 ```
 
-_**signTransaction({ method, data, tags })**: Sign a transaction with the current user's account._
+_**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 
 ```javascript
-// Sign transaction
+// Sign transaction Arweave
 
-
-// Arweave transaction
-async function arweaveTransaction(file) {
-  try {
-    const signedTransaction = await othent.signTransaction({
-      method: 'arweave', 
-      data: { 
-        othentFunction: 'uploadData', 
-        file: file
-      }, 
-      tags: [ {name: 'Test', value: 'Tag'} ]
-    });
-    console.log(signedTransaction);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-
-// Warp transaction
-async function warpTransaction() {
-  try {
-    const signedTransaction = await othent.signTransaction({
-      method: 'warp', 
-      data: { 
-        othentFunction: 'sendTransaction', 
-        toContractId: 'XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI', 
-        toContractFunction: 'createPost', 
-        txnData: { blog_entry: 'Hello World!'} 
-      }, 
-      tags: [ {name: 'Test', value: 'Tag'} ]
-    });
-    console.log(signedTransaction);
-  } catch (error) {
-    console.error(error);
-  }
-}
+const signedArweaveTransaction = await othent.signTransactionArweave({
+    othentFunction: 'uploadData', 
+    data: file,
+    tags: [ {name: 'Test', value: 'Tag'} ]
+});
+console.log(signedArweaveTransaction);
 
 ```
 
-_**sendTransaction(JWT)**: Send a signed transaction to Othent._
+_**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transaction._
+
+<pre class="language-javascript"><code class="lang-javascript">// Send transaction Arweave
+
+const transaction = await othent.sendTransactionArweave(signedArweaveTransaction);
+console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
+
+</code></pre>
+
+_**signTransactionWarp({ othentFunction, data: {toContractId, toContractFunction, txnData}, tags })**: Sign a Warp transaction._
 
 ```javascript
-// Send transaction
+// Sign transaction Warp
 
-try {
-  const response = await othent.sendTransaction(signedTransaction);
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const signedWarpTransaction = await othent.signTransactionWarp({
+  othentFunction: 'sendTransaction', 
+  data: {
+    toContractId: 'XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI', 
+    toContractFunction: 'createPost', 
+    txnData: { blog_entry_18: 'Hello World!'} 
+  }, 
+  tags: [ {name: 'Test', value: 'Tag'} ]
+});
+console.log(signedWarpTransaction);
+
 ```
 
-_**initializeJWK(JWK\_public\_key\_PEM)**: backup a Othent account with a JWK public key._
+_**sendTransactionWarp(signedWarpTransaction)**: Send a Warp transaction._
+
+```javascript
+// Send transaction Warp
+
+const transaction = await othent.sendTransactionWarp(signedWarpTransaction);
+console.log(transaction)
+
+```
+
+_**initializeJWK({JWK\_public\_key})**: backup a Othent account with a JWK public key._
 
 ```javascript
 // Initalize JWK to user
 
-try {
-  const response = await othent.initializeJWK(JWK_public_key_PEM );
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const transaction = await othent.initializeJWK({JWK_public_key});
+console.log(transaction);
+
 ```
 
-_**JWKBackupTxn(JWT)**: Send a transaction with the specified JWK._
+_**JWKBackupTxn({JWK\_signed\_JWT})**: Send a transaction with the specified JWK._
 
 ```javascript
 // JWK backup transaction
 
-try {
-  const response = await othent.JWKBackupTxn(signedJWTByJWK );
-  console.log(response);
-} catch (error) {
-  console.error(error);
-}
+const transaction = await othent.JWKBackupTxn({JWK_signed_JWT});
+console.log(transaction);
+  
 ```
 
 ### Contact
@@ -182,3 +154,5 @@ If you have any questions or issues with the SDK, please contact us at [hello@ot
 ### License
 
 The Othent Library is licensed under the MIT License. Please see the LICENSE file for more information.
+
+[^1]: 

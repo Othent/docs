@@ -26,6 +26,6 @@ import 'othent_components' from '@othent/react-components'
 
 **The following functions are available in the Othent components library:**
 
-_**logIn()**:_&#x20;
+_**logIn()**: Button_
 
 _**logOut()**:_

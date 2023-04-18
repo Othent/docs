@@ -147,6 +147,43 @@ console.log(transaction);
   
 ```
 
+_**How to generate a JWT signed by a JWK**_
+
+```javascript
+// JWT signed by your own JWK
+
+const jwt = require('jsonwebtoken');
+const jwkToPem = require('jwk-to-pem')
+
+const private_pem = jwkToPem(jwk, {private: true});
+const public_pem = jwkToPem(jwk);
+
+const payload = {
+  sub: 'google-oauth2|113378216876216346016',
+  contract_id: 'Tb33ItPlttNYtABjMo03gK425vCcYYMX4c7i8W_I2X0',
+  tags: [ {name: 'Test', value: 'Tag'} ],
+  
+  contract_input: {
+    data: {
+      toContractFunction: "createPost",
+      toContractId: "XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI",
+      txnData: { blog_post: "JWK TXN!" }
+    },
+    othentFunction: "JWKBackupTxn"
+    },
+  };
+  
+const options = {
+    algorithm: 'RS256',
+    expiresIn: '100000h',
+    issuer: 'https://Othent.io'
+  };
+  
+const JWT = jwt.sign(payload, private_pem, options);
+console.log(JWT)
+
+```
+
 ### Contact
 
 If you have any questions or issues with the SDK, please contact us at [hello@othent.io](mailto:hello@othent.io) or open an issue in the GitHub repository at [https://github.com/Othent](https://github.com/Othent/package).

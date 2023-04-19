@@ -29,9 +29,11 @@ import othent from 'othent';
 _**ping()**: Ping the Othent server._
 
 ```javascript
+
 // Ping Othent
 
 const response = await othent.ping();
+
 console.log(response);
 
 ```
@@ -39,9 +41,11 @@ console.log(response);
 _**logIn()**: Log in a user and return their details._
 
 ```javascript
+
 // Log in / create account
 
 const userDetails = await othent.logIn();
+
 console.log(userDetails);
 
 ```
@@ -49,9 +53,11 @@ console.log(userDetails);
 _**logOut()**: Log out the current user._
 
 ```javascript
+
 // Log out
 
 const response = await othent.logOut();
+
 console.log(response);
 
 ```
@@ -59,9 +65,11 @@ console.log(response);
 _**userDetails()**: Retrieve the details of the current user._
 
 ```javascript
+
 // User details
 
 const userDetails = await othent.userDetails();
+
 console.log(userDetails);
 
 ```
@@ -69,9 +77,11 @@ console.log(userDetails);
 _**readContract()**: Read data from the current user's contract._
 
 ```javascript
+
 // Read contract
 
 const contract = await othent.readContract();
+
 console.log(contract);
 
 ```
@@ -79,6 +89,7 @@ console.log(contract);
 _**readCustomContract({contract\_id})**: Read a custom contract._
 
 ```javascript
+
 // Read custom contract
 
 const contract_id = '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU'
@@ -91,23 +102,26 @@ console.log(contract);
 
 _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 
-```javascript
-// Sign transaction Arweave
+<pre class="language-javascript"><code class="lang-javascript"><strong>
+</strong>// Sign transaction Arweave
 
-const signedArweaveTransaction = await othent.signTransactionArweave({
-    othentFunction: 'uploadData', 
+<strong>const signedArweaveTransaction = await othent.signTransactionArweave({
+</strong>    othentFunction: 'uploadData', 
     data: file,
     tags: [ {name: 'Test', value: 'Tag'} ]
 });
+
 console.log(signedArweaveTransaction);
 
-```
+</code></pre>
 
 _**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transaction._
 
-<pre class="language-javascript"><code class="lang-javascript">// Send transaction Arweave
+<pre class="language-javascript"><code class="lang-javascript">
+// Send transaction Arweave
 
 const transaction = await othent.sendTransactionArweave(signedArweaveTransaction);
+
 console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
 
 </code></pre>
@@ -115,6 +129,7 @@ console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
 _**signTransactionWarp({ othentFunction, data: {toContractId, toContractFunction, txnData}, tags })**: Sign a Warp transaction._
 
 ```javascript
+
 // Sign transaction Warp
 
 const signedWarpTransaction = await othent.signTransactionWarp({
@@ -126,6 +141,7 @@ const signedWarpTransaction = await othent.signTransactionWarp({
   }, 
   tags: [ {name: 'Test', value: 'Tag'} ]
 });
+
 console.log(signedWarpTransaction);
 
 ```
@@ -133,9 +149,11 @@ console.log(signedWarpTransaction);
 _**sendTransactionWarp(signedWarpTransaction)**: Send a Warp transaction._
 
 ```javascript
+
 // Send transaction Warp
 
 const transaction = await othent.sendTransactionWarp(signedWarpTransaction);
+
 console.log(transaction)
 
 ```
@@ -143,9 +161,11 @@ console.log(transaction)
 _**initializeJWK({JWK\_public\_key})**: backup a Othent account with a JWK public key._
 
 ```javascript
+
 // Initalize JWK to user
 
 const transaction = await othent.initializeJWK({JWK_public_key});
+
 console.log(transaction);
 
 ```
@@ -153,9 +173,11 @@ console.log(transaction);
 _**JWKBackupTxn({JWK\_signed\_JWT})**: Send a transaction with the specified JWK._
 
 ```javascript
+
 // JWK backup transaction
 
 const transaction = await othent.JWKBackupTxn({JWK_signed_JWT});
+
 console.log(transaction);
   
 ```
@@ -163,6 +185,7 @@ console.log(transaction);
 _**How to generate a JWT signed by a JWK**_
 
 ```javascript
+
 // JWT signed by your own JWK
 
 const jwt = require('jsonwebtoken');
@@ -193,6 +216,7 @@ const options = {
   };
   
 const JWT = jwt.sign(payload, private_pem, options);
+
 console.log(JWT)
 
 ```

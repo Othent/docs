@@ -68,13 +68,23 @@ console.log(userDetails);
 
 _**readContract()**: Read data from the current user's contract._
 
-```javascript
-// Read contract
-
+<pre class="language-javascript"><code class="lang-javascript"><strong>// Read contract
+</strong>
 const contract = await othent.readContract();
 console.log(contract);
 
-```
+</code></pre>
+
+_**readCustomContract({contract\_id})**: Read a custom contract._
+
+<pre class="language-javascript"><code class="lang-javascript">// Read custom contract
+
+const contract_id = '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU'
+
+<strong>const contract = await othent.readCustomContract({contract_id});
+</strong>console.log(contract);
+
+</code></pre>
 
 _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 
@@ -107,7 +117,7 @@ _**signTransactionWarp({ othentFunction, data: {toContractId, toContractFunction
 const signedWarpTransaction = await othent.signTransactionWarp({
   othentFunction: 'sendTransaction', 
   data: {
-    toContractId: 'XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI', 
+    toContractId: '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU', 
     toContractFunction: 'createPost', 
     txnData: { blog_entry: 'Hello World!'} 
   }, 
@@ -166,7 +176,7 @@ const payload = {
   contract_input: {
     data: {
       toContractFunction: "createPost",
-      toContractId: "XL_AtkccUxD45_Be76Qe_lSt8q9amgEO9OQnhIo-2xI",
+      toContractId: "2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU",
       txnData: { blog_post: "JWK TXN!" }
     },
     othentFunction: "JWKBackupTxn"

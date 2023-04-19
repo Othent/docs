@@ -68,23 +68,26 @@ console.log(userDetails);
 
 _**readContract()**: Read data from the current user's contract._
 
-<pre class="language-javascript"><code class="lang-javascript"><strong>// Read contract
-</strong>
+```javascript
+// Read contract
+
 const contract = await othent.readContract();
 console.log(contract);
 
-</code></pre>
+```
 
 _**readCustomContract({contract\_id})**: Read a custom contract._
 
-<pre class="language-javascript"><code class="lang-javascript">// Read custom contract
+```javascript
+// Read custom contract
 
 const contract_id = '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU'
 
-<strong>const contract = await othent.readCustomContract({contract_id});
-</strong>console.log(contract);
+const contract = await othent.readCustomContract({contract_id});
 
-</code></pre>
+console.log(contract);
+
+```
 
 _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 

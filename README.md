@@ -1,3 +1,7 @@
+---
+description: Merging Web2 to Web3 user logins with a familiar and simple interface
+---
+
 # 👋 Welcome to Othent
 
 <figure><img src=".gitbook/assets/othent-email.png" alt=""><figcaption></figcaption></figure>

@@ -1,3 +1,7 @@
+---
+description: What can Othent do?
+---
+
 # 🥗 Othents features&#x20;
 
 **Existing private key wallets to onboard through social logins:**

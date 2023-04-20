@@ -43,7 +43,7 @@ _This component uses the rest of the components as building blocks, it's probabl
 
 _When a user is not logged in, it shows the LoginButton_
 
-_When the user is logged in, it shows its Avatar. Upon clicking the Avatar, it shows a small Modal with the user info and a LogoutButton. The location of this Modal is customizable with the \`location\` attribute:_
+_When the user is logged in, it shows its Avatar. Upon clicking the Avatar, it shows a small Modal with the user info and a LogoutButton. The location of this Modal is customizable with the location attribute:_
 
 ```tsx
 // Import ModalLocation to select the modal placement
@@ -90,11 +90,56 @@ const myLoginButton = () => <LoginButton onlogin={ onlogin } />
 Button to use as a logout button. It has an _onlogout_ attribute that receives a callback function to be able to return the _LogOutReturnProps_ from the _logOut()_ function in the Othent SDK.
 
 ```tsx
-// LoginButton component
+// LogoutButton component
 import { LogoutButton } from "@othent/react-components";
 import { type LogOutReturnProps } from "othent";
 
 const onlogout = (response: LogOutReturnProps) => console.log(response);
 
 const myLogoutButton = () => <LoginButton onlogin={ onlogin } />
+```
+
+#### Modal
+
+This is a simple component to display a _parent_ element that, upon being clicked, shows a Modal element containing _children_. This Modal is placed in a location relative to the parent element, with 9 possible positions defined by the _**ModalLocation**_ enum.
+
+```tsx
+// Modal component
+import { Modal, ModalLocation } from "@othent/react-components";
+
+const parent = <button>Click me</button>;
+const children = <p>we are the children</p>;
+
+const myModal = () => <Modal parent={ parent }>{children}</Modal>
+
+// Optionally, pass one of ModalLocation's members to customize location:
+const customLocation = ModalLocation['bottom-left'];
+const myCustomModal = () =>
+    <Modal parent={ parent } location={ customLocation }>
+        {children}
+    </Modal>
+```
+
+_**ModalLocation**_ members include: _center_, _top_, _bottom_, _left_, _right_, _top-left_, _top-right_, _bottom-left_, _bottom-right._
+
+#### UserInfo
+
+This is a basic component to show info from a user. It shows the profile picture using the [#avatar](component-library.md#avatar "mention") component on the left, while on the right it shows the user's _name_ above the user's _email_.
+
+```tsx
+// UserInfo component
+import { UserInfo, LoginButton } from "@othent/react-components";
+import { type LogInReturnProps } from "othent";
+import { useState } from 'react';
+
+const [userData, setUserData] = useState<LogInReturnProps | null>(null);
+const onlogin = (user: LogInReturnProps) => setUserData(user);
+
+const myUserInfo = () => {
+    return !userData ? (
+        <LoginButton onlogin={ onlogin } />
+    ) : (
+        <UserInfo userdata={ userData } />
+    )
+}
 ```

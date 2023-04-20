@@ -4,7 +4,9 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
 
 # 👋 Welcome to Othent
 
-<figure><img src=".gitbook/assets/othent-email.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/othent-email.png" alt=""><figcaption><p>Othent.io</p></figcaption></figure>
+
+
 
 **Othent**: pronounced OH-thent is a neologism of "OAuth" and "Authenticate".
 

@@ -102,18 +102,19 @@ console.log(contract);
 
 _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 
-<pre class="language-javascript"><code class="lang-javascript"><strong>
-</strong>// Sign transaction Arweave
+```javascript
 
-<strong>const signedArweaveTransaction = await othent.signTransactionArweave({
-</strong>    othentFunction: 'uploadData', 
+// Sign transaction Arweave
+
+const signedArweaveTransaction = await othent.signTransactionArweave({
+    othentFunction: 'uploadData', 
     data: file,
     tags: [ {name: 'Test', value: 'Tag'} ]
 });
 
 console.log(signedArweaveTransaction);
 
-</code></pre>
+```
 
 _**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transaction._
 
@@ -123,6 +124,33 @@ _**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transactio
 const transaction = await othent.sendTransactionArweave(signedArweaveTransaction);
 
 console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
+
+</code></pre>
+
+_**signTransactionBundlr({ othentFunction, data, tags })**: Sign a Bundlr transaction._
+
+```javascript
+
+// Sign transaction Bundlr
+
+const signedBundlrTransaction = await othent.signTransactionBundlr({
+    othentFunction: 'uploadData', 
+    data: file,
+    tags: [ {name: 'Test', value: 'Tag'} ]
+});
+
+console.log(signedBundlrTransaction);
+
+```
+
+_**sendTransactionBundlr(signedBundlrTransaction)**: Send a Bundlr transaction._
+
+<pre class="language-javascript"><code class="lang-javascript">
+// Send transaction Bundlr
+
+const transaction = await othent.sendTransactionBundlr(signedBundlrTransaction);
+
+console.log<a data-footnote-ref href="#user-content-fn-2">(</a>transaction)
 
 </code></pre>
 
@@ -230,3 +258,5 @@ If you have any questions or issues with the SDK, please contact us at [hello@ot
 The Othent Library is licensed under the MIT License. Please see the LICENSE file for more information.
 
 [^1]: 
+
+[^2]: 

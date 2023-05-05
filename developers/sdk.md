@@ -24,7 +24,7 @@ import { Othent } from 'othent';
 
 ### Initialise Othent
 
-You can generate your API key and API ID from manage.othent.io
+You can generate your API key and API ID from Othent.io
 
 ```javascript
 

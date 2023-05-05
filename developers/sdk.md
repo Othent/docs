@@ -22,6 +22,19 @@ To use the library, you can import it into your project:
 import othent from 'othent';
 ```
 
+### Initialise Othent
+
+Get your API key and API ID
+
+```javascript
+
+// Initalise Othent
+// You can generate your API key and API ID from manage.othent.io
+
+const othent = await useOthent({ API_KEY, API_ID })
+
+```
+
 ### Functions
 
 **The following functions are available in the Othent Library:**

@@ -19,7 +19,7 @@ npm i othent
 To use the library, you can import it into your project:
 
 ```javascript
-import useOthent from 'othent';
+import { Othent } from 'othent';
 ```
 
 ### Initialise Othent
@@ -30,7 +30,7 @@ You can generate your API key and API ID from manage.othent.io
 
 // Initialise Othent
 
-const othent = await useOthent({ API_KEY, API_ID })
+const othent = await Othent({ API_KEY, API_ID })
 
 ```
 

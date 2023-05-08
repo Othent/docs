@@ -8,7 +8,7 @@
 
 ## Demo's
 
-* [🍏 SDK demo](https://sdk.othent.io)
+* [🍏 SDK demo](https://demo.othent.io)
 * [🍎 Example app using Othent](https://weavetransfer.othent.io)
 
 ## Developers

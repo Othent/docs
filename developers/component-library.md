@@ -6,15 +6,15 @@ description: https://github.com/Othent/react-components
 
 The Othent component library is a collection of components that enable interaction with the Othent protocol.&#x20;
 
-### Installation <a href="#installation" id="installation"></a>
+## Installation <a href="#installation" id="installation"></a>
 
-To use the library in your project, you can install it using&#x20;
+To use the library in your project, you can install it using:
 
 ```javascript
 npm i @othent/react-components
 ```
 
-### Usage <a href="#usage" id="usage"></a>
+## Usage <a href="#usage" id="usage"></a>
 
 To use the library, you can import it into your project:
 
@@ -22,11 +22,11 @@ To use the library, you can import it into your project:
 import { OthentLogin } from '@othent/react-components'
 ```
 
-### Components <a href="#functions" id="functions"></a>
+## Components <a href="#functions" id="functions"></a>
 
 The following components are available in the Othent React Components library:
 
-#### OthentLogin
+### OthentLogin
 
 _Main component that handles all the logic with the Othent SDK._
 
@@ -34,12 +34,14 @@ _Main component that handles all the logic with the Othent SDK._
 // Main login component
 import { OthentLogin } from "@othent/react-components";
 
-const myLogin = () => <OthentLogin />
+const myLogin = () => <OthentLogin apiId="YOUR_API_ID"/>
 ```
 
 {% hint style="info" %}
 _This component uses the rest of the components as building blocks, it's probably the only one you need._
 {% endhint %}
+
+You need an API_ID to be able to initialize the othent library. You can get yours on [othent.io](https://othent.io)
 
 _When a user is not logged in, it shows the LoginButton_
 
@@ -51,12 +53,12 @@ import { OthentLogin, ModalLocation } from "@othent/react-components";
 
 // Pass one of ModalLocation's members as attribute:
 const myCustomLogin = () =>
-    <OthentLogin location={ ModalLocation['top-left'] }/>
+    <OthentLogin location={ ModalLocation['top-left'] } apiId="YOUR_API_ID"/>
 ```
 
 _**ModalLocation**_ members include: _center_, _top_, _bottom_, _left_, _right_, _top-left_, _top-right_, _bottom-left_, _bottom-right_
 
-#### Avatar
+### Avatar
 
 _Small component to show the profile picture of the user or the first letter of its name in case there's no profile picture._
 
@@ -71,7 +73,7 @@ const myAvatar = () => <Avatar username="John" src="img-URL" />
 The _src_ attribute receives a URL for the profile image shown as avatar. If the URL is not valid, the Avatar shows the first letter of the _username_ upon a plain background.
 {% endhint %}
 
-#### LoginButton
+### LoginButton
 
 Button with the Othent styling to use as a login button. It has an _onlogin_ attribute that receives a callback function to be able to return the _LogInReturnProps_ with user data from the _logIn()_ function in the Othent SDK.
 
@@ -82,10 +84,14 @@ import { type LogInReturnProps } from "othent";
 
 const onlogin = (user: LogInReturnProps) => console.log(user);
 
-const myLoginButton = () => <LoginButton onlogin={ onlogin } />
+const myLoginButton = () =>
+    <LoginButton onlogin={onlogin} apiId="YOUR_API_ID" />
 ```
 
-#### LogoutButton
+You need an API_ID to be able to initialize the othent library. You can get yours on [othent.io](https://othent.io)
+
+
+### LogoutButton
 
 Button to use as a logout button. It has an _onlogout_ attribute that receives a callback function to be able to return the _LogOutReturnProps_ from the _logOut()_ function in the Othent SDK.
 
@@ -96,10 +102,13 @@ import { type LogOutReturnProps } from "othent";
 
 const onlogout = (response: LogOutReturnProps) => console.log(response);
 
-const myLogoutButton = () => <LoginButton onlogin={ onlogin } />
+const myLogoutButton = () =>
+    <LogoutButton onlogout={onlogout} apiId="YOUR_API_ID"/>
 ```
 
-#### Modal
+You need an API_ID to be able to initialize the othent library. You can get yours on [othent.io](https://othent.io)
+
+### Modal
 
 This is a simple component to display a _parent_ element that, upon being clicked, shows a Modal element containing _children_. This Modal is placed in a location relative to the parent element, with 9 possible positions defined by the _**ModalLocation**_ enum.
 
@@ -122,7 +131,7 @@ const myCustomModal = () =>
 
 _**ModalLocation**_ members include: _center_, _top_, _bottom_, _left_, _right_, _top-left_, _top-right_, _bottom-left_, _bottom-right._
 
-#### UserInfo
+### UserInfo
 
 This is a basic component to show info from a user. It shows the profile picture using the [#avatar](component-library.md#avatar "mention") component on the left, while on the right it shows the user's _name_ above the user's _email_.
 

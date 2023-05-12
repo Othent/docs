@@ -6,7 +6,7 @@ description: https://github.com/Othent/package
 
 The Othent Library is a collection of functions that enable interaction with the Othent walletless protocol. These functions are designed to make it seamless for developers to integrate Othent into their applications.
 
-### Installation
+## Installation
 
 To use the library in your project, you can install it using npm:
 
@@ -14,7 +14,7 @@ To use the library in your project, you can install it using npm:
 npm i othent
 ```
 
-### Usage
+## Usage
 
 To use the library, you can import it into your project:
 
@@ -22,7 +22,7 @@ To use the library, you can import it into your project:
 import { Othent } from 'othent';
 ```
 
-### Initialise Othent
+## Initialise Othent
 
 You can generate your API ID from [Othent.io](https://othent.io)
 
@@ -34,9 +34,13 @@ const othent = await Othent({ API_ID })
 
 ```
 
-### Functions
+## Functions
 
 **The following functions are available in the Othent Library:**
+
+### Connect
+
+#### ping
 
 _**ping()**: Ping the Othent server._
 
@@ -50,6 +54,8 @@ console.log(response);
 
 ```
 
+#### logIn
+
 _**logIn()**: Log in a user and return their details._
 
 ```javascript
@@ -61,6 +67,8 @@ const userDetails = await othent.logIn();
 console.log(userDetails);
 
 ```
+
+#### logOut
 
 _**logOut()**: Log out the current user._
 
@@ -74,6 +82,8 @@ console.log(response);
 
 ```
 
+#### userDetails
+
 _**userDetails()**: Retrieve the details of the current user._
 
 ```javascript
@@ -86,6 +96,10 @@ console.log(userDetails);
 
 ```
 
+### Contracts
+
+#### readContract
+
 _**readContract()**: Read data from the current user's contract._
 
 ```javascript
@@ -97,6 +111,8 @@ const contract = await othent.readContract();
 console.log(contract);
 
 ```
+
+#### readCustomContract
 
 _**readCustomContract({contract\_id})**: Read a custom contract._
 
@@ -112,6 +128,10 @@ console.log(contract);
 
 ```
 
+### Arweave Transactions
+
+#### signTransactionArweave
+
 _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
 
 ```javascript
@@ -119,7 +139,7 @@ _**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave tran
 // Sign transaction Arweave
 
 const signedArweaveTransaction = await othent.signTransactionArweave({
-    othentFunction: 'uploadData', 
+  othentFunction: 'uploadData', 
     data: file,
     tags: [ {name: 'Test', value: 'Tag'} ]
 });
@@ -127,6 +147,8 @@ const signedArweaveTransaction = await othent.signTransactionArweave({
 console.log(signedArweaveTransaction);
 
 ```
+
+#### sendTransactionArweave
 
 _**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transaction._
 
@@ -138,6 +160,10 @@ const transaction = await othent.sendTransactionArweave(signedArweaveTransaction
 console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
 
 </code></pre>
+
+### Bundlr Transactions
+
+#### signTransactionBundlr
 
 _**signTransactionBundlr({ othentFunction, data, tags })**: Sign a Bundlr transaction._
 
@@ -155,6 +181,8 @@ console.log(signedBundlrTransaction);
 
 ```
 
+#### sendTransactionBundlr
+
 _**sendTransactionBundlr(signedBundlrTransaction)**: Send a Bundlr transaction._
 
 <pre class="language-javascript"><code class="lang-javascript">
@@ -165,6 +193,10 @@ const transaction = await othent.sendTransactionBundlr(signedBundlrTransaction);
 console.log<a data-footnote-ref href="#user-content-fn-2">(</a>transaction)
 
 </code></pre>
+
+### Warp Transactions
+
+#### signTransactionWarp
 
 _**signTransactionWarp({ othentFunction, data: {toContractId, toContractFunction, txnData}, tags })**: Sign a Warp transaction._
 
@@ -186,6 +218,8 @@ console.log(signedWarpTransaction);
 
 ```
 
+#### sendTransactionWarp
+
 _**sendTransactionWarp(signedWarpTransaction)**: Send a Warp transaction._
 
 ```javascript
@@ -197,6 +231,10 @@ const transaction = await othent.sendTransactionWarp(signedWarpTransaction);
 console.log(transaction)
 
 ```
+
+### Utilities
+
+#### initializeJWK
 
 _**initializeJWK({JWK\_public\_key})**: backup a Othent account with a JWK public key._
 
@@ -210,6 +248,8 @@ console.log(transaction);
 
 ```
 
+#### JWKBackupTxn
+
 _**JWKBackupTxn({JWK\_signed\_JWT})**: Send a transaction with the specified JWK._
 
 ```javascript
@@ -221,6 +261,8 @@ const transaction = await othent.JWKBackupTxn({JWK_signed_JWT});
 console.log(transaction);
   
 ```
+
+## Examples
 
 _**How to generate a JWT signed by a JWK**_
 
@@ -261,11 +303,11 @@ console.log(JWT)
 
 ```
 
-### Contact
+## Contact
 
 If you have any questions or issues with the SDK, please contact us at [hello@othent.io](mailto:hello@othent.io) or open an issue in the GitHub repository at [https://github.com/Othent](https://github.com/Othent/package).
 
-### License
+## License
 
 The Othent Library is licensed under the MIT License. Please see the LICENSE file for more information.
 

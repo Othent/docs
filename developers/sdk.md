@@ -24,13 +24,13 @@ import { Othent } from 'othent';
 
 ### Initialise Othent
 
-You can generate your API key and API ID from [Othent.io](https://othent.io)
+You can generate your API ID from [Othent.io](https://othent.io)
 
 ```javascript
 
 // Initialise Othent
 
-const othent = await Othent({ API_KEY, API_ID })
+const othent = await Othent({ API_ID })
 
 ```
 

@@ -42,7 +42,7 @@ const othent = await Othent({ API_ID })
 
 #### ping
 
-_**ping()**: Ping the Othent server._
+_Ping the Othent server._
 
 ```javascript
 
@@ -56,7 +56,7 @@ console.log(response);
 
 #### logIn
 
-_**logIn()**: Log in a user and return their details._
+_Log in a user and return their details._
 
 ```javascript
 
@@ -70,7 +70,7 @@ console.log(userDetails);
 
 #### logOut
 
-_**logOut()**: Log out the current user._
+_Log out the current user._
 
 ```javascript
 
@@ -84,7 +84,7 @@ console.log(response);
 
 #### userDetails
 
-_**userDetails()**: Retrieve the details of the current user._
+_Retrieve the details of the current user._
 
 ```javascript
 
@@ -100,7 +100,7 @@ console.log(userDetails);
 
 #### readContract
 
-_**readContract()**: Read data from the current user's contract._
+_Read data from the current user's contract._
 
 ```javascript
 
@@ -114,7 +114,8 @@ console.log(contract);
 
 #### readCustomContract
 
-_**readCustomContract({contract\_id})**: Read a custom contract._
+_Read a custom contract by its `contract_id`. Receives an object with only one
+member of type `string` called `contract_id`_
 
 ```javascript
 
@@ -132,7 +133,11 @@ console.log(contract);
 
 #### signTransactionArweave
 
-_**signTransactionArweave({ othentFunction, data, tags })**: Sign a Arweave transaction._
+_Sign an Arweave transaction. It receives an object with 3 members:_
+
+- `othentFunction`: action to be performed. Type `string`.
+- `data`: Data to be attached to the function.
+- `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -150,7 +155,7 @@ console.log(signedArweaveTransaction);
 
 #### sendTransactionArweave
 
-_**sendTransactionArweave(signedArweaveTransaction)**: Send a Arweave transaction._
+_Send an Arweave transaction. Receives a signed Arweave transaction object like the one returned from the `signTransactionArweave` function above._
 
 <pre class="language-javascript"><code class="lang-javascript">
 // Send transaction Arweave
@@ -165,7 +170,11 @@ console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
 
 #### signTransactionBundlr
 
-_**signTransactionBundlr({ othentFunction, data, tags })**: Sign a Bundlr transaction._
+_Sign a Bundlr transaction. It receives an object with 3 members:_
+
+- `othentFunction`: action to be performed. Type `string`.
+- `data`: Data to be attached to the function.
+- `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -183,7 +192,7 @@ console.log(signedBundlrTransaction);
 
 #### sendTransactionBundlr
 
-_**sendTransactionBundlr(signedBundlrTransaction)**: Send a Bundlr transaction._
+_Send a Bundlr transaction. Receives a signed Bundlr transaction object like the one returned from the `signTransactionBundlr` function above._
 
 <pre class="language-javascript"><code class="lang-javascript">
 // Send transaction Bundlr
@@ -198,7 +207,14 @@ console.log<a data-footnote-ref href="#user-content-fn-2">(</a>transaction)
 
 #### signTransactionWarp
 
-_**signTransactionWarp({ othentFunction, data: {toContractId, toContractFunction, txnData}, tags })**: Sign a Warp transaction._
+_Sign a Bundlr transaction. It receives an object with 3 members:_
+
+- `othentFunction`: action to be performed. Type `string`.
+- `data`: An object containing 3 members:
+  - `toContractid`: A `string` with the Warp contract Id. 
+  - `toContractFunction`: A `string` with the function name from the Warp contract to call.
+  - `txnData`: The data object that the mentioned function receives.
+- `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -220,7 +236,7 @@ console.log(signedWarpTransaction);
 
 #### sendTransactionWarp
 
-_**sendTransactionWarp(signedWarpTransaction)**: Send a Warp transaction._
+_Send a Warp transaction. Receives a signed Warp transaction object like the one returned from the `signTransactionWarp` function above._
 
 ```javascript
 
@@ -236,7 +252,7 @@ console.log(transaction)
 
 #### initializeJWK
 
-_**initializeJWK({JWK\_public\_key})**: backup a Othent account with a JWK public key._
+_Backup an Othent account with a JWK public key. It receives a `{ JWK_public_key }` object_
 
 ```javascript
 
@@ -250,7 +266,7 @@ console.log(transaction);
 
 #### JWKBackupTxn
 
-_**JWKBackupTxn({JWK\_signed\_JWT})**: Send a transaction with the specified JWK._
+_Send a transaction with the specified JWK. It receives a `{ JWK_signed_JWT }` object_
 
 ```javascript
 

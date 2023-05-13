@@ -4,7 +4,7 @@ description: What can Othent do?
 
 # 🥗 Othents features
 
-<figure><img src="../.gitbook/assets/Group 107.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 108.png" alt=""><figcaption></figcaption></figure>
 
 **Existing private key wallets to onboard through social logins:**
 

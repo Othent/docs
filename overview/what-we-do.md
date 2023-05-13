@@ -4,6 +4,8 @@ description: What can Othent do?
 
 # 🥗 Othents features
 
+<figure><img src="../.gitbook/assets/Group 107.png" alt=""><figcaption></figcaption></figure>
+
 **Existing private key wallets to onboard through social logins:**
 
 Othent can be integrated by wallets into their app to offer social logins and alternative authentications like API keys in addition to private keys. This can make the onboarding process smoother for users and enhance their reach to Web2.

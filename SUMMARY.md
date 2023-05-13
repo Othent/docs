@@ -4,12 +4,13 @@
 
 ## Overview
 
-* [🥗 Othents features ](overview/what-we-do.md)
+* [🌎 How it works](overview/how-it-works.md)
+* [🥗 Othents features](overview/what-we-do.md)
 
 ## Demo's
 
-* [🍏 SDK demo](https://demo.othent.io)
 * [🍎 Example app using Othent](https://weavetransfer.othent.io)
+* [🍏 SDK demo](https://demo.othent.io)
 
 ## Developers
 

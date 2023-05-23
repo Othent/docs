@@ -114,8 +114,7 @@ console.log(contract);
 
 #### readCustomContract
 
-_Read a custom contract by its `contract_id`. Receives an object with only one
-member of type `string` called `contract_id`_
+_Read a custom contract by its `contract_id`. Receives an object with only one member of type `string` called `contract_id`_
 
 ```javascript
 
@@ -135,9 +134,9 @@ console.log(contract);
 
 _Sign an Arweave transaction. It receives an object with 3 members:_
 
-- `othentFunction`: action to be performed. Type `string`.
-- `data`: Data to be attached to the function.
-- `tags`: Array of objects with a `{ name: string, value: string}` structure.
+* `othentFunction`: action to be performed. Type `string`.
+* `data`: Data to be attached to the function.
+* `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -157,14 +156,15 @@ console.log(signedArweaveTransaction);
 
 _Send an Arweave transaction. Receives a signed Arweave transaction object like the one returned from the `signTransactionArweave` function above._
 
-<pre class="language-javascript"><code class="lang-javascript">
+```javascript
+
 // Send transaction Arweave
 
 const transaction = await othent.sendTransactionArweave(signedArweaveTransaction);
 
-console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
+console.log(transaction)
 
-</code></pre>
+```
 
 ### Bundlr Transactions
 
@@ -172,9 +172,9 @@ console.log<a data-footnote-ref href="#user-content-fn-1">(</a>transaction)
 
 _Sign a Bundlr transaction. It receives an object with 3 members:_
 
-- `othentFunction`: action to be performed. Type `string`.
-- `data`: Data to be attached to the function.
-- `tags`: Array of objects with a `{ name: string, value: string}` structure.
+* `othentFunction`: action to be performed. Type `string`.
+* `data`: Data to be attached to the function.
+* `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -194,14 +194,15 @@ console.log(signedBundlrTransaction);
 
 _Send a Bundlr transaction. Receives a signed Bundlr transaction object like the one returned from the `signTransactionBundlr` function above._
 
-<pre class="language-javascript"><code class="lang-javascript">
+```javascript
+
 // Send transaction Bundlr
 
 const transaction = await othent.sendTransactionBundlr(signedBundlrTransaction);
 
-console.log<a data-footnote-ref href="#user-content-fn-2">(</a>transaction)
+console.log(transaction)
 
-</code></pre>
+```
 
 ### Warp Transactions
 
@@ -209,12 +210,12 @@ console.log<a data-footnote-ref href="#user-content-fn-2">(</a>transaction)
 
 _Sign a Bundlr transaction. It receives an object with 3 members:_
 
-- `othentFunction`: action to be performed. Type `string`.
-- `data`: An object containing 3 members:
-  - `toContractid`: A `string` with the Warp contract Id. 
-  - `toContractFunction`: A `string` with the function name from the Warp contract to call.
-  - `txnData`: The data object that the mentioned function receives.
-- `tags`: Array of objects with a `{ name: string, value: string}` structure.
+* `othentFunction`: action to be performed. Type `string`.
+* `data`: An object containing 3 members:
+  * `toContractid`: A `string` with the Warp contract Id.
+  * `toContractFunction`: A `string` with the function name from the Warp contract to call.
+  * `txnData`: The data object that the mentioned function receives.
+* `tags`: Array of objects with a `{ name: string, value: string}` structure.
 
 ```javascript
 
@@ -326,7 +327,3 @@ If you have any questions or issues with the SDK, please contact us at [hello@ot
 ## License
 
 The Othent Library is licensed under the MIT License. Please see the LICENSE file for more information.
-
-[^1]: 
-
-[^2]: 

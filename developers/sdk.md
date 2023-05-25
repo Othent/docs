@@ -253,13 +253,25 @@ console.log(transaction)
 
 #### initializeJWK
 
-_Backup an Othent account with a JWK public key through the ArConnect pop up._
+_Backup an Othent account with a JWK private key. It receives a `{ privateKey }` object._
 
 ```javascript
 
 // Initalize JWK to user
 
-const transaction = await othent.initializeJWK();
+const privateKey = {
+    "kty": "RSA",
+    "e": "AQAB",
+    "n": "iSGYBVYjH2jHL2ZfI3ymVWq-bqkPJUP3Zh8NzYrppU77RI-W_Gucg0ZMFHelgeY4xw2axhXWGJqLLFcp1Mr7xAZ3wIGLfiwvJNejFOwtJFcPbPoRKkTVLP0wWAZmbeKhnu1wFhfHrn2CYZEsVn2Z6BBUnXSo9CIG_Db55tfdcTM6gu6i9z_D3BUOhAeBeSKwqsc-G5KFG_r43I2tvVDpzWK8iUqTatRix0tvX1Mf1SLlovtEVBlNglmanTZdosZQyIxCS600ylCAaogWwYmh15PMz4Fw_pnkXpvTIGquOfVUoILxh7vbESsNknNKcrcD7uzrPyk7mBZeTDkjS-8avsTIDvibQGHznX_knAP2qiIHxjOmzp4jNRt7DphiIuXJZx5tm6kR7xOUcSiIxH4r0tiwWMiP95K1k7d9D8171CEn7YZmNJGYr4a-I8XML5vCq99SowksSoydi-UUN-hUNuiMLZKxi2EA_cI_DzX8WqzkLMHix6m8TQDRhUZ7otXiOXhloFWXV2KPiQD9WiioCcGUsGzUlRXxcpite5a3zLG8PoEaLSjZcFZrEd2CvMs44aCmb4JQyP54VE76ojo-Opy_0Yb8RMNKoX0QvUeD7NOK-hXBwIDBgm-QrDjgHQ6-RXs72cMiHjl2aib_YRwbwW68pg9G6C-iSM9MMwlbBv0",
+    "d": "gIIi3J1kPMMMJrdg4PinR9TIsRttPhb7eZAQd1Z-rpPdlNqbO-H8wmjWUzfsulbtTlzJdmhwQo5RbjQg13GBjqog_x5ngs4VQAl0ot7RTwTnR9Dw1RO8UnTTISqeQsvnefA44ftW_YZQ8O4DBuqdmIP1R7lTu7VHpoQ-nL4enz7Kznij7-Cpw01YVRJTmxmPRfuBkIU2iIohPU7oSknRUM_-rwpcK_jsuKdQr5xOcIZLfPjLh6ROpqEh68JO7YO7oLUQS6r9lbrrHOp7qNM5_7Racvty0KWXBbIxoGdY7qehruoHPpQlL2mRRnUUh3xLC1SrAH27g0MzC2tgUIC6JiyV2BAdSGBu2ReRSu8TIL1UtxYBWpgsgggnMaGfqZbxREuU7mvFNYMtgR8juutswxOVEvDjmg9xyG-hFZ4vhVEq3VSGpSoZiFhqGeUIlGkBrgZzarjWFDvuNMSNdFLz7WXn2_XMNQkkco5BW5ZFsex_e06zc0c0-EJui8b4sLKoK7uHGlLN50HzM8HU-HnQGn-Zp-g0goi_-uiOtIq0KH2Zn-3XIZ1c8JWwkoi0-jl3VHtsbyaQKcjissRRiixtT5Rler4SFtaEtoNNojga0WVq0PGgAM1oQquhVTnKFlOepo3ryxK8gtUniUgbWKZZl79Bq5yCWG0Kq77fvqk_B2E",
+    "p": "_rjPL7ak7zlmRGgEGIQOEbKKD6rNlkvsH0TrhuyTOAHLOoUVlnsJoAhLAThzy_7DypdOq7_uQfCc0QQkyjmYTdMHgsFx9HAzuYpL6BRaHrMPWKEu7ElmBbYHMNMSL3zWH8Ywufit1ttR6E62PHxcsOWkLFaJR6tqv5DmJ18ckhVfC8N7IaiEJVhMDcvZlARlcgInBpO4n35ff1XJr2HAEP3zBdn8Gy6VslbszHFyFAaoGRs_OxXlhEoxQnFtWVOnNjv1uL4WCI-HBCQLMqAVULIJ8UriXbImQL4CmkGS0pH7fFO1vqRyRreH3cEbKy514znMl6YOqBnlPhIcjNwJNw",
+    "q": "idG9NXrUnQOJvOTbaUWGr9bVdK5Fauqu-Oey68W-77oXFbj_LwTM8K8LdQYcaZUShYs5PUxOVGvllm9K2mveYtqGC8N3FM9wSflxskpzrVI1SQednH_dv9EBtUdpriLW47IBZDWRp4TkoQAUUOU7GV3WlsDjq35ctIkoSRNsG3sYO6tKivdJWkANE7P6GY4uofy_NnMaTFsd3hzZx7ABJkDbLFLmtKN-Oipz29lKhaMTzaJJcTdJJVybREXrfeE426PGUNcnuWHY-uQz4APZHFtDMJCq7YBWVMEeazxEjPvcbxL8ky6EfhcXcRKnLApqFjFWyl6A1KZlunY4upi7aw",
+    "dp": "H1Sh_09q2BXqU02r-0v64whf3O94XB04jNwQUEc3EHOACNGnxxuZInsCpsLH03ahpICZ55wy9R9gWoE0-T6-Ugw750Rd_N_0LMUq8v_V2eLSZ2dj-yJIDznFhqbfnMGxILVi9uz0jPHrEDTmS2hMimGkoON__TXDao6rEHqta_Z--1ZvBcPRhTpoGGZTe9ZSmARVwoRW-B82JdZqeUz_r9dclgKq9Lj1Jrt0Yu0tR_NNp9DnJSBbW7s4deC3v33_mjcj0TZoRWNKCyNX0UFJfeR4PpqkXzvzYpE8hra8FXRpR3CQcUOO3s3iQ09mRRhw3aMVXC3LrbeJr-nQYy8JXw",
+    "dq": "ZE83-7jPDwkIM2gPGmv0P_-JlUdSVyNA_wEFBP4Ens8_BhyD_2DrGTMOj7pG68IInRJcMvVa_a8ah4exX5CraB_M-Lrn7UmeXPkle7McxsXS6riUStf2OiqRp7O2g3vwFAH3aUxkGx1qmpRINSji_u-BxG_YRXXPW8eIfseYI9hQJv3hX4vk479CxVh1bCxEXLptIeBc_75B2uv8xo6gB4uk-nnMWSW2Nfe4JAffaazsOPspoTGwF3VzvRl28UP_8j0dlrFCxHcnSlTWPPIQD8eM-8gP4JVMQJve3AYdjs-x_VZAZ4-v92YvNalx62gZFtYKaXinJB-IY1Kwr3-CyQ",
+    "qi": "Oyu3BdOZhTCSru1wlwV6ep2Fw7hHUp5ZQkyGALGUcXhLP2BKVyykrpEgeBxrQMt429LfGpaJ95waXD9SG92OxJMJCE84OORxez5yEQPepACfvAffqMcxvUiXehXDdSQ_V-vx53Mo_OuJ3D4b83pGtt38fZvERcZzaR32NOLen_GSFyEJVi9uxpB_oDGVKAMIsKb_5aSVx1kGb-xT8sR9wPbH2y0cXJQrhI-gtQ6x5OctOs4gJY8ZJOYDqiCgxm7QJMZ70AayJjXVqvQrqNeuBVyM1urFsV5Q1lg_CjYrtBPmBPwJ6e0SuSr40zH0Hr-Xw0RvNRreZNpLDZ-ard27yg"
+}
+const transaction = await othent.initializeJWK({ privateKey })
+
 
 console.log(transaction);
 
@@ -267,57 +279,43 @@ console.log(transaction);
 
 #### JWKBackupTxn
 
-_Send a transaction with the specified JWK. It receives a `{ JWK_signed_JWT }` object._
+_Send a transaction with the specified JWK. It receives a `{ privateKey, sub, contract_id, tags, data, othentFunction }` object._
 
 ```javascript
 
 // JWK backup transaction
 
-const transaction = await othent.JWKBackupTxn({JWK_signed_JWT});
-
-console.log(transaction);
+const privateKey = {
+    "kty": "RSA",
+    "e": "AQAB",
+    "n": "iSGYBVYjH2jHL2ZfI3ymVWq-bqkPJUP3Zh8NzYrppU77RI-W_Gucg0ZMFHelgeY4xw2axhXWGJqLLFcp1Mr7xAZ3wIGLfiwvJNejFOwtJFcPbPoRKkTVLP0wWAZmbeKhnu1wFhfHrn2CYZEsVn2Z6BBUnXSo9CIG_Db55tfdcTM6gu6i9z_D3BUOhAeBeSKwqsc-G5KFG_r43I2tvVDpzWK8iUqTatRix0tvX1Mf1SLlovtEVBlNglmanTZdosZQyIxCS600ylCAaogWwYmh15PMz4Fw_pnkXpvTIGquOfVUoILxh7vbESsNknNKcrcD7uzrPyk7mBZeTDkjS-8avsTIDvibQGHznX_knAP2qiIHxjOmzp4jNRt7DphiIuXJZx5tm6kR7xOUcSiIxH4r0tiwWMiP95K1k7d9D8171CEn7YZmNJGYr4a-I8XML5vCq99SowksSoydi-UUN-hUNuiMLZKxi2EA_cI_DzX8WqzkLMHix6m8TQDRhUZ7otXiOXhloFWXV2KPiQD9WiioCcGUsGzUlRXxcpite5a3zLG8PoEaLSjZcFZrEd2CvMs44aCmb4JQyP54VE76ojo-Opy_0Yb8RMNKoX0QvUeD7NOK-hXBwIDBgm-QrDjgHQ6-RXs72cMiHjl2aib_YRwbwW68pg9G6C-iSM9MMwlbBv0",
+    "d": "gIIi3J1kPMMMJrdg4PinR9TIsRttPhb7eZAQd1Z-rpPdlNqbO-H8wmjWUzfsulbtTlzJdmhwQo5RbjQg13GBjqog_x5ngs4VQAl0ot7RTwTnR9Dw1RO8UnTTISqeQsvnefA44ftW_YZQ8O4DBuqdmIP1R7lTu7VHpoQ-nL4enz7Kznij7-Cpw01YVRJTmxmPRfuBkIU2iIohPU7oSknRUM_-rwpcK_jsuKdQr5xOcIZLfPjLh6ROpqEh68JO7YO7oLUQS6r9lbrrHOp7qNM5_7Racvty0KWXBbIxoGdY7qehruoHPpQlL2mRRnUUh3xLC1SrAH27g0MzC2tgUIC6JiyV2BAdSGBu2ReRSu8TIL1UtxYBWpgsgggnMaGfqZbxREuU7mvFNYMtgR8juutswxOVEvDjmg9xyG-hFZ4vhVEq3VSGpSoZiFhqGeUIlGkBrgZzarjWFDvuNMSNdFLz7WXn2_XMNQkkco5BW5ZFsex_e06zc0c0-EJui8b4sLKoK7uHGlLN50HzM8HU-HnQGn-Zp-g0goi_-uiOtIq0KH2Zn-3XIZ1c8JWwkoi0-jl3VHtsbyaQKcjissRRiixtT5Rler4SFtaEtoNNojga0WVq0PGgAM1oQquhVTnKFlOepo3ryxK8gtUniUgbWKZZl79Bq5yCWG0Kq77fvqk_B2E",
+    "p": "_rjPL7ak7zlmRGgEGIQOEbKKD6rNlkvsH0TrhuyTOAHLOoUVlnsJoAhLAThzy_7DypdOq7_uQfCc0QQkyjmYTdMHgsFx9HAzuYpL6BRaHrMPWKEu7ElmBbYHMNMSL3zWH8Ywufit1ttR6E62PHxcsOWkLFaJR6tqv5DmJ18ckhVfC8N7IaiEJVhMDcvZlARlcgInBpO4n35ff1XJr2HAEP3zBdn8Gy6VslbszHFyFAaoGRs_OxXlhEoxQnFtWVOnNjv1uL4WCI-HBCQLMqAVULIJ8UriXbImQL4CmkGS0pH7fFO1vqRyRreH3cEbKy514znMl6YOqBnlPhIcjNwJNw",
+    "q": "idG9NXrUnQOJvOTbaUWGr9bVdK5Fauqu-Oey68W-77oXFbj_LwTM8K8LdQYcaZUShYs5PUxOVGvllm9K2mveYtqGC8N3FM9wSflxskpzrVI1SQednH_dv9EBtUdpriLW47IBZDWRp4TkoQAUUOU7GV3WlsDjq35ctIkoSRNsG3sYO6tKivdJWkANE7P6GY4uofy_NnMaTFsd3hzZx7ABJkDbLFLmtKN-Oipz29lKhaMTzaJJcTdJJVybREXrfeE426PGUNcnuWHY-uQz4APZHFtDMJCq7YBWVMEeazxEjPvcbxL8ky6EfhcXcRKnLApqFjFWyl6A1KZlunY4upi7aw",
+    "dp": "H1Sh_09q2BXqU02r-0v64whf3O94XB04jNwQUEc3EHOACNGnxxuZInsCpsLH03ahpICZ55wy9R9gWoE0-T6-Ugw750Rd_N_0LMUq8v_V2eLSZ2dj-yJIDznFhqbfnMGxILVi9uz0jPHrEDTmS2hMimGkoON__TXDao6rEHqta_Z--1ZvBcPRhTpoGGZTe9ZSmARVwoRW-B82JdZqeUz_r9dclgKq9Lj1Jrt0Yu0tR_NNp9DnJSBbW7s4deC3v33_mjcj0TZoRWNKCyNX0UFJfeR4PpqkXzvzYpE8hra8FXRpR3CQcUOO3s3iQ09mRRhw3aMVXC3LrbeJr-nQYy8JXw",
+    "dq": "ZE83-7jPDwkIM2gPGmv0P_-JlUdSVyNA_wEFBP4Ens8_BhyD_2DrGTMOj7pG68IInRJcMvVa_a8ah4exX5CraB_M-Lrn7UmeXPkle7McxsXS6riUStf2OiqRp7O2g3vwFAH3aUxkGx1qmpRINSji_u-BxG_YRXXPW8eIfseYI9hQJv3hX4vk479CxVh1bCxEXLptIeBc_75B2uv8xo6gB4uk-nnMWSW2Nfe4JAffaazsOPspoTGwF3VzvRl28UP_8j0dlrFCxHcnSlTWPPIQD8eM-8gP4JVMQJve3AYdjs-x_VZAZ4-v92YvNalx62gZFtYKaXinJB-IY1Kwr3-CyQ",
+    "qi": "Oyu3BdOZhTCSru1wlwV6ep2Fw7hHUp5ZQkyGALGUcXhLP2BKVyykrpEgeBxrQMt429LfGpaJ95waXD9SG92OxJMJCE84OORxez5yEQPepACfvAffqMcxvUiXehXDdSQ_V-vx53Mo_OuJ3D4b83pGtt38fZvERcZzaR32NOLen_GSFyEJVi9uxpB_oDGVKAMIsKb_5aSVx1kGb-xT8sR9wPbH2y0cXJQrhI-gtQ6x5OctOs4gJY8ZJOYDqiCgxm7QJMZ70AayJjXVqvQrqNeuBVyM1urFsV5Q1lg_CjYrtBPmBPwJ6e0SuSr40zH0Hr-Xw0RvNRreZNpLDZ-ard27yg"
+  }
   
-```
-
-## Examples
-
-_**How to generate a JWT signed by a JWK**_
-
-```javascript
-
-// JWT signed by your own JWK
-
-const jwt = require('jsonwebtoken');
-const jwkToPem = require('jwk-to-pem')
-
-const private_pem = jwkToPem(jwk, {private: true});
-const public_pem = jwkToPem(jwk);
-
-const payload = {
-  sub: 'google-oauth2|113378216876216346016',
-  contract_id: 'Tb33ItPlttNYtABjMo03gK425vCcYYMX4c7i8W_I2X0',
-  tags: [ {name: 'Test', value: 'Tag'} ],
+  const sub = 'google-oauth2|113378216876216346016'
   
-  contract_input: {
-    data: {
-      toContractFunction: "createPost",
-      toContractId: "2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU",
-      txnData: { blog_post: "JWK TXN!" }
-    },
-    othentFunction: "JWKBackupTxn"
-    },
-  };
+  const contract_id = 'JUTWhO3PF_22ras6JVIlCALzqlkfscKBKPz7vxYKXA8'
   
-const options = {
-    algorithm: 'RS256',
-    expiresIn: '100000h',
-    issuer: 'https://Othent.io'
-  };
+  const tags = [ {name: 'Test', value: 'Tag'} ]
   
-const JWT = jwt.sign(payload, private_pem, options);
+  const data = {
+    toContractFunction: "createPost",
+    toContractId: "tQKJCf2E9lIaNTjM8ELK6ATlJtef8cVmq68c9XnVuj0",
+    txnData: {
+      POST: "TEST POST!"
+    }
+  }
+  const othentFunction = 'JWKBackupTxn'
 
-console.log(JWT)
+  const transaction = await othent.JWKBackupTxn({ privateKey, sub, contract_id, tags, data, othentFunction })
 
+  console.log(transaction)
+  
 ```
 
 ## Contact

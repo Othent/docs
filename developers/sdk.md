@@ -253,13 +253,13 @@ console.log(transaction)
 
 #### initializeJWK
 
-_Backup an Othent account with a JWK public key. It receives a `{ JWK_public_key }` object_
+_Backup an Othent account with a JWK public key through the ArConnect pop up._
 
 ```javascript
 
 // Initalize JWK to user
 
-const transaction = await othent.initializeJWK({JWK_public_key});
+const transaction = await othent.initializeJWK();
 
 console.log(transaction);
 
@@ -267,7 +267,7 @@ console.log(transaction);
 
 #### JWKBackupTxn
 
-_Send a transaction with the specified JWK. It receives a `{ JWK_signed_JWT }` object_
+_Send a transaction with the specified JWK. It receives a `{ JWK_signed_JWT }` object._
 
 ```javascript
 

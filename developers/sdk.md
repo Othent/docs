@@ -166,6 +166,22 @@ console.log(transaction)
 
 ```
 
+#### verifyArweaveData
+
+_Verify a Arweave transaction. Receives a Arweave transaction id._
+
+```javascript
+
+// Verify Bundlr transaction
+
+const transactionId = 'Qi2K6IJY_VTlUJ3dszVm3Ot8UIOuMljMi8luw0ZdSnw'
+
+const verifiedArweaveData = await othent.verifyArweaveData({ transactionId })
+
+console.log(verifiedArweaveData)
+
+```
+
 ### Bundlr Transactions
 
 #### signTransactionBundlr
@@ -201,6 +217,22 @@ _Send a Bundlr transaction. Receives a signed Bundlr transaction object like the
 const transaction = await othent.sendTransactionBundlr(signedBundlrTransaction);
 
 console.log(transaction)
+
+```
+
+#### verifyBundlrData
+
+_Verify a Bundlr transaction. Receives a Bundlr transaction id._
+
+```javascript
+
+// Verify Bundlr transaction
+cod
+const transactionId = 'VpyBrjsQ9jlKSYda17T8Dua1P-SpbWfJvGz2V-UPvfk'
+
+const verifiedBundlrData = await othent.verifyBundlrData({ transactionId })
+
+console.log(verifiedBundlrData)
 
 ```
 

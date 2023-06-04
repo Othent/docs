@@ -227,7 +227,7 @@ _Verify a Bundlr transaction. Receives a Bundlr transaction id._
 ```javascript
 
 // Verify Bundlr transaction
-cod
+
 const transactionId = 'VpyBrjsQ9jlKSYda17T8Dua1P-SpbWfJvGz2V-UPvfk'
 
 const verifiedBundlrData = await othent.verifyBundlrData({ transactionId })

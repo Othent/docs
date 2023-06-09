@@ -26,11 +26,16 @@ import { Othent } from 'othent';
 
 You can generate your API ID from [Othent.io](https://othent.io)
 
+_Receives an object with your API ID called `API_ID` and string array of the intended callback URLs you with use Othent on called `callbackURLs`._
+
 ```javascript
 
 // Initialise Othent
 
-const othent = await Othent({ API_ID })
+const othent = await Othent({ 
+    API_ID: 'YOUR API ID',
+    callbackURLs: [ 'https://othent.io' ]
+})
 
 ```
 

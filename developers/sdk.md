@@ -87,6 +87,22 @@ console.log(response);
 
 ```
 
+#### queryWalletAddressTxns
+
+Query a Othent users wallet addresses transactions
+
+```javascript
+
+// Query a users transactions
+
+const walletAddress = 'Fqpw5BEnS1SCxwMJP4BhYCgzUmT8l3U6NNTBdjAXGF8'
+
+const transactions = await othent.queryWalletAddressTxns({ walletAddress });
+
+console.log(transactions);
+
+```
+
 #### userDetails
 
 _Retrieve the details of the current user._

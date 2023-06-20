@@ -33,8 +33,7 @@ _Receives an object with your API ID called `API_ID` and string array of the int
 // Initialise Othent
 
 const othent = await Othent({ 
-    API_ID: 'YOUR API ID',
-    callbackURLs: [ 'https://YOUR DOMAIN/' ]
+    API_ID: 'YOUR API ID'
 })
 
 ```

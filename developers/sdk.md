@@ -370,6 +370,64 @@ const privateKey = {
   
 ```
 
+#### encryptData
+
+_Encrypt data with a secret key. It receives a `{ data, key }` object._
+
+```javascript
+
+// Encrypt data 
+
+const data = 'I want this data encrypted!'
+
+const key = 'password'
+
+const encryptedData = await othent.encryptData({ data, key })
+
+console.log(encryptedData)
+
+```
+
+#### decryptData
+
+_Decrypt data with a secret key. It receives a `{ data, key }` object._
+
+```javascript
+
+// Decrypt data 
+
+const data = 'U2FsdGVkX19sTWaZP0ST2zb7zvbTvvGU6lN0btbzGP3r13rSgZa8rgr4+XZG+yGX'
+
+const key = 'password'
+
+const decryptedData = await othent.decryptData({ data, key })
+
+console.log(decryptedData)
+
+```
+
+#### deployWarpContract
+
+_Deploy a SmartWeave Warp.cc contract. It receives a `{ contractSrc, state, tags }` object._
+
+```javascript
+
+// Deploy contract
+
+const fetchContract = await fetch('https://othent.io/contract-new.js')
+ 
+const contract = fetchContract.text()
+
+const state = { testState: 'testState' }
+
+const tags = [ { name: 'testTag', value: 'testTag' } ]
+
+const deployedContract = await othent.deployWarpContract({ contractSrc, state, tags })
+
+console.log(deployedContract)
+
+```
+
 ## Contact
 
 If you have any questions or issues with the SDK, please contact us at [hello@othent.io](mailto:hello@othent.io) or open an issue in the GitHub repository at [https://github.com/Othent](https://github.com/Othent/package).

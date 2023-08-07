@@ -70,6 +70,8 @@ const userDetails = await othent.logIn();
 
 console.log(userDetails);
 
+// for testnet, await othent.logIn({ testNet: true });
+
 ```
 
 #### logOut
@@ -285,9 +287,9 @@ const signedWarpTransaction = await othent.signTransactionWarp({
 
 console.log(signedWarpTransaction);
 
-```
+// for testnet, simply add testNet: true to the signTransactionWarp function
 
-#### sendTransactionWarp
+```
 
 _Send a Warp transaction. Receives a signed Warp transaction object like the one returned from the `signTransactionWarp` function above._
 

@@ -148,6 +148,8 @@ const contract = await othent.readCustomContract({contract_id});
 
 console.log(contract);
 
+// for testnet, add testNet: true to the readCustomContract function
+
 ```
 
 ### Arweave Transactions

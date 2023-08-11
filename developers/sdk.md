@@ -428,6 +428,8 @@ const deployedContract = await othent.deployWarpContract({ contractSrc, state, t
 
 console.log(deployedContract)
 
+// for testnet, simply add testNet: true to the deployWarpContract function
+
 ```
 
 ## Contact

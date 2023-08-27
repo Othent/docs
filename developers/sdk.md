@@ -152,6 +152,28 @@ console.log(contract);
 
 ```
 
+#### viewCustomContract
+
+_View a custom contract by its `contract_id`. Receives an object with a `function`_ _`tags`_  _`contract_id` object_
+
+```javascript
+ 
+// View custom contract
+ 
+const func = ''
+
+const tags = [ { name: '', value: '' } ]
+ 
+const contract_id = ''
+
+const viewContractState = await othent.viewCustomContract({ function: func, tags, contract_id });
+
+console.log(viewContractState);
+ 
+// for testnet, add testNet: true to the readCustomContract function
+
+```
+
 ### Arweave Transactions
 
 #### signTransactionArweave

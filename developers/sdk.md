@@ -434,6 +434,28 @@ console.log(deployedContract)
 
 ```
 
+#### deployWarpContractFromTx
+
+_Deploy a SmartWeave Warp.cc contract from a source transaction ID. It receives a `{ srcTxId, state, tags }` object._
+
+```javascript
+
+// Deploy contract from source transaction
+
+const srcTxId = 'vnzoKP1yDyBvJsbLTQarhEzQ3RrD61noAx5w63nnAgU'
+
+const state = { testState: 'testState' }
+
+const tags = [ { name: 'testTag', value: 'testTag' } ]
+
+const deployedContract = await othent.deployWarpContractFromTx({ srcTxId, state, tags })
+
+console.log(deployedContract)
+
+// for testnet, simply add testNet: true to the deployWarpContractFromTx function
+
+```
+
 ## Contact
 
 If you have any questions or issues with the SDK, please contact us at [hello@othent.io](mailto:hello@othent.io) or open an issue in the GitHub repository at [https://github.com/Othent](https://github.com/Othent/package).

@@ -90,7 +90,7 @@ addEventListener("arweaveWalletLoaded", () => {
 });
 ```
 
-Once this event has been emitted by Othent Mobile you can start using the API methods safely. Here's an example login after the Api has been injected:s
+Once this event has been emitted by Othent Mobile you can start using the API methods safely. Here's an example login after the API has been injected:s
 
 ```javascript
 addEventListener("arweaveWalletLoaded", () => {

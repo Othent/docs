@@ -302,7 +302,7 @@ _Sign a Warp.cc transaction. It receives an object with 3 members:_
 const signedWarpTransaction = await othent.signTransactionWarp({
   othentFunction: 'sendTransaction', 
   data: {
-      toContractId: '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU', 
+    toContractId: '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU', 
     toContractFunction: 'createPost', 
     txnData: { blog_entry: 'Hello World!'} 
   }, 

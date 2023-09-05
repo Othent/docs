@@ -286,7 +286,7 @@ console.log(verifiedBundlrData)
 
 #### signTransactionWarp
 
-_Sign a Bundlr transaction. It receives an object with 3 members:_
+_Sign a Warp.cc transaction. It receives an object with 3 members:_
 
 * `othentFunction`: action to be performed. Type `string`.
 * `data`: An object containing 3 members:
@@ -302,7 +302,7 @@ _Sign a Bundlr transaction. It receives an object with 3 members:_
 const signedWarpTransaction = await othent.signTransactionWarp({
   othentFunction: 'sendTransaction', 
   data: {
-    toContractId: '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU', 
+      toContractId: '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU', 
     toContractFunction: 'createPost', 
     txnData: { blog_entry: 'Hello World!'} 
   }, 
@@ -314,6 +314,8 @@ console.log(signedWarpTransaction);
 // for testnet, simply add testNet: true to the signTransactionWarp function
 
 ```
+
+#### sendTransactionWarp
 
 _Send a Warp transaction. Receives a signed Warp transaction object like the one returned from the `signTransactionWarp` function above._
 

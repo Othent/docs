@@ -94,7 +94,6 @@ Once this event has been emitted by Othent Mobile you can start using the API me
 
 ```javascript
 addEventListener("arweaveWalletLoaded", () => {
-    const details = await window.arweaveWallet.logIn();
-    console.log(details);
+  window.arweaveWallet.logIn().then(console.log);
 });
 ```

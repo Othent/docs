@@ -26,15 +26,14 @@ import { Othent } from 'othent';
 
 You can generate your API ID from [Othent.io](https://othent.io)
 
-_Receives an object with your API ID called `API_ID` and string array of the intended callback URLs you with use Othent on called `callbackURLs`._
+_Receives an object with your API ID called `API_ID`._
 
 ```javascript
 
 // Initialise Othent
 
 const othent = await Othent({ 
-    API_ID: 'YOUR API ID',
-    callbackURLs: [ 'https://othent.io' ]
+    API_ID: 'YOUR API ID'
 })
 
 ```
@@ -71,6 +70,8 @@ const userDetails = await othent.logIn();
 
 console.log(userDetails);
 
+// for testnet, await othent.logIn({ testNet: true });
+
 ```
 
 #### logOut
@@ -84,6 +85,22 @@ _Log out the current user._
 const response = await othent.logOut();
 
 console.log(response);
+
+```
+
+#### queryWalletAddressTxns
+
+Query a Othent users wallet addresses transactions
+
+```javascript
+
+// Query a users transactions
+
+const walletAddress = 'Fqpw5BEnS1SCxwMJP4BhYCgzUmT8l3U6NNTBdjAXGF8'
+
+const transactions = await othent.queryWalletAddressTxns({ walletAddress });
+
+console.log(transactions);
 
 ```
 
@@ -130,6 +147,30 @@ const contract_id = '2W9NoIJM1SuaFUaSOJsui_5lD_NvCHTjez5HKe2SjYU'
 const contract = await othent.readCustomContract({contract_id});
 
 console.log(contract);
+
+// for testnet, add testNet: true to the readCustomContract function
+
+```
+
+#### viewCustomContract
+
+_View a custom contract by its `contract_id`. Receives an object with a `function`_ _`tags`_  _`contract_id` object_
+
+```javascript
+ 
+// View custom contract
+ 
+const func = ''
+
+const tags = [ { name: '', value: '' } ]
+ 
+const contract_id = ''
+
+const viewContractState = await othent.viewCustomContract({ function: func, tags, contract_id });
+
+console.log(viewContractState);
+ 
+// for testnet, add testNet: true to the readCustomContract function
 
 ```
 
@@ -270,9 +311,9 @@ const signedWarpTransaction = await othent.signTransactionWarp({
 
 console.log(signedWarpTransaction);
 
-```
+// for testnet, simply add testNet: true to the signTransactionWarp function
 
-#### sendTransactionWarp
+```
 
 _Send a Warp transaction. Receives a signed Warp transaction object like the one returned from the `signTransactionWarp` function above._
 
@@ -353,6 +394,88 @@ const privateKey = {
 
   console.log(transaction)
   
+```
+
+#### encryptData
+
+_Encrypt data with a secret key. It receives a `{ data, key }` object._
+
+```javascript
+
+// Encrypt data 
+
+const data = 'I want this data encrypted!'
+
+const key = 'password'
+
+const encryptedData = await othent.encryptData({ data, key })
+
+console.log(encryptedData)
+
+```
+
+#### decryptData
+
+_Decrypt data with a secret key. It receives a `{ data, key }` object._
+
+```javascript
+
+// Decrypt data 
+
+const data = 'U2FsdGVkX19sTWaZP0ST2zb7zvbTvvGU6lN0btbzGP3r13rSgZa8rgr4+XZG+yGX'
+
+const key = 'password'
+
+const decryptedData = await othent.decryptData({ data, key })
+
+console.log(decryptedData)
+
+```
+
+#### deployWarpContract
+
+_Deploy a SmartWeave Warp.cc contract. It receives a `{ contractSrc, state, tags }` object._
+
+```javascript
+
+// Deploy contract
+
+const fetchContract = await fetch('https://othent.io/contract-new.js')
+ 
+const contract = fetchContract.text()
+
+const state = { testState: 'testState' }
+
+const tags = [ { name: 'testTag', value: 'testTag' } ]
+
+const deployedContract = await othent.deployWarpContract({ contractSrc, state, tags })
+
+console.log(deployedContract)
+
+// for testnet, simply add testNet: true to the deployWarpContract function
+
+```
+
+#### deployWarpContractFromTx
+
+_Deploy a SmartWeave Warp.cc contract from a source transaction ID. It receives a `{ srcTxId, state, tags }` object._
+
+```javascript
+
+// Deploy contract from source transaction
+
+const srcTxId = 'vnzoKP1yDyBvJsbLTQarhEzQ3RrD61noAx5w63nnAgU'
+
+const state = { testState: 'testState' }
+
+const tags = [ { name: 'testTag', value: 'testTag' } ]
+
+const deployedContract = await othent.deployWarpContractFromTx({ srcTxId, state, tags })
+
+console.log(deployedContract)
+
+// for testnet, simply add testNet: true to the deployWarpContractFromTx function
+
 ```
 
 ## Contact

@@ -16,6 +16,7 @@
 
 * [🥪 SDK](developers/sdk.md)
 * [🍜 Component Library](developers/component-library.md)
+* [📱 Othent Mobile](developers/othent-mobile.md)
 
 ***
 

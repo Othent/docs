@@ -1,21 +1,29 @@
 ---
-description: ArConnect Injected API signDataItem() function
+description: Othent JS SDK signDataItem() function
 ---
 
-# Sign DataItem
+# Sign Data Item
 
-The signDataItem() function allows you to create and sign a data item object, compatible with [`arbundles`](https://npmjs.com/arbundles). These data items can then be submitted to an [ANS-104](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md) compatible bundler.
+The `signDataItem()` function allows you to create and sign a `DataItem` object, compatible with
+[`arbundles`](https://npmjs.com/arbundles). These data items can then be submitted to an
+[ANS-104](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md) compatible bundler.
+
+```
+signDataItem(dataItem: DataItem): Promise<ArrayBufferLike>;
+```
 
 | Argument   | Type                                     | Description                   |
 | ---------- | ---------------------------------------- | ----------------------------- |
 | `dataItem` | [`DataItem`](sign-dataitem.md#data-item) | The bundled data item to sign |
 
 {% hint style="info" %}
-**Note:** This function requires the [`SIGN_TRANSACTION`](sign.md) permission.
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 {% hint style="warning" %}
-**Warning:** The function returns a buffer of the signed data item. You'll need to manually load it into an [`arbundles`](https://npmjs.com/arbundles) `DataItem` instance as seen in the [example usage](sign-dataitem.md#example-usage).
+**Warning:** The function returns a buffer (`ArrayBufferLike`) of the signed data item. You'll need to manually load it
+into an [`arbundles`](https://npmjs.com/arbundles) `DataItem` instance as seen in the
+[example usage](sign-dataitem.md#example-usage).
 {% endhint %}
 
 ## Data item
@@ -23,7 +31,7 @@ The signDataItem() function allows you to create and sign a data item object, co
 This function requires a valid data item object, like so:
 
 ```typescript
-export interface DataItem {
+interface DataItem {
     data: string | Uint8Array;
     target?: string;
     anchor?: string;
@@ -39,11 +47,11 @@ export interface DataItem {
 ```ts
 import { DataItem } from "arbundles";
 
-// connect to the extension
-await window.arweaveWallet.connect(["SIGN_TRANSACTION"]);
+// Make sure the user is authenticated, or prompt them to authenticate:
+await othent.requireAuth();
 
-// sign the data item
-const signed = await window.arweaveWallet.signDataItem({
+// Sign the DataItem:
+const signedDataItemBuffer = await othent.signDataItem({
     data: "This is an example data",
     tags: [{
         name: "Content-Type",
@@ -51,10 +59,10 @@ const signed = await window.arweaveWallet.signDataItem({
     }]
 });
 
-// load the result into a DataItem instance
-const dataItem = new DataItem(signed);
+// Load the result into a DataItem instance:
+const dataItem = new DataItem(signedDataItemBuffer);
 
-// now you can submit it to a bunder
+// Submit it to a bundler:
 await fetch(`https://node2.bundlr.network/tx`, {
     method: "POST",
     headers: {

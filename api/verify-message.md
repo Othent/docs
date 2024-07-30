@@ -1,10 +1,20 @@
 ---
-description: ArConnect Injected API verifyMessage() function
+description: Othent JS SDK verifyMessage() function
 ---
 
-# Verify message
+# Verify Message
 
-This function allows verifying a cryptographic signature [created by ArConnect](sign-message.md).
+The `verifyMessage()` function verifies a cryptographic signature created with the [`signMessage()`](sign-message.md),
+either from Othent or from any other wallet such as ArConnect.
+
+```
+verifyMessage(
+  data: string | BinaryDataType,
+  signature: string | BinaryDataType,
+  publicKey?: B64UrlString,
+  options: SignMessageOptions = { hashAlgorithm: "SHA-256" },
+): Promise<boolean>;
+```
 
 | Argument     | Type                                            | Description                                                                                                     |
 | ------------ | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -14,31 +24,107 @@ This function allows verifying a cryptographic signature [created by ArConnect](
 | `options?`   | [`SignMessageOptions`](sign-message.md#options) | Configuration for the signature                                                                                 |
 
 {% hint style="info" %}
-**Note:** This function requires the [`SIGNATURE`](sign.md) permission.
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** The `publicKey` argument is optional, if it is not provided, the extension will use the currently selected wallet's public key. You might only need this if the message to be verified was not made by the connected user.
+**Note:** The `publicKey` argument is optional, if it is not provided, the extension will use the active user's public
+key. You might only need this if the message to be verified was not made by the authenticated user.
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature options (default hash algorithm) to sign the data.
+**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
+options (default hash algorithm) to sign the data.
 {% endhint %}
 
 ## Example usage
 
 ```ts
-// connect to the extension
-await window.arweaveWallet.connect(["SIGNATURE"]);
 
-// data to be signed
-const data = new TextEncoder().encode("The hash of this msg will be signed.");
+// Make sure the user is authenticated, or prompt them to authenticate:
+await othent.requireAuth();
 
-// create signature
-const signature = await window.arweaveWallet.signMessage(data);
+// Message to be signed:
+const data = "The hash of this msg will be signed.";
 
-// verify signature
-const isValidSignature = await window.arweaveWallet.verifyMessage(data, signature);
+// Create signature:
+const signature = await othent.signMessage(data);
+
+// Verify signature:
+const isValidSignature = await othent.verifyMessage(data, signature);
+
+console.log(`The signature is ${isValidSignature ? "valid" : "invalid"}`);
+```
+
+## Verification without Othent
+
+You might encounter situations where you need to verify the signed message against an Othent generated signature, but
+the SDK is not accessible or not installed (e.g.: third-party apps, server side code, unsupported browser....).
+
+In these cases, it is possible to validate the signature by hashing the message (with the algorithm you used when
+generating the signature using Othent) and verifying that against the Othent signature. This requires:
+
+- The message to be verified.
+- The signature.
+- The algorithm used when the message was initially signed.
+- The [wallet's public key](get-active-public-key.md).
+
+Below is the JavaScript (TypeScript) example implementation with the
+[Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web\_Crypto\_API), using `SHA-256` hashing:
+
+```typescript
+
+// Make sure the user is authenticated, or prompt them to authenticate:
+await othent.requireAuth();
+
+// Message to be signed:
+const data = "The hash of this msg will be signed.";
+
+// Create signature:
+const signature = await othent.signMessage(data);
+
+// THIS IS WHERE WE START THE VERIFICATION:
+
+// Hash the message (we used the default `signMessage()` options above, so Othent hashed the message using "SHA-256"):
+const hash = await crypto.subtle.digest("SHA-256", data);
+
+// Create JWK (JsonWebKey):
+//
+// We need the user's public key for this, that we'll get using `othent.getSyncActivePublicKey()` in this example, but
+// in a real-world scenario that would have to come from somewhere else, such as:
+//
+// - Getting it from Othent (this example), ArConnect or any other wallet (if available).
+// - Storing it beforehand.
+// - If the wallet has made any transactions on the Arweave network
+//   the public key is going to be the owner field of the mentioned
+//   transactions.
+
+const publicJWK: JsonWebKey = {
+    e: "AQAB",
+    ext: true,
+    kty: "RSA",
+    n: othent.getSyncActivePublicKey(),
+};
+
+// Import public JWK for verification:
+const verificationKey = await crypto.subtle.importKey(
+    "jwk",
+    publicJWK,
+    {
+      name: "RSA-PSS",
+      hash: "SHA-256"
+    },
+    false,
+    ["verify"]
+);
+
+// Verify the signature by matching it with the hash:
+const isValidSignature = await crypto.subtle.verify(
+    { name: "RSA-PSS", saltLength: 32 },
+    verificationKey,
+    signature,
+    hash
+);
 
 console.log(`The signature is ${isValidSignature ? "valid" : "invalid"}`);
 ```

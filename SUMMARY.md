@@ -69,19 +69,3 @@
 ***
 
 * [🌐 Othent.io](https://othent.io)
-
-
-
-I'm updating the docs for a custodial wallet's SDK library called Othent using the docs from another non-custodial wallet called ArConnect (as their docs are better).
-
-Here's ArConnect's docs for the "" function:
-
-"""
-"""
-
-Here's the old Othent's version:
-
-"""
-"""
-
-Combine them keeping all the good bits from ArConnect but updated with Othent's information.

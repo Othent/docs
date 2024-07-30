@@ -8,7 +8,19 @@ The `dispatch()` function allows you to quickly sign and send a transaction to t
 best for smaller datas and contract interactions. If the bundled transaction cannot be submitted, it will fall back to a
 base layer transaction. The function returns the [result](dispatch.md#dispatch-result) of the API call.
 
-```
+{% hint style="warning" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+
+**Note:** If you are trying to sign a larger piece of data (> 5 MB), make sure to notify the user to not switch / close
+the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
+
+**Note:** The function uses the default bundler node, or the one passed as an option. Consider using the
+[`signDataItem()`](sign-dataitem.md) function to create and sign a `DataItem` and manually send it to a custom bundler.
+{% endhint %}
+
+## API
+
+```ts
 dispatch(
   transaction: Transaction,
   options?: DispatchOptions,
@@ -21,17 +33,8 @@ dispatch(
 | `options?.node?` | `UrlString` (`string`) | Node used for bundling transactions. Defaults to ArDrive Turbo's node. |
 | `options?.arweave?` | [`Arweave`](https://github.com/arweaveTeam/arweave-js#initialisation) | Custom Arweave instance. Defaults to an instance connected to http://arweave.net:443. |
 
-{% hint style="warning" %}
-**Note:** If you are trying to sign a larger piece of data (5 MB <), make sure to notify the user to not switch / close the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
-{% endhint %}
-
-{% hint style="warning" %}
-**Note:** The function uses the default bundler node set by the user or the extension. Consider using the [`signDataItem()`](sign-dataitem.md) function to submit data to a custom bundler.
-{% endhint %}
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
+**Returns:** A Promise containing the result of the upload request, either to the bundler node or directly to the
+Arweave network.
 
 ## Dispatch result
 

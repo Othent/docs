@@ -2,6 +2,8 @@
 description: Introducing the ArConnect Injected API
 ---
 
+TODO: Write about error handling, error class, exported types and exported B64 utils.
+
 # Intro
 
 <div data-full-width="false">

@@ -4,14 +4,29 @@ description: Othent JS SDK connect() function
 
 # Connect
 
-Prompts the user to sign in/up using Auth0's modal. This function cannot be called programmatically before the user
-interacts with the page (e.g. by clicking on a button), as that will result in a `Unable to open a popup` error.
+Prompts the user to sign in/up (connects the user's wallet) using
+[_Auth0_'s popup](https://auth0.com/docs/libraries/lock/lock-authentication-modes#popup-mode).
 
-Note that while `connect()`'s function signature is identical to that of ArCoonect's `connect()`, you do not need to
-request permissions from the user to interact with their wallets, as it's already implicit/hardcoded that users are
-giving Othent full control of their wallet.
+Note that while `connect()`'s function signature is identical to that of
+[_ArConnect_'s `connect()`](https://docs.arconnect.io/api/connect), you don't need to request permissions from the user to
+interact with their wallets, as it's already implicit that users are giving _Othent_ full control of their wallet.
 
-```
+This function will throw an error in the following cases:
+
+- When passing `permissions` different to the default (all permissions). While that parameter has been added for
+  signature compatibility with _ArConnect_ and other wallets, _Othent_ implicitly requires all permissions. Passing
+  anything else will throw an error.
+
+- When this function is called before the user interacts with the page (e.g. by clicking on a button), as that will
+  result in a `Unable to open a popup` error.
+
+- When the user closes the _Auth0_ popup before authenticating, as that will result in a `Popup closed` error.
+
+- When authentication fails.
+
+## API
+
+```ts
 connect(
   permissions?: PermissionType[],
   appInfo?: AppInfo,
@@ -28,13 +43,12 @@ connect(
 **Returns:** A Promise with the `UserDetails` or `null` if the log in modal was closed, could not even be opened or authentication failed.
 
 {% hint style="info" %}
-**Note:** The `appInfo` argument is optional, if it is not provided, the SDK will use the `appInfo` provided when you instantiated it.
+The `appInfo` argument is optional. If it is not provided, the SDK will use the `appInfo` provided when you instantiated it.
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** The `gateway` argument is optional, if it is not provided, the SDK will use the default `arweave.net` gateway.
+The `gateway` argument is optional. If it is not provided, the SDK will use the default `arweave.net` gateway.
 {% endhint %}
-
 
 ## Permissions
 

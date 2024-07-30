@@ -6,7 +6,13 @@ description: Othent JS SDK privateHash() function
 
 The `privateHash()` function allows you to create deterministic secrets (hashes) from some data.
 
-```
+{% hint style="warning" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
+
+## API
+
+```ts
 privateHash(
   data: string | BinaryDataType,
   options?: SignMessageOptions,
@@ -17,10 +23,6 @@ privateHash(
 | --------- | ----------------------------------------------- | -------------------------- |
 | `data`    | `ArrayBuffer`                                   | The data to hash           |
 | `options` | [`SignMessageOptions`](sign-message.md#options) | Configuration for the hash |
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
 
 ## Example usage
 

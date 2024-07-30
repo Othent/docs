@@ -6,16 +6,14 @@ description: Othent JS SDK getActivePublicKey() function
 
 Returns the public key (`jwk.n` field) associated with the active (authenticated) user account.
 
-```
+## API
+
+```ts
 getActivePublicKey(): Promise<B64UrlString | "">;
 ```
 
-**Returns:** A Promise with the owner (`jwk.n` field) (base64 `string`) of the active users, or an empty `string` if the
-user is not authenticated.
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
+**Returns:** A Promise with the owner public key (`jwk.n` field, as a Base64 URL-encoded `string`) of the active
+(authenticated) user, or `""` if the user is not authenticated.
 
 ## Example usage
 

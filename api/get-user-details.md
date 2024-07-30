@@ -4,7 +4,7 @@ description: Othent JS SDK getUserDetails() function
 
 # Get User Details
 
-Returns an object with all the user details of the active (authenticated) user account:
+Returns an object with all the user details (`UserDetails`) of the active (authenticated) user account:
 
 - `authSystem`: The authentication protocol used (this will always be `"KMS"`).
 - `email`: The connected user’s email address.
@@ -19,15 +19,13 @@ Returns an object with all the user details of the active (authenticated) user a
 - `sub`: Every user account has an associated oauth account that facilitates the connection. This is the `id` of that oauth account.
 - `walletAddress`: Every user account has an associated Arweave wallet. This is the wallet address of the associated Arweave wallet.
 
-```
+## API
+
+```ts
 getUserDetails(): Promise<UserDetails | null>;
 ```
 
 **Returns:** A Promise containing all the user details of the active user, or `null` if the user is not authenticated.
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
 
 ## Example usage
 

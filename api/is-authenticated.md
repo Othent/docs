@@ -6,7 +6,9 @@ description: Othent JS SDK isAuthenticated property
 
 Indicates whether the user is currently authenticated.
 
-```
+## API
+
+```ts
 isAuthenticated: boolean;
 ```
 

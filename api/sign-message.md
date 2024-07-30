@@ -5,9 +5,30 @@ description: Othent JS SDK signMessage() function
 # Sign Message
 
 The `signMessage()` function creates a cryptographic signature of any data (after hashing it) for later validation,
-using the active user's private key.
+using the active (authenticated) user's private key.
 
-```
+{% hint style="warning" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+
+**Note**: This function should only be used to allow data validation. It cannot be used for on-chain transactions,
+interactions or bundles, for security reasons. Consider implementing [`sign()`](sign.md),
+[`signDataItem()`](sign-dataitem.md) or [dispatch()](dispatch.md).
+
+**Note**: The function first hashes the input data for security reasons. We recommend using the built in
+[`verifyMessage()`](verify-message.md) function to validate the signature, or hashing the data the same way, before
+validation ([example](verify-message.md#verification-without-arconnect)).
+{% endhint %}
+
+{% hint style="info" %}
+**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
+options (default hash algorithm: `SHA-256`) to sign the data.
+
+**Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
+{% endhint %}
+
+## API
+
+```ts
 signMessage(
   data: string | BinaryDataType,
   options?: SignMessageOptions,
@@ -18,27 +39,6 @@ signMessage(
 | ---------- | ----------------------------------------------- | -------------------------------------- |
 | `data`     | `ArrayBuffer`                                   | The data to generate the signature for |
 | `options?` | [`SignMessageOptions`](sign-message.md#options) | Configuration for the signature        |
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
-
-{% hint style="warning" %}
-**Note**: This function should only be used to allow data validation. It cannot be used for on-chain transactions,
-interactions or bundles, for security reasons. Consider implementing [`sign()`](sign.md),
-[`signDataItem()`](sign-dataitem.md) or [dispatch()](dispatch.md).
-{% endhint %}
-
-{% hint style="warning" %}
-**Note**: The function first hashes the input data for security reasons. We recommend using the built in
-[`verifyMessage()`](verify-message.md) function to validate the signature, or hashing the data the same way, before
-validation ([example](verify-message.md#verification-without-arconnect)).
-{% endhint %}
-
-{% hint style="info" %}
-**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
-options (default hash algorithm: `SHA-256`) to sign the data.
-{% endhint %}
 
 ## Options
 

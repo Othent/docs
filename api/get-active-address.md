@@ -8,16 +8,14 @@ Returns the Arweave wallet address associated with the active (authenticated) us
 
 The wallet address is derived from the corresponding public key (see [`getActivePublicKey()`](get-active-public-key.md)).
 
-```
+## API
+
+```ts
 getActiveAddress(): Promise<B64UrlString | "">;
 ```
 
-**Returns:** A Promise with the wallet address (base64 `string`) of the active users, or an empty `string` if the user
+**Returns:** A Promise with the wallet address (Base64 URL-encoded `string`) of the active users, or `""` if the user
 is not authenticated.
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
 
 ## Example usage
 

@@ -7,14 +7,6 @@
 * [🌎 How it works](overview/how-it-works.md)
 * [🥗 Othents features](overview/what-we-do.md)
 
-## Demos
-
-* [🍏 SDK playground / demo](https://demo.othent.io)
-    * [🍏 SDK playground / demo GitHub](https://github.com/Othent/KMS-test-repo)
-
-* [🍎 File upload app example](https://weavetransfer.othent.io)
-    * [🍎 File upload app example GitHub](https://github.com/Othent/landing-new/tree/main/components/WeaveTransfer)
-
 ## 🥪 JS SDK API
 
 * [Intro](api/intro.md)
@@ -59,6 +51,14 @@
     * [`removeEventListener()`](api/events.md#removeeventlistener)
     * [`auth`](api/events.md#auth-event)
     * [`error`](api/events.md#error-event)
+
+## Demos
+
+* [🍏 SDK playground / demo](https://demo.othent.io)
+* [🍏 SDK playground / demo GitHub](https://github.com/Othent/KMS-test-repo)
+
+* [🍎 File upload app example](https://weavetransfer.othent.io)
+* [🍎 File upload app example GitHub](https://github.com/Othent/landing-new/tree/main/components/WeaveTransfer)
 
 ## Other Platforms
 

@@ -6,9 +6,15 @@ description: Othent JS SDK decrypt() function
 
 The `decrypt()` function allows applications to decrypt data that has been encrypted using the active user's private
 key, similarly to the [Web Crypto API's `decrypt()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt).
-However, note a current limitation of using Othent is that the only available algorithm is RSA.
+However, note a current limitation of using _Othent_ is that the only available algorithm is RSA.
 
-```
+{% hint style="warning" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
+
+## API
+
+```ts
 decrypt(ciphertext: BinaryDataType): Promise<string>;
 ```
 

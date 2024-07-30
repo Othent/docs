@@ -7,7 +7,23 @@ description: Othent JS SDK verifyMessage() function
 The `verifyMessage()` function verifies a cryptographic signature created with the [`signMessage()`](sign-message.md),
 either from Othent or from any other wallet such as ArConnect.
 
-```
+{% hint style="warning" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
+
+{% hint style="info" %}
+**Note:** The `publicKey` argument is optional, if it is not provided, the extension will use the active user's public
+key. You might only need this if the message to be verified was not made by the authenticated user.
+
+**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
+options (default hash algorithm: `SHA-256`) to sign the data.
+
+**Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
+{% endhint %}
+
+## API
+
+```ts
 verifyMessage(
   data: string | BinaryDataType,
   signature: string | BinaryDataType,
@@ -22,20 +38,6 @@ verifyMessage(
 | `signature`  | `ArrayBuffer \| string`                         | The signature to validate                                                                                       |
 | `publicKey?` | `string`                                        | Arweave wallet `JWK.n` field, transaction owner field or [public key from ArConnect](get-active-public-key.md). |
 | `options?`   | [`SignMessageOptions`](sign-message.md#options) | Configuration for the signature                                                                                 |
-
-{% hint style="info" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-{% endhint %}
-
-{% hint style="info" %}
-**Note:** The `publicKey` argument is optional, if it is not provided, the extension will use the active user's public
-key. You might only need this if the message to be verified was not made by the authenticated user.
-{% endhint %}
-
-{% hint style="info" %}
-**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
-options (default hash algorithm) to sign the data.
-{% endhint %}
 
 ## Example usage
 
@@ -72,7 +74,7 @@ generating the signature using Othent) and verifying that against the Othent sig
 Below is the JavaScript (TypeScript) example implementation with the
 [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web\_Crypto\_API), using `SHA-256` hashing:
 
-```typescript
+```ts
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

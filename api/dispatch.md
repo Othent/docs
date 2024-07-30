@@ -4,22 +4,31 @@ description: Othent JS SDK dispatch() function
 
 # Dispatch Transaction
 
-The `dispatch()` function allows you to quickly sign and send a transaction to the network in a bundled format. It is best for smaller datas and contract interactions. If the bundled transaction cannot be submitted, it will fall back to a base layer transaction. The function returns the [result](dispatch.md#dispatch-result) of the API call.
+The `dispatch()` function allows you to quickly sign and send a transaction to the network in a bundled format. It is
+best for smaller datas and contract interactions. If the bundled transaction cannot be submitted, it will fall back to a
+base layer transaction. The function returns the [result](dispatch.md#dispatch-result) of the API call.
+
+The `dispatch()` function supports the following arguments:
+
+- **Arweave transaction**: A valid Arweave transaction object is required.
+- **Optional Parameters**:
+    - **Bundling Node:** Specify the node used for bundling transactions. By default, the function uses the ArDrive Turbo node.
+    - **Arweave Init Instance:** Provide a custom Arweave initialization instance By default, the function uses an arweave instance connected to [`arweave.net`](http://arweave.net) on port `443`.
 
 | Argument      | Type                                                                    | Description                                                  |
 | ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `transaction` | [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) | A valid Arweave transaction instance (**without a keyfile**) |
-
-{% hint style="info" %}
-**Note:** This function requires the [`DISPATCH`](connect.md#permissions) permission.
-{% endhint %}
 
 {% hint style="warning" %}
 **Note:** If you are trying to sign a larger piece of data (5 MB <), make sure to notify the user to not switch / close the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
 {% endhint %}
 
 {% hint style="warning" %}
-**Note:** The function uses the default bundler node set by the user or the extension. Consider using the [`signDataItem()`](sign-dataitem.md) function to submit data to a custom bundler.&#x20;
+**Note:** The function uses the default bundler node set by the user or the extension. Consider using the [`signDataItem()`](sign-dataitem.md) function to submit data to a custom bundler.
+{% endhint %}
+
+{% hint style="info" %}
+**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 ## Dispatch result

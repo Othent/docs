@@ -40,7 +40,7 @@
 * [`decrypt()`](api/decrypt.md)
 
 * [~`signature()`~](api/signature.md)
-* [`signDataItem()`](api/sign-dataitem.md)
+* [`signDataItem()`](api/sign-data-item.md)
 * [`signMessage()`](api/sign-message.md)
 * [`verifyMessage()`](api/verify-message.md)
 * [`privateHash()`](api/private-hash.md)

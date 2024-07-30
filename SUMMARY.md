@@ -9,8 +9,11 @@
 
 ## Demos
 
-* [🍎 Example app using Othent](https://weavetransfer.othent.io)
-* [🍏 SDK demo](https://demo.othent.io)
+* [🍏 SDK playground / demo](https://demo.othent.io)
+    * [🍏 SDK playground / demo GitHub](https://github.com/Othent/KMS-test-repo)
+
+* [🍎 File upload app example](https://weavetransfer.othent.io)
+    * [🍎 File upload app example GitHub](https://github.com/Othent/landing-new/tree/main/components/WeaveTransfer)
 
 ## 🥪 JS SDK API
 
@@ -51,21 +54,20 @@
 * [`getArweaveConfig()`](api/get-arweave-config.md)
 * [`getPermissions()`](api/get-permissions.md)
 
-
-### Events
-
 * [Events](api/events.md)
-    * `auth`
-    * `error`
+    * [`addEventListener()`](api/events.md#addeventlistener)
+    * [`removeEventListener()`](api/events.md#removeeventlistener)
+    * [`auth`](api/events.md#auth-event)
+    * [`error`](api/events.md#error-event)
 
-## 🍜 React Component Library
+## Other Platforms
 
 * [🍜 React Component Library](developers/component-library.md)
-
-## 📱 Safari Web Extension
-
 * [📱 Safari Web Extension](developers/othent-mobile.md)
 
-***
+## Additional Links
 
 * [🌐 Othent.io](https://othent.io)
+* [🌐 Discord](https://discord.gg/BHprrR443t)
+* [🌐 GitHub](https://github.com/othent)
+* [🌐 X](https://x.com/othent_io)

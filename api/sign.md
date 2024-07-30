@@ -60,7 +60,7 @@ const transaction = await arweave.createTransaction({
   data: '<html><head><meta charset="UTF-8"><title>Hello permanent world! This was signed via ArConnect!!!</title></head><body></body></html>'
 });
 
-// Sign using arweave-js:
+// Sign it using arweave-js:
 await arweave.transactions.sign(transaction);
 
 // TODO: Post the `transaction` to the network...
@@ -86,7 +86,7 @@ let transaction = await arweave.createTransaction({
   data: '<html><head><meta charset="UTF-8"><title>Hello permanent world! This was signed via ArConnect!!!</title></head><body></body></html>'
 });
 
-// Sign using Othent:
+// Sign it using Othent:
 const signedTransaction = await othent.sign(transaction);
 
 // TODO: Post `signedTransaction` to the network...

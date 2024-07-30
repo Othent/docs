@@ -8,16 +8,18 @@ The `dispatch()` function allows you to quickly sign and send a transaction to t
 best for smaller datas and contract interactions. If the bundled transaction cannot be submitted, it will fall back to a
 base layer transaction. The function returns the [result](dispatch.md#dispatch-result) of the API call.
 
-The `dispatch()` function supports the following arguments:
-
-- **Arweave transaction**: A valid Arweave transaction object is required.
-- **Optional Parameters**:
-    - **Bundling Node:** Specify the node used for bundling transactions. By default, the function uses the ArDrive Turbo node.
-    - **Arweave Init Instance:** Provide a custom Arweave initialization instance By default, the function uses an arweave instance connected to [`arweave.net`](http://arweave.net) on port `443`.
+```
+dispatch(
+  transaction: Transaction,
+  options?: DispatchOptions,
+): Promise<ArDriveBundledTransactionData | UploadedTransactionData>;
+```
 
 | Argument      | Type                                                                    | Description                                                  |
 | ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `transaction` | [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) | A valid Arweave transaction instance (**without a keyfile**) |
+| `options?.node?` | `UrlString` (`string`) | Node used for bundling transactions. Defaults to ArDrive Turbo's node. |
+| `options?.arweave?` | [`Arweave`](https://github.com/arweaveTeam/arweave-js#initialisation) | Custom Arweave instance. Defaults to an instance connected to http://arweave.net:443. |
 
 {% hint style="warning" %}
 **Note:** If you are trying to sign a larger piece of data (5 MB <), make sure to notify the user to not switch / close the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
@@ -33,12 +35,29 @@ The `dispatch()` function supports the following arguments:
 
 ## Dispatch result
 
-The `dispatch()` function returns the result of the operation, including the ID of the submitted transaction, as well as if it was submitted in a bundle or on the base layer.
+The `dispatch()` function returns the result of the operation, including the ID of the submitted transaction, as well as
+if it was submitted in a bundle or on the base layer.
 
 ```ts
-export interface DispatchResult {
+interface ArDriveBundledTransactionData {
+  type: "BUNDLED";
   id: string;
-  type?: "BASE" | "BUNDLED";
+  timestamp: number;
+  winc: string;
+  version: string;
+  deadlineHeight: number;
+  dataCaches: string[];
+  fastFinalityIndexes: string[];
+  public: string;
+  signature: string;
+  owner: string;
+}
+
+interface UploadedTransactionData {
+  type: "BASE";
+  id: string;
+  signature: string;
+  owner: string;
 }
 ```
 
@@ -47,23 +66,23 @@ export interface DispatchResult {
 ```ts
 import Arweave from "arweave";
 
-// create arweave client
+// Create an Arweave client:
 const arweave = new Arweave({
   host: "ar-io.net",
   port: 443,
   protocol: "https"
 });
 
-// connect to the extension
-await window.arweaveWallet.connect(["DISPATCH"]);
+// Make sure the user is authenticated, or prompt them to authenticate:
+await othent.requireAuth();
 
-// create a transaction
+// Create a transaction:
 const transaction = await arweave.createTransaction({
   data: '<html><head><meta charset="UTF-8"><title>Hello permanent world! This was signed via ArConnect!!!</title></head><body></body></html>'
 });
 
-// dispatch the tx
-const res = await window.arweaveWallet.dispatch(transaction);
+// Dispatch (and sign) it using the default bundler:
+const dispatchResult = await othent.dispatch(transaction);
 
-console.log(`The transaction was dispatched as a ${res.type === "BUNDLED" ? "bundled" : "base layer"} Arweave transaction.`)
+console.log(`The transaction was dispatched as a ${ dispatchResult.type === "BUNDLED" ? "bundled" : "base layer" } Arweave transaction.`);
 ```

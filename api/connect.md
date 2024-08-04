@@ -13,9 +13,9 @@ interact with their wallets, as it's already implicit that users are giving _Oth
 
 This function will throw an error in the following cases:
 
-- When passing `permissions` different to the default (all permissions). While that parameter has been added for
-  signature compatibility with _ArConnect_ and other wallets, _Othent_ implicitly requires all permissions. Passing
-  anything else will throw an error.
+- When passing `permissions` different to `undefined` and the default value  (all permissions). While that parameter has
+  been added for signature compatibility with _ArConnect_ and other wallets, _Othent_ implicitly requires all
+  permissions. Passing anything else will throw an error.
 
 - When this function is called before the user interacts with the page (e.g. by clicking on a button), as that will
   result in a `Unable to open a popup` error.

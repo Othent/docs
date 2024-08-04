@@ -2,14 +2,16 @@
 
 * [👋 Welcome to Othent](README.md)
 
-## Overview
-
-* [🌎 How it works](overview/how-it-works.md)
-* [🥗 Othents features](overview/what-we-do.md)
-
 ## 🥪 JS SDK API
 
 * [Intro](api/intro.md)
+    * [Installation](api/intro.md)
+    * [Indirect Usage (through `arweave-js`)](api/intro.md#indirect-usage-through-arweave-js)
+    * [Direct Usage (through `Othent` instance)](api/intro.md#direct-usage-through-othent-instance)
+    * [Additional Options](api/intro.md#additional-options)
+    * [Error Handling](api/intro.md#error-handling)
+    * [Events](api/intro.md#event)
+    * [TypeScript Support](api/intro.md#typescript-support)
 
 * [`connect()`](api/connect.md)
 * [`disconnect()`](api/disconnect.md)
@@ -46,11 +48,9 @@
 * [`getArweaveConfig()`](api/get-arweave-config.md)
 * [`getPermissions()`](api/get-permissions.md)
 
-* [Events](api/events.md)
-    * [`addEventListener()`](api/events.md#addeventlistener)
-    * [`removeEventListener()`](api/events.md#removeeventlistener)
-    * [`auth`](api/events.md#auth-event)
-    * [`error`](api/events.md#error-event)
+* [Binary Data Type Utils](api/binary-data-type-utils.md)
+    * [`Buffers`](api/binary-data-type-utils.md#buffers)
+    * [`Base64`](api/binary-data-type-utils.md#base64)
 
 ## Demos
 
@@ -59,11 +59,6 @@
 
 * [🍎 File upload app example](https://weavetransfer.othent.io)
 * [🍎 File upload app example GitHub](https://github.com/Othent/landing-new/tree/main/components/WeaveTransfer)
-
-## Other Platforms
-
-* [🍜 React Component Library](developers/component-library.md)
-* [📱 Safari Web Extension](developers/othent-mobile.md)
 
 ## Additional Links
 

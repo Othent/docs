@@ -1,12 +1,18 @@
 # Table of contents
 
 * [👋 Welcome to Othent](README.md)
+    * [🥗 Othent's Features](README.md#-othents-features)
+    * [👻 Othent's Missing and Upcoming Features](README.md#-othents-missing-and-upcoming-features)
+    * [🌎 How does Othent work?](README.md#-how-does-othent-work)
+    * [🧑‍⚖️ License](README.md#-license)
 
 ## 🥪 JS SDK API
 
 * [Intro](api/intro.md)
-    * [Installation](api/intro.md)
+    * [Installation](api/intro.md#installation)
+        * [React Native](api/intro.md#react-native)
     * [Indirect Usage (through `arweave-js`)](api/intro.md#indirect-usage-through-arweave-js)
+    * [Indirect Usage (through Arweave Wallet Kit)](api/intro.md#indirect-usage-through-arweave-wallet-kit)
     * [Direct Usage (through `Othent` instance)](api/intro.md#direct-usage-through-othent-instance)
     * [Additional Options](api/intro.md#additional-options)
     * [Error Handling](api/intro.md#error-handling)
@@ -36,7 +42,7 @@
 * [`encrypt()`](api/encrypt.md)
 * [`decrypt()`](api/decrypt.md)
 
-* [~`signature()`~](api/signature.md)
+* [~~`signature()`~~](api/signature.md)
 * [`signDataItem()`](api/sign-data-item.md)
 * [`signMessage()`](api/sign-message.md)
 * [`verifyMessage()`](api/verify-message.md)
@@ -51,6 +57,7 @@
 * [Binary Data Type Utils](api/binary-data-type-utils.md)
     * [`Buffers`](api/binary-data-type-utils.md#buffers)
     * [`Base64`](api/binary-data-type-utils.md#base64)
+    * [`Objects`](api/binary-data-type-utils.md#working-with-objects)
 
 ## Demos
 
@@ -59,6 +66,11 @@
 
 * [🍎 File upload app example](https://weavetransfer.othent.io)
 * [🍎 File upload app example GitHub](https://github.com/Othent/landing-new/tree/main/components/WeaveTransfer)
+
+## 📚 External libraries
+
+* [arweave-js](https://npmjs.com/arweave)
+* [Arweave Wallet Kit](https://docs.arweavekit.com/wallets/wallet-kit)
 
 ## Additional Links
 

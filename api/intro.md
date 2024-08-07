@@ -20,10 +20,14 @@ yarn i othent
 
 ### React Native
 
-Othent directly uses the [Web/Node.js Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) to create hashes, verify signatures and, indirectly,
-through [`arweave-js`](https://github.com/ArweaveTeam/arweave-js).
+Othent directly uses the [Web/Node.js Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) to create
+hashes, verify signatures and, indirectly, through [`arweave-js`](https://github.com/ArweaveTeam/arweave-js).
 
-If you are in an environment where that API is not available, like React Native, you'll have to polyfill it.
+It also uses `window.location.origin` as `redirect_uri` and `returnTo` params for Auth0's
+[`@auth0/auth0-spa-js` / `Auth0Client`](https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html).
+
+If you are in an environment where the Crypto API or `window.location.origin` are not available, like React Native,
+you'll have to polyfill them.
 
 TODO: Add step by step here.
 
@@ -110,9 +114,6 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 - `initialUserDetails?: UserDetails | null`: Initial user details. Useful for server-side rendered sites or native apps
   that might store the most recent user details externally (e.g. cookie or `SharedPreferences`).
 
-- `crypto?: Crypto | null`: Crypto module needed for signing, if your environment doesn't provide one natively (e.g.
-  React Native).
-
 - `inject?: boolean`: Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the
   background.
 
@@ -129,9 +130,9 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
     this won't work in browsers that block cross-site cookies, such as Brave.
     
   - `refresh-localstorage`: Use refresh tokens for authentication and store the cache in localStorage. This makes it
-    possible for new tabs to automatically log in (with `autoConnect = "eager"`), even after up to 2 weeks of inactivity
-    (i.e. "keep me logged in"), but offers a larger attack surface to attackers trying to get a hold of the refresh /
-    access tokens.
+    possible for new tabs to automatically authenticate the user (with `autoConnect = "eager"`), even after up to 2
+    weeks of inactivity (i.e. "keep me logged in"), but offers a larger attack surface to attackers trying to get a hold
+    of the refresh / access tokens.
     
   - `refresh-memory`: Use refresh tokens for authentication and store the cache in memory. This is the most secure and
     recommended option, but new tabs won't be able to automatically refresh the session without a previous user action
@@ -139,9 +140,10 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
     refresh the session is to open the authentication popup again once the user interacts with the page, which will
     immediately close if the user still has a valid session.
         
-    However, by setting the `localStorage = true` option, the user details (but not the refresh / access tokens) will be
-    persisted in `localStorage` until the last refresh token's expiration date, allowing you to read the user details
-    (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the user were already logged in.
+    However, by setting the `persistLocalStorage = true` option, the user details (but not the refresh / access tokens)
+    will be persisted in `localStorage` until the most recent refresh token's expiration date, allowing you to read the
+    user details (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the user were already
+    logged in.
    
   Default: `refresh-memory`
 

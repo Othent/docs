@@ -6,19 +6,9 @@
     * [🌎 How does Othent work?](README.md#-how-does-othent-work)
     * [🧑‍⚖️ License](README.md#-license)
 
-## 🥪 JS SDK
-
-* [Installation](api/intro.md#installation)
-    * [React Native](api/intro.md#react-native)
-* [Indirect Usage (through `arweave-js`)](api/intro.md#indirect-usage-through-arweave-js)
-* [Indirect Usage (through Arweave Wallet Kit)](api/intro.md#indirect-usage-through-arweave-wallet-kit)
-* [Direct Usage (through `Othent` instance)](api/intro.md#direct-usage-through-othent-instance)
-* [Additional Options](api/intro.md#additional-options)
-* [Error Handling](api/intro.md#error-handling)
-* [Events](api/intro.md#event)
-* [TypeScript Support](api/intro.md#typescript-support)
-
 ## 🥪 JS SDK API
+
+* [Getting Started](api/intro.md)
 
 * [`connect()`](api/connect.md)
 * [`disconnect()`](api/disconnect.md)

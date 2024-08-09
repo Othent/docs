@@ -180,7 +180,11 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 - `initialUserDetails?: UserDetails | null`: Initial user details. Useful for server-side rendered sites or native apps
   that might store the most recent user details externally (e.g. cookie or `SharedPreferences`).
 
-- `inject?: boolean`: Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the
+- `debug: boolean`: Enable additional logs.
+
+  Default: `false`
+
+- `inject: boolean`: Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the
   background.
 
   Default: `false`

@@ -8,7 +8,7 @@ The Othent JS SDK is a `class` (`Othent`) that exposes a collection of functions
 under Othent's custody. These functions are designed to make it seamless for developers to integrate Othent into their
 applications, and closely follow [`ArConnect`'s API](https://docs.arconnect.io/) to provide a familiar interface.
 
-## Installation
+## Installation & Setup
 
 To use the library in your project, you can install it using `npm` / `pnpm` / `yarn`:
 
@@ -18,18 +18,64 @@ pnpm i othent
 yarn i othent
 ```
 
+To use Othent in production, you'll also need to reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5)
+to get your domain whitelisted.
+
+Lastly, simply instantiate `Othent` with any options you need.
+
+Additionally, if you set the `persistLocalStorage` option to persist and sync user details across tabs, you need to call
+`startTabSynching` and make sure the cleanup function it returns is called once you no longer need the `Othent` instance
+you've created.
+
+Here's an example inside a React component:
+
+```ts
+const MyComponent = () => {
+  const othent = useMemo(() => {
+    return new Othent(options);
+  }, [options]);
+
+  useEffect(() => {
+      const cleanupFn = othent.init();
+
+      return () => {
+        cleanupFn();
+      };
+  }, [othent])
+}
+```
+
+If you are using Othent with React, you might want to consider using
+[React's Context](https://react.dev/learn/passing-data-deeply-with-context) to use a single `Othent` instance for your
+whole app, or decoupling it even more by using a state management library like [MobX](https://mobx.js.org/README.html),
+[TanStack Query](https://tanstack.com/query/latest) or [Redux](https://redux.js.org/). 
+
 ### React Native
 
 Othent directly uses the [Web/Node.js Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) to create
-hashes, verify signatures and, indirectly, through [`arweave-js`](https://github.com/ArweaveTeam/arweave-js).
+hashes, verify signatures and, indirectly, through [`arweave-js`](https://github.com/ArweaveTeam/arweave-js). If your
+environment doesn't has this API natively, you'll have to polyfill it.
 
-It also uses `window.location.origin` as `redirect_uri` and `returnTo` params for Auth0's
-[`@auth0/auth0-spa-js` / `Auth0Client`](https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html).
+Next, update your platform-specific configuration files to work with Auth0:
 
-If you are in an environment where the Crypto API or `window.location.origin` are not available, like React Native,
-you'll have to polyfill them.
+- See ["Integrate Auth0 in Your Application"](https://auth0.com/docs/quickstart/native/react-native/00-login#integrate-auth0-in-your-application)
+  to update your `build.gradle` and `AppDelegate.mm` files. Othent's Auth0 domain is `auth.othent.io`.
 
-TODO: Add step by step here.
+- See ["Configure Callback and Logout URLs"](https://auth0.com/docs/quickstart/native/react-native/00-login#configure-callback-and-logout-urls)
+  to define your callback and logout URLs.
+  
+Then, you need to set (at least) the following options when instantiating `Othent`:
+
+- `auth0LogInMethod = "redirect"`
+- `auth0RedirectURI`: Based on the values defined above.
+- `auth0ReturnToURI`: Based on the values defined above.
+- `auth0Cache`: You have to pass a custom [`ICache`](https://auth0.github.io/auth0-spa-js/interfaces/ICache.html)
+  implementation. This object will be responsible of persisting the refresh tokens, so, on iOS, we recommend
+  implementing it using [Keychain Services](https://developer.apple.com/documentation/security/keychain_services/).
+
+Lastly, make sure when Auth0 redirects the user back to your app (`auth0RedirectURI`), you call
+`completeConnectionAfterRedirect`, passing the URI with the `code` and `state` params provided by Auth0, which handles 
+the redirect callback. See [`handleRedirectCallback`](https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback).
 
 ## Indirect Usage (through `arweave-js`)
 
@@ -45,9 +91,9 @@ To use Othent library like this:
   3. Now you can use [`arweave-js`](https://npmjs.com/arweave), which will use Othent in the background.
 
 ```ts
-import { Othent } from 'othent';
+import { Othent } from "@othent/kms";
 
-Othent({ inject: true, /* Additional Othent options */ });
+new Othent({ inject: true, ... });
 
 // Create an Arweave transaction:
 const tx = await arweave.createTransaction({ /* Transaction options */ });
@@ -83,6 +129,26 @@ To use Othent library like this:
   3. Now you can access Othent's properties & methods directly from the `Othent` instance. Each property & method is
   described in detail in the following pages.
 
+See here for a basic example:
+
+```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
+// [...]
+
+await othent.connect();
+
+const mySecret = await othent.encrypt("My secret");
+
+const transaction = await arweave.createTransaction({
+  data: imySecret,
+});
+
+await othent.dispatch(transaction);
+```
+
 ## Additional Options
 
 When instantiating `Othent`, you can use the following options (`OthentOptions`) to customize its behavior:
@@ -117,6 +183,8 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 - `inject?: boolean`: Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the
   background.
 
+  Default: `false`
+
 - `serverBaseURL: string`: API base URL. Needed if you are using a private/self-hosted API and Auth0 tenant.
 
 - `auth0Domain: string`: Auth0 domain. Needed if you are using a private/self-hosted API and Auth0 tenant.
@@ -126,26 +194,51 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 
 - `auth0Strategy: Auth0Strategy`: Possible values are:
     
-  - `iframe-cookies`: Use cross-site cookies for authentication and store the cache in memory. Not recommended, as
-    this won't work in browsers that block cross-site cookies, such as Brave.
-    
-  - `refresh-localstorage`: Use refresh tokens for authentication and store the cache in localStorage. This makes it
-    possible for new tabs to automatically authenticate the user (with `autoConnect = "eager"`), even after up to 2
-    weeks of inactivity (i.e. "keep me logged in"), but offers a larger attack surface to attackers trying to get a hold
-    of the refresh / access tokens.
-    
-  - `refresh-memory`: Use refresh tokens for authentication and store the cache in memory. This is the most secure and
-    recommended option, but new tabs won't be able to automatically refresh the session without a previous user action
-    (you cannot use `autoConnect = "eager"` with this option), as refresh tokens won't be persisted, so the only way to
-    refresh the session is to open the authentication popup again once the user interacts with the page, which will
-    immediately close if the user still has a valid session.
-        
-    However, by setting the `persistLocalStorage = true` option, the user details (but not the refresh / access tokens)
-    will be persisted in `localStorage` until the most recent refresh token's expiration date, allowing you to read the
-    user details (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the user were already
-    logged in.
+  - `memory`: This is the most secure and recommended option/location to store tokens, but new tabs won't be able to
+    automatically log in using a popup without a previous user action.
+  
+    However, by setting the `persistLocalStorage = true` option, the user details (but not the refresh / access
+    tokens) will be persisted in `localStorage` until the most recent refresh token's expiration date, allowing you
+    to read the user details (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the
+    user were already logged in.
+  
+  - `localstorage`: Store tokens `localStorage`. This makes it possible for new tabs to automatically log in using a
+    popup, even after up to 2 weeks of inactivity (i.e. "keep me logged in"), but offers a larger attack surface to
+    attackers trying to get a hold of the refresh / access tokens.
    
-  Default: `refresh-memory`
+  - `custom`: Provide a custom storage implementation that implements Auth0's
+    [`ICache`](https://auth0.github.io/auth0-spa-js/interfaces/ICache.html). Useful for mobile apps (e.g. React
+    Native).
+
+  Default: `memory`
+
+- `auth0LogInMethod: Auth0LogInMethod`: Possible values are:
+
+  - `popup`: Open Auth0's authentication page on a popup window while the original page just waits for authentication
+    to take place or to timeout. This option is faster and less intrusive.
+
+  - `redirect`: Navigate to Auth0's authentication page, which will redirect users back to your site or
+    `auth0RedirectURI` upon authentication. Once they are redirected back, the URL will show a `code` and `state`
+    query parameters for a second or two, until the authentication flow is completed.
+
+  See: https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithRedirect,
+  https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback,
+  https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithPopup
+
+  Default: `popup`
+
+- `auth0RedirectURI: Auth0RedirectUri | null`: Auth0's callback URL (`redirect_uri`) used during the authentication
+  flow.
+
+  See https://auth0.com/docs/authenticate/login/redirect-users-after-login
+
+  Default: `location.origin` (when available in the platform)
+
+- `auth0ReturnToURI: Auth0RedirectUri | null` Auth0's logout URL (`returnTo`) used during the logout flow.
+
+  See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
+
+  Default: `location.origin` (when available in the platform)
 
 - `auth0RefreshTokenExpirationMs: number`: Refresh token expiration in milliseconds. This should/must match the value
   set in Auth0. On the client, this value is only used to set a timer to automatically log out users when their refresh
@@ -180,30 +273,63 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 
 ## Error Handling
 
-TODO: error handling, error class
+All public `Othent` methods, except for the getters and properties, can throw an error when called under various
+circumstances, so you should wrap them in `try-catch` blocks and handle errors appropriately.
+
+Alternatively, you can set `throwErrors = false` to let `Othent` wrap all functions in `try-catch` blocks automatically.
+In this case, you must subscribe to `error` events using the `addEventListener()` function:
+
+```ts
+const othent = new Othent({ throwErrors: false });
+
+othent.addEventListener("error", (err) => {
+  // TODO: Handle error...
+});
+
+// This will throw an error:
+othent.sign({ foo: "bar" } as unknown as Transaction);
+```
+
+> TODO: Document custom error class and error types.
 
 ## Events
 
-TODO: Mention special setup for events (event listeners, etc).
+You can subscribe and unsubscribe to two different types of events from Othent (`auth` and `error`), using the
+`addEventListener()` and `removeEventListener()` functions, respectively.
 
-> ```ts
-> addEventListener("arweaveWalletLoaded", () => {
->   console.log(`You are using the ${window.arweaveWallet.walletName} wallet.`);
->   console.log(`Wallet version is ${window.arweaveWallet.walletVersion}`);
-> });
-> ```
-> 
-> {% hint style="danger" %}
-> **Please remember:** to interact with the API, make sure that the `arweaveWalletLoaded` event has already been fired. Read more about that [here](events.md#arweavewalletloaded-event). `const cleanupFn = othent.init();`
-> {% endhint %}
+Additionally, `addEventListener()` returns a cleanup function that, when called, removes the event listener it created.
+
+### Auth Event:
+
+```ts
+const othent = new Othent({ throwErrors: false });
+
+othent.addEventListener("auth", (userDetails: UserDetails | null, isAuthenticated: boolean) => {
+  // If `userDetails != null` and `isAuthenticated = false`, this value comes from the cache.
+});
+
+othent.connect();
+```
+
+### Error Event:
+
+```ts
+const othent = new Othent({ throwErrors: false });
+
+othent.addEventListener("error", (err) => {
+  // TODO: Handle error...
+});
+
+// This will throw an error:
+othent.sign({ foo: "bar" } as unknown as Transaction);
+```
+Note that `error` type events are only fired when you set `throwErrors = false`.
+
+See [Error Handling](#error-handling) above.
 
 ## TypeScript Support
 
 TypeScript types are included in the `@othent/kms` package. On top of the `Othent` `class`, these are all the types
 exported from `@othent/kms`:
 
-TODO: List exported types...
-
-> Additional Injected API fields
-> 
-> The ArConnect Injected API provides some additional information about the extension. You can retrive the wallet version (`window.arweaveWallet.walletVersion`) and you can even verify that the currently used wallet API indeed belongs to ArConnect using the wallet name (`window.arweaveWallet.walletName`).
+> TODO: List exported types...

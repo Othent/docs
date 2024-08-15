@@ -6,10 +6,10 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
 
 <figure>
     <img src=".gitbook/assets/Group 104.png" alt="">
-    <figcaption>Othent is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
+    <figcaption>_Othent_ is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
 </figure>
 
-Othent is a service to manage Arweave custodial wallets backend by [Auth0](https://auth0.com/) and
+_Othent_ is a service to manage Arweave custodial wallets backend by [Auth0](https://auth0.com/) and
 [Google Key Management Service](https://cloud.google.com/kms/docs/key-management-service), enabling access to blockchain
 networks using alternative methods beyond self-custodial private keys, making blockchain more widely accessible by
 customizing the authentication process.
@@ -19,7 +19,7 @@ customizing the authentication process.
     <figcaption>TODO: UPDATE</figcaption>
 </figure>
 
-Othent offers a powerful and user-friendly way for individuals and developers to access blockchain networks and create
+_Othent_ offers a powerful and user-friendly way for individuals and developers to access blockchain networks and create
 web3 applications. With its design and seamless integration with existing Web2 technologies, Othent is targeting the
 next evolution of blockchain and decentralized systems.
 
@@ -44,8 +44,8 @@ can easily have access to an Arweave web3 wallet with their existing credentials
 </figure>
 
 **Existing private key wallets to onboard through social logins:**
-
-Othent can be integrated by wallets and dApps to offer social logins and alternative authentications like API keys in
+_
+Othent_ can be integrated by wallets and dApps to offer social logins and alternative authentications like API keys in
 addition to self-custodial private keys. This can make the onboarding process smoother for users and enhance their
 reach to Web2.
 
@@ -66,11 +66,11 @@ innovative new dApps.
 
 **Compatibility with the user, app, and blockchain:**
 
-One of the key benefits of using a solution like Othent is that it is designed to be fully compatible with existing web2
+One of the key benefits of using a solution like _Othent_ is that it is designed to be fully compatible with existing web2
 applications and blockchain networks. This means that users can continue to use the same familiar tools and interfaces
 that they are used to, without needing to learn a new set of skills or technologies.
 
-Additionally, developers can easily integrate Othent into their existing applications without needing to make any major
+Additionally, developers can easily integrate _Othent_ into their existing applications without needing to make any major
 changes or modifications to their code.
 
 **Prevent losing private keys:**
@@ -78,7 +78,7 @@ changes or modifications to their code.
 By using Web2 authentication, your users don't need to fear losing their private keys or passphrase. If they forget
 their password, they can simply reset it, just like they are used to.
 
-## 👻 _Othent_'s Missing and Upcoming Features
+## 👻 Othent's Missing and Upcoming Features
 
 **Support for other blockchains:**
 
@@ -123,7 +123,7 @@ users. Therefore, it doesn't currently support programmability oir transfer auto
 
 - **Custom encryption/decryption algorithm:** _Othent_ only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
 
-## 🌎 How does _Othent_ work?
+## 🌎 How does Othent work?
 
 ### **The Current Authentication Method:**&#x20;
 
@@ -167,7 +167,7 @@ Any failure or compromise in the MPC protocol or the participating parties could
 
 <figure><img src=".gitbook/assets/Group 102.png" alt=""><figcaption></figcaption></figure>
 
-> ### **_Othent_ Smart Contract Transactions:**&#x20;
+> ### **Othent Smart Contract Transactions:**&#x20;
 > 
 > _Othent_ utilizes smart contracts to enable secure and direct transactions between different contracts. Each user is assigned a unique smart contract that can only be accessed through a social login JSON Web Token (JWT). Here's an explanation of the key components and processes involved:
 > 
@@ -177,7 +177,7 @@ Any failure or compromise in the MPC protocol or the participating parties could
 > 
 > c. Contract to Contract Transactions: With the use of their JWT, users can initiate transactions between different smart contracts. These transactions are executed securely and transparently, _Othent_ ensures the integrity and authenticity of these transactions through RS256 JWTs.
 > 
-> ### **_Othent_ Data Transactions to Arweave:**&#x20;
+> ### **Othent Data Transactions to Arweave:**&#x20;
 > 
 > _Othent_ also supports data uploads to the Arweave blockchain, a decentralised storage network. This feature allows users to store data securely and retrieve it whenever needed. Here's an overview of the process:
 > 

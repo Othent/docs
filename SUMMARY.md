@@ -1,16 +1,16 @@
 # Table of contents
 
 * [👋 Welcome to Othent](README.md)
-    * [🥗 Othent's Features](README.md#othents-features)
-    * [👻 Othent's Missing and Upcoming Features](README.md#othents-missing-and-upcoming-features)
-    * [🌎 How does Othent work?](README.md#how-does-othent-work)
-    * [🧑‍⚖️ License](README.md#license)
 
-## 🥪 JS SDK API
+## 🥪 JS SDK
 
 * [Getting Started](api/intro.md)
 * [Events](api/events.md)
 * [Error Handling](api/error-handling.md)
+* [Binary Data Types Utils](api/binary-data-types-utils.md)
+* [TypeScript Types](api/typescript-types.md)
+
+### API
 
 * [constructor()](api/constructor.md)
 * [startTabSynching()](api/start-tab-synching.md)
@@ -50,13 +50,6 @@
 * [config]()
 * [getArweaveConfig()](api/get-arweave-config.md)
 * [getPermissions()](api/get-permissions.md)
-
-## 🥪 JS SDK Utils
-
-* [Binary Data Type Utils](api/binary-data-types-utils.md)
-    * [Buffers](api/binary-data-types-utils.md#buffers)
-    * [Base64](api/binary-data-types-utils.md#base64)
-    * [Objects](api/binary-data-types-utils.md#working-with-objects)
 
 ## Demos
 

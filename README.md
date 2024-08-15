@@ -38,7 +38,10 @@ can easily have access to an Arweave web3 wallet with their existing credentials
 
 ## 🥗 Othent's Features
 
-<figure><img src=".gitbook/assets/Group 108.png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <img src=".gitbook/assets/Group 108.png" alt="">
+  <figcaption></figcaption>
+</figure>
 
 **Existing private key wallets to onboard through social logins:**
 
@@ -75,11 +78,15 @@ changes or modifications to their code.
 By using Web2 authentication, your users don't need to fear losing their private keys or passphrase. If they forget
 their password, they can simply reset it, just like they are used to.
 
-## 👻 Othent's Missing and Upcoming Features
+## 👻 _Othent_'s Missing and Upcoming Features
+
+**Support for other blockchains:**
+
+At the moment, _Othent_ is only available on [the Arweave network](https://www.arweave.org/).
 
 **Multiple addresses:**
 
-Othent does not currently support creating and managing multiple private keys on the same account, or manually linking
+_Othent_ does not currently support creating and managing multiple private keys on the same account, or manually linking
 different addresses to a specific account.
 
 Right now, the only workaround around this is signing up using a different provider, which creates a different private
@@ -87,42 +94,36 @@ key and links the corresponding address to that new account.
 
 **Importing and exporting private keys:**
 
-Similarly, Othent doesn't currently support managing multiple private keys in any way not exposed in the API showcased
+Similarly, _Othent_ doesn't currently support managing multiple private keys in any way not exposed in the API showcased
 in these docs, including importing and exporting. 
 
 Right now, the most similar thing to this is using [Arweave Wallet (arweave.app)](https://arweave.app) to watch a public
 address, but you won't be able to transact using that wallet. Note ArConnect does not currently support watching public
 addresses.
 
-**Support for other blockchains:**
-
-Othent currently supports only Arweave.
-
-**Custom salt length for `sign()`:**
-
-Othent doesn't support passing in a custom salt length.
-
-**Custom encryption/decryption algorithm configuration:**
-
-Currently, Othent only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
-
 **Public key encryption:**
   
-Othent currently support symmetric encryption, using the currently authenticated user's AES-256 private keys. It does
+_Othent_ currently support symmetric encryption, using the currently authenticated user's AES-256 private keys. It does
 not support asymmetric encryption using third party's public encryption RSAES keys, even thought it does use RSA for
 signing.
 
 **Public Key Directory (PDK):**
 
-Othent doesn't offer a Public Key Directory (PDK), so if you need to verify third-party signatures, you'll have to get
+_Othent_ doesn't offer a Public Key Directory (PDK), so if you need to verify third-party signatures, you'll have to get
 the corresponding public keys from the original signer.
 
 **Automatable money and smart contract wallets:**
 
-Othent does not provide smart contract wallets, it's just a custodial wallet that manages the keys in behalf of its
+_Othent_ does not provide smart contract wallets, it's just a custodial wallet that manages the keys in behalf of its
 users. Therefore, it doesn't currently support programmability oir transfer automation.
 
-## 🌎 How does Othent work?
+**Wallet functionality limitations:**
+
+- **Custom salt length for signing:** _Othent_ doesn't support passing in a custom salt length when calling `sign()`.
+
+- **Custom encryption/decryption algorithm:** _Othent_ only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
+
+## 🌎 How does _Othent_ work?
 
 ### **The Current Authentication Method:**&#x20;
 
@@ -141,9 +142,9 @@ their digital assets and participate in trustless transactions.
 
 Therefore, storing private keys securely and keeping them secret is critical to protect your assets and data.
 
-> Othent uses Smartweave contracts and the Arweave blockchain for secure transactions and permanent data storage.Each user has their own unique contract accessed only by their unique JWT authentication, ensuring secure transactions between contracts.&#x20;
+> _Othent_ uses Smartweave contracts and the Arweave blockchain for secure transactions and permanent data storage.Each user has their own unique contract accessed only by their unique JWT authentication, ensuring secure transactions between contracts.&#x20;
 > 
-> Data uploads to Arweave are verified through data hashes embedded in JWTs. Othent provides a simple and secure platform for transactions and data storage, prioritising user security and privacy.
+> Data uploads to Arweave are verified through data hashes embedded in JWTs. _Othent_ provides a simple and secure platform for transactions and data storage, prioritising user security and privacy.
 
 <figure>
   <img src=".gitbook/assets/Group 101 (1).png" alt="">
@@ -166,26 +167,26 @@ Any failure or compromise in the MPC protocol or the participating parties could
 
 <figure><img src=".gitbook/assets/Group 102.png" alt=""><figcaption></figcaption></figure>
 
-> ### **Othent Smart Contract Transactions:**&#x20;
+> ### **_Othent_ Smart Contract Transactions:**&#x20;
 > 
-> Othent utilizes smart contracts to enable secure and direct transactions between different contracts. Each user is assigned a unique smart contract that can only be accessed through a social login JSON Web Token (JWT). Here's an explanation of the key components and processes involved:
+> _Othent_ utilizes smart contracts to enable secure and direct transactions between different contracts. Each user is assigned a unique smart contract that can only be accessed through a social login JSON Web Token (JWT). Here's an explanation of the key components and processes involved:
 > 
-> a. JSON Web Token (JWT): A JSON Web Token (JWT) is a compact and URL-safe means of representing claims between two parties. In Othent, a JWT serves as a secure authentication mechanism for accessing user-specific smart contracts. It is issued by the web2 platform upon successful social login and contains encoded information about the users desired transaction. A JWTs consist of three parts: header, payload, and signature. The header specifies the token type and signing algorithm, the payload contains the user-specific claims, and the signature ensures the integrity of the token. Othent then adds the users desired transaction metadata in the payload, thus allowing their contract to verify the users need.
+> a. JSON Web Token (JWT): A JSON Web Token (JWT) is a compact and URL-safe means of representing claims between two parties. In Othent, a JWT serves as a secure authentication mechanism for accessing user-specific smart contracts. It is issued by the web2 platform upon successful social login and contains encoded information about the users desired transaction. A JWTs consist of three parts: header, payload, and signature. The header specifies the token type and signing algorithm, the payload contains the user-specific claims, and the signature ensures the integrity of the token. _Othent_ then adds the users desired transaction metadata in the payload, thus allowing their contract to verify the users need.
 > 
-> b. User Smart Contracts: For each user, Othent deploys a unique smart contract. This contract is accessible only through the associated users JWT. The smart contract stores relevant user information such as their web2 ID and provides functionalities to facilitate contract to contract transactions. Users can interact with their respective contracts by signing transactions using their desired web2 service into a JWT.
+> b. User Smart Contracts: For each user, _Othent_ deploys a unique smart contract. This contract is accessible only through the associated users JWT. The smart contract stores relevant user information such as their web2 ID and provides functionalities to facilitate contract to contract transactions. Users can interact with their respective contracts by signing transactions using their desired web2 service into a JWT.
 > 
-> c. Contract to Contract Transactions: With the use of their JWT, users can initiate transactions between different smart contracts. These transactions are executed securely and transparently, Othent ensures the integrity and authenticity of these transactions through RS256 JWTs.
+> c. Contract to Contract Transactions: With the use of their JWT, users can initiate transactions between different smart contracts. These transactions are executed securely and transparently, _Othent_ ensures the integrity and authenticity of these transactions through RS256 JWTs.
 > 
-> ### **Othent Data Transactions to Arweave:**&#x20;
+> ### **_Othent_ Data Transactions to Arweave:**&#x20;
 > 
-> Othent also supports data uploads to the Arweave blockchain, a decentralised storage network. This feature allows users to store data securely and retrieve it whenever needed. Here's an overview of the process:
+> _Othent_ also supports data uploads to the Arweave blockchain, a decentralised storage network. This feature allows users to store data securely and retrieve it whenever needed. Here's an overview of the process:
 > 
-> a. Data Hashing: Before uploading data to Arweave, Othent generates a hash of the data. This hash acts as a unique identifier for the data and ensures its integrity. The hashing algorithm used by Othent follows industry best practices to generate secure and collision-resistant hashes.
+> a. Data Hashing: Before uploading data to Arweave, _Othent_ generates a hash of the data. This hash acts as a unique identifier for the data and ensures its integrity. The hashing algorithm used by _Othent_ follows industry best practices to generate secure and collision-resistant hashes.
 > 
-> b. JWT Integration: To establish a verifiable link between a user and the uploaded data, Othent embeds the data hash within the user's JWT. This inclusion ensures that the user has authorised the data upload and enables easy verification of the transaction.
+> b. JWT Integration: To establish a verifiable link between a user and the uploaded data, _Othent_ embeds the data hash within the user's JWT. This inclusion ensures that the user has authorised the data upload and enables easy verification of the transaction.
 > 
-> c. Transaction Tagging: Othent includes the JWT, containing the data hash, as a tag within the Arweave transaction. This allows anyone with access to the transaction to validate that the user has signed off on the data upload. By combining the benefits of blockchain and cryptographic techniques, Othent enhances data integrity and transparency.
+> c. Transaction Tagging: _Othent_ includes the JWT, containing the data hash, as a tag within the Arweave transaction. This allows anyone with access to the transaction to validate that the user has signed off on the data upload. By combining the benefits of blockchain and cryptographic techniques, _Othent_ enhances data integrity and transparency.
 
 ## 🧑‍⚖️ License
 
-The Othent Library is licensed under the MIT License. Please see the LICENSE file for more information.
+The _Othent_ Library is licensed under the MIT License. Please see the LICENSE file for more information.

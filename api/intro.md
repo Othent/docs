@@ -36,7 +36,7 @@ const MyComponent = () => {
   }, [options]);
 
   useEffect(() => {
-      const cleanupFn = othent.init();
+      const cleanupFn = othent.startTabSynching();
 
       return () => {
         cleanupFn();

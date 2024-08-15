@@ -1,54 +1,62 @@
 # Table of contents
 
 * [👋 Welcome to Othent](README.md)
-    * [🥗 Othent's Features](README.md#-othents-features)
-    * [👻 Othent's Missing and Upcoming Features](README.md#-othents-missing-and-upcoming-features)
-    * [🌎 How does Othent work?](README.md#-how-does-othent-work)
-    * [🧑‍⚖️ License](README.md#-license)
+    * [🥗 Othent's Features](README.md#othents-features)
+    * [👻 Othent's Missing and Upcoming Features](README.md#othents-missing-and-upcoming-features)
+    * [🌎 How does Othent work?](README.md#how-does-othent-work)
+    * [🧑‍⚖️ License](README.md#license)
 
 ## 🥪 JS SDK API
 
 * [Getting Started](api/intro.md)
+* [Events](api/events.md)
+* [Error Handling](api/error-handling.md)
 
-* [`connect()`](api/connect.md)
-* [`disconnect()`](api/disconnect.md)
-* [`requireAuth()`](api/require-auth.md)
-* [`isAuthenticated`](api/is-authenticated.md)
+* [constructor()](api/constructor.md)
+* [startTabSynching()](api/start-tab-synching.md)
+* [completeConnectionAfterRedirect()](api/complete-connection-after-redirect.md)
 
-* [`getActiveAddress()`](api/get-active-address.md)
-* [`getActivePublicKey()`](api/get-active-public-key.md)
-* [`getAllAddresses()`](api/get-all-addresses.md)
-* [`getWalletNames()`](api/get-wallet-names.md)
-* [`getUserDetails()`](api/get-user-details.md)
+* [connect()](api/connect.md)
+* [disconnect()](api/disconnect.md)
+* [requireAuth()](api/require-auth.md)
+* [isAuthenticated](api/is-authenticated.md)
 
-* [`getSyncActiveAddress()`](api/get-sync-active-address.md)
-* [`getSyncActivePublicKey()`](api/get-sync-active-public-key.md)
-* [`getSyncAllAddresses()`](api/get-sync-all-addresses.md)
-* [`getSyncWalletNames()`](api/get-sync-wallet-names.md)
-* [`getSyncUserDetails()`](api/get-sync-user-details.md)
+* [getActiveAddress()](api/get-active-address.md)
+* [getActivePublicKey()](api/get-active-public-key.md)
+* [getAllAddresses()](api/get-all-addresses.md)
+* [getWalletNames()](api/get-wallet-names.md)
+* [getUserDetails()](api/get-user-details.md)
 
-* [`sign()` (transaction)](api/sign.md)
-* [`dispatch()` (transaction)](api/dispatch.md)
+* [getSyncActiveAddress()](api/get-sync-active-address.md)
+* [getSyncActivePublicKey()](api/get-sync-active-public-key.md)
+* [getSyncAllAddresses()](api/get-sync-all-addresses.md)
+* [getSyncWalletNames()](api/get-sync-wallet-names.md)
+* [getSyncUserDetails()](api/get-sync-user-details.md)
 
-* [`encrypt()`](api/encrypt.md)
-* [`decrypt()`](api/decrypt.md)
+* [sign() (transaction)](api/sign.md)
+* [dispatch() (transaction)](api/dispatch.md)
 
-* [~~`signature()`~~](api/signature.md)
-* [`signDataItem()`](api/sign-data-item.md)
-* [`signMessage()`](api/sign-message.md)
-* [`verifyMessage()`](api/verify-message.md)
-* [`privateHash()`](api/private-hash.md)
+* [encrypt()](api/encrypt.md)
+* [decrypt()](api/decrypt.md)
 
-* [`walletName`]()
-* [`walletVersion`]()
-* [`config`]()
-* [`getArweaveConfig()`](api/get-arweave-config.md)
-* [`getPermissions()`](api/get-permissions.md)
+* [~~signature()~~](api/signature.md)
+* [signDataItem()](api/sign-data-item.md)
+* [signMessage()](api/sign-message.md)
+* [verifyMessage()](api/verify-message.md)
+* [privateHash()](api/private-hash.md)
 
-* [Binary Data Type Utils](api/binary-data-type-utils.md)
-    * [`Buffers`](api/binary-data-type-utils.md#buffers)
-    * [`Base64`](api/binary-data-type-utils.md#base64)
-    * [`Objects`](api/binary-data-type-utils.md#working-with-objects)
+* [walletName]()
+* [walletVersion]()
+* [config]()
+* [getArweaveConfig()](api/get-arweave-config.md)
+* [getPermissions()](api/get-permissions.md)
+
+## 🥪 JS SDK Utils
+
+* [Binary Data Type Utils](api/binary-data-types-utils.md)
+    * [Buffers](api/binary-data-types-utils.md#buffers)
+    * [Base64](api/binary-data-types-utils.md#base64)
+    * [Objects](api/binary-data-types-utils.md#working-with-objects)
 
 ## Demos
 

@@ -6,7 +6,7 @@ description: Using `@othent/kms`
 
 The Othent JS SDK exports a TypeScript `class` `Othent` that exposes a collection of functions that enable interaction
 with wallet under Othent's custody. These functions are designed to make it seamless for developers to integrate Othent
-into their applications, and closely follow [`ArConnect`'s API](https://docs.arconnect.io/) to provide a familiar
+into their applications, and closely follow [_ArConnect_'s API](https://docs.arconnect.io/) to provide a familiar
 interface.
 
 ## Installation & Setup
@@ -20,13 +20,11 @@ yarn i @othent/kms
 ```
 
 {% hint style="info" %}
-TypeScript types are included in the `@othent/kms` package. T
+TypeScript types are included in the `@othent/kms` package. You can find an exhaustive list in
+[TypeScript Types](./typescript-types.md).
 {% endhint %}
 
-Next, to use Othent in production, you'll also need to reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5)
-to get your domain whitelisted.
-
-Lastly, simply instantiate `Othent` with [any options you need](./constructor.md):
+Next, simply instantiate `Othent` with [any options you need](./constructor.md):
 
 ```ts
 import { Othent } from "@othent/kms";
@@ -58,10 +56,20 @@ const MyComponent = () => {
 }
 ```
 
+{% hint style="warning" %}
+To use Othent in production, you'll have to reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5)
+to get your domain whitelisted.
+{% endhint %}
+
+### React
+
 If you are using Othent with React, you might want to consider using
 [React's Context](https://react.dev/learn/passing-data-deeply-with-context) to use a single `Othent` instance for your
 whole app, or decoupling it even more by using a state management library like [MobX](https://mobx.js.org/README.html),
 [TanStack Query](https://tanstack.com/query/latest) or [Redux](https://redux.js.org/). 
+
+Alternatively, you might prefer to use [ArweaveKit](https://docs.arweavekit.com/wallets/wallet-kit). See
+[Indirect Usage (through ArweaveKit)](#indirect-usage-through-arweavekit) below.
 
 ### React Native
 
@@ -128,7 +136,7 @@ which has been exposed at `window.arweaveWallet`, to sign the transaction in the
 
 Once the transaction is signed, you can safely post it to the network.
 
-## Indirect Usage (through Arweave Wallet Kit)
+## Indirect Usage (through ArweaveKit)
 
 We are still working on this. We'll update the documentation soon.
 

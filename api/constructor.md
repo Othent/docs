@@ -27,159 +27,165 @@ This function will throw an error in the following cases:
 ## API
 
 ```ts
-connect(
-  permissions?: PermissionType[],
-  appInfo?: AppInfo,
-  gateway?: GatewayConfig,
-): Promise<UserDetails | null>;
+constructor(
+  options: OthentOptions,
+): Othent;
 ```
 
-## Additional Options
-
----
-
-### `appName: string`
-
-Test test test...
-
-#### `appName: string`
-
-Test test test...
-
-##### `appName: string`
-
-Test test test...
-
-###### `appName: string`
-
-Test test test...
-
-**`appName: string`**
-
-Test test test...
-
----
+### `OthentOptions`
 
 When instantiating `Othent`, you can use the following options (`OthentOptions`) to customize its behavior:
 
-- `appName: string`:  Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent
-  using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+#### `appName: string`
 
-- `appVersion: string`: Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed
-  or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent using `Othent.sign`,
+`Othent.dispatch` or `Othent.signDataItem`.
 
-- `persistCookie: boolean | OthentStorageKey`: Set this to `true` or the name of the cookie where you'd like the user
-  details JSON to be stored.
+#### `appVersion: string`
+
+Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed or sent using
+`Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+
+#### `persistCookie: boolean | OthentStorageKey`
   
-  Note setting this option to `true` will set the cookie on the client / frontend, but it won't recover it on the
-  server / backend. If you are using SSR, you need to use `cookie = true` in conjunction with `initialUserDetails`.
+**Default: `false`**
+
+Set this to `true` or the name of the cookie where you'd like the user details JSON to be stored.
   
-  Default: `false`
+Note setting this option to `true` will set the cookie on the client / frontend, but it won't recover it on the server /
+backend. If you are using SSR, you need to use `cookie = true` in conjunction with `initialUserDetails`.
 
-- `persistLocalStorage: boolean | OthentStorageKey`: Set this to `true` or the name of the `localStorage` item where
-  you'd like the user details JSON to be stored.
+#### `persistLocalStorage: boolean | OthentStorageKey`
+
+**Default: `false`**
+
+Set this to `true` or the name of the `localStorage` item where you'd like the user details JSON to be stored.
   
-  Note the stored values will be removed / discarded if more than `refreshTokenExpirationMs` have passed, but will
-  remain in `localStorage` until then or until the user logs out.
-  
-  Default: `false`
+Note the stored values will be removed / discarded if more than `refreshTokenExpirationMs` have passed, but will remain
+in `localStorage` until then or until the user logs out.
 
-- `gatewayConfig?: GatewayConfig`: Gateway config to connect to Arweave.
+#### `gatewayConfig?: GatewayConfig`
 
-- `initialUserDetails?: UserDetails | null`: Initial user details. Useful for server-side rendered sites or native apps
-  that might store the most recent user details externally (e.g. cookie or `SharedPreferences`).
+Gateway config to connect to Arweave.
 
-- `debug: boolean`: Enable additional logs.
+#### `initialUserDetails?: UserDetails | null`
 
-  Default: `false`
+Initial user details. Useful for server-side rendered sites or native apps that might store the most recent user details
+externally (e.g. cookie or `SharedPreferences`).
 
-- `inject: boolean`: Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the
-  background.
+#### `debug: boolean`
 
-  Default: `false`
+**Default: `false`**
 
-- `serverBaseURL: string`: API base URL. Needed if you are using a private/self-hosted API and Auth0 tenant.
+Enable additional logs.
 
-- `auth0Domain: string`: Auth0 domain. Needed if you are using a private/self-hosted API and Auth0 tenant.
+#### `inject: boolean`
 
-- `auth0ClientId: string`: Auth0 client ID. Needed if you are using a private/self-hosted API and Auth0 tenant, or if
-  you have a dedicated App inside Othent's Auth0 tenant to personalize the logic experience (premium subscription).
+**Default: `false`**
 
-- `auth0Strategy: Auth0Strategy`: Possible values are:
+Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the background.
+
+#### `serverBaseURL: string`
+
+API base URL. Needed if you are using a private/self-hosted API and Auth0 tenant.
+
+#### `auth0Domain: string`
+
+Auth0 domain. Needed if you are using a private/self-hosted API and Auth0 tenant.
+
+#### `auth0ClientId: string`
+
+Auth0 client ID. Needed if you are using a private/self-hosted API and Auth0 tenant, or if you have a dedicated App
+inside Othent's Auth0 tenant to personalize the logic experience (premium subscription).
+
+#### `auth0Strategy: Auth0Strategy`
+
+**Default: `memory`**
+
+Possible values are:
     
-  - `memory`: This is the most secure and recommended option/location to store tokens, but new tabs won't be able to
-    automatically log in using a popup without a previous user action.
-  
-    However, by setting the `persistLocalStorage = true` option, the user details (but not the refresh / access
-    tokens) will be persisted in `localStorage` until the most recent refresh token's expiration date, allowing you
-    to read the user details (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the
-    user were already logged in.
-  
-  - `localstorage`: Store tokens `localStorage`. This makes it possible for new tabs to automatically log in using a
-    popup, even after up to 2 weeks of inactivity (i.e. "keep me logged in"), but offers a larger attack surface to
-    attackers trying to get a hold of the refresh / access tokens.
+- `memory`: This is the most secure and recommended option/location to store tokens, but new tabs won't be able to
+  automatically log in using a popup without a previous user action.
+
+  However, by setting the `persistLocalStorage = true` option, the user details (but not the refresh / access
+  tokens) will be persisted in `localStorage` until the most recent refresh token's expiration date, allowing you
+to read the user details (`.getUserDetails()` / `.getSyncUserDetails()`) and make it look in the UI as if the
+  user were already logged in.
+
+- `localstorage`: Store tokens `localStorage`. This makes it possible for new tabs to automatically log in using a
+  popup, even after up to 2 weeks of inactivity (i.e. "keep me logged in"), but offers a larger attack surface to
+  attackers trying to get a hold of the refresh / access tokens.
+
+- `custom`: Provide a custom storage implementation that implements Auth0's
+  [`ICache`](https://auth0.github.io/auth0-spa-js/interfaces/ICache.html). Useful for mobile apps (e.g. React
+  Native).
+
+#### `auth0LogInMethod: Auth0LogInMethod`
+
+**Default: `popup`**
+
+Possible values are:
+
+- `popup`: Open Auth0's authentication page on a popup window while the original page just waits for authentication
+  to take place or to timeout. This option is faster and less intrusive.
+
+- `redirect`: Navigate to Auth0's authentication page, which will redirect users back to your site or
+  `auth0RedirectURI` upon authentication. Once they are redirected back, the URL will show a `code` and `state`
+  query parameters for a second or two, until the authentication flow is completed.
+
+See: https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithRedirect,
+https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback,
+https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithPopup
+
+#### `auth0RedirectURI: Auth0RedirectUri | null`
+
+**Default: `location.origin`** (when available in the platform)
+
+Auth0's callback URL (`redirect_uri`) used during the authentication flow.
+
+See https://auth0.com/docs/authenticate/login/redirect-users-after-login
+
+#### `auth0ReturnToURI: Auth0RedirectUri | null`
+
+**Default: `location.origin`** (when available in the platform)
+
+Auth0's logout URL (`returnTo`) used during the logout flow.
+
+See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
+
+#### `auth0RefreshTokenExpirationMs: number`:
    
-  - `custom`: Provide a custom storage implementation that implements Auth0's
-    [`ICache`](https://auth0.github.io/auth0-spa-js/interfaces/ICache.html). Useful for mobile apps (e.g. React
-    Native).
+**Default: `1296000000` (2 weeks)**
 
-  Default: `memory`
+Refresh token expiration in milliseconds. This should/must match the value set in Auth0. On the client, this value is
+only used to set a timer to automatically log out users when their refresh token expires. Incorrectly setting this value
+will make users think they are still logged in, even after their refresh token expires (until they try to perform any
+kind of action through Othent and get an error).
 
-- `auth0LogInMethod: Auth0LogInMethod`: Possible values are:
+#### `autoConnect: AutoConnect`
 
-  - `popup`: Open Auth0's authentication page on a popup window while the original page just waits for authentication
-    to take place or to timeout. This option is faster and less intrusive.
+**Default: `lazy`**
 
-  - `redirect`: Navigate to Auth0's authentication page, which will redirect users back to your site or
-    `auth0RedirectURI` upon authentication. Once they are redirected back, the URL will show a `code` and `state`
-    query parameters for a second or two, until the authentication flow is completed.
+Possible values are:
 
-  See: https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithRedirect,
-  https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback,
-  https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithPopup
+- `eager`: Try to log in as soon as the page loads. This won't work when using `auth0Strategy = "refresh-memory"`.
 
-  Default: `popup`
+- `lazy` Try to log in as soon as there's an attempt to perform any action through Othent. This will only work with
+  `auth0Strategy = "refresh-memory"` if the first action is preceded by a user action (e.g. click on a button).
 
-- `auth0RedirectURI: Auth0RedirectUri | null`: Auth0's callback URL (`redirect_uri`) used during the authentication
-  flow.
+- `off`: Do not log in automatically. Trying to perform any action through Othent before calling `connect()` or
+  `requireAuth()` will result in an error.
 
-  See https://auth0.com/docs/authenticate/login/redirect-users-after-login
+#### `throwErrors: boolean`
 
-  Default: `location.origin` (when available in the platform)
+**Default: `true`**
 
-- `auth0ReturnToURI: Auth0RedirectUri | null` Auth0's logout URL (`returnTo`) used during the logout flow.
+All `Othent` methods could throw an error, so you should wrap them in `try-catch` blocks. Alternatively, you can set
+this option to `false` and the library will do this automatically, so no method will ever throw an error. In this case,
+however, you must add at least one error event listener with `othent.addEventListener("error", () => { ... })`.
 
-  See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
-
-  Default: `location.origin` (when available in the platform)
-
-- `auth0RefreshTokenExpirationMs: number`: Refresh token expiration in milliseconds. This should/must match the value
-  set in Auth0. On the client, this value is only used to set a timer to automatically log out users when their refresh
-  token expires. Incorrectly setting this value will make users think they are still logged in, even after their refresh
-  token expires (until they try to perform any kind of action through Othent and get an error).
-   
-  Default: `1296000000` (2 weeks)
-
-- `autoConnect: AutoConnect`: Possible values are:
-
-  - `eager`: Try to log in as soon as the page loads. This won't work when using `auth0Strategy = "refresh-memory"`.
-
-  - `lazy` Try to log in as soon as there's an attempt to perform any action through Othent. This will only work with
-    `auth0Strategy = "refresh-memory"` if the first action is preceded by a user action (e.g. click on a button).
-
-  - `off`: Do not log in automatically. Trying to perform any action through Othent before calling `connect()` or
-    `requireAuth()` will result in an error.
-
-  Default: `lazy`
-
-- `throwErrors: boolean`: All `Othent` methods could throw an error, so you should wrap them in `try-catch` blocks.
-  Alternatively, you can set this option to `false` and the library will do this automatically, so no method will ever
-  throw an error. In this case, however, you must add at least one error event listener with
-  `othent.addEventListener("error", () => { ... })`.
-
-  Default: `true`
-
-- `tags: TagData[]`: Additional tags to include in transactions signed or sent using `Othent.sign`, `Othent.dispatch` or
-  `Othent.signDataItem`.
+#### `tags: TagData[]`
   
-  Default: `[]`
+**Default: `[]`**
+
+Additional tags to include in transactions signed or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.

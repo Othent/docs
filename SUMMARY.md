@@ -10,7 +10,7 @@
 * [Binary Data Types Utils](api/binary-data-types-utils.md)
 * [TypeScript Types](api/typescript-types.md)
 
-### API
+## 🥪 JS SDK API
 
 * [constructor()](api/constructor.md)
 * [startTabSynching()](api/start-tab-synching.md)

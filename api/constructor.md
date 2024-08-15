@@ -4,25 +4,7 @@ description: Othent JS SDK constructor() function
 
 # Constructor
 
-Prompts the user to sign in/up (connects the user's wallet) using
-[_Auth0_'s popup](https://auth0.com/docs/libraries/lock/lock-authentication-modes#popup-mode).
-
-Note that while `connect()`'s function signature is identical to that of
-[_ArConnect_'s `connect()`](https://docs.arconnect.io/api/connect), you don't need to request permissions from the user to
-interact with their wallets, as it's already implicit that users are giving _Othent_ full control of their wallet.
-
-This function will throw an error in the following cases:
-
-- When passing `permissions` different to `undefined` and the default value  (all permissions). While that parameter has
-  been added for signature compatibility with _ArConnect_ and other wallets, _Othent_ implicitly requires all
-  permissions. Passing anything else will throw an error.
-
-- When this function is called before the user interacts with the page (e.g. by clicking on a button), as that will
-  result in a `Unable to open a popup` error.
-
-- When the user closes the _Auth0_ popup before authenticating, as that will result in a `Popup closed` error.
-
-- When authentication fails.
+Instantiate `Othent`.
 
 ## API
 
@@ -48,7 +30,7 @@ Version of your app. This will add a tag `App-Version: <appVersion>` to any tran
 
 #### `persistCookie: boolean | OthentStorageKey`
   
-**Default: `false`**
+_Default_: `false`
 
 Set this to `true` or the name of the cookie where you'd like the user details JSON to be stored.
   
@@ -57,7 +39,7 @@ backend. If you are using SSR, you need to use `cookie = true` in conjunction wi
 
 #### `persistLocalStorage: boolean | OthentStorageKey`
 
-**Default: `false`**
+_Default_: `false`
 
 Set this to `true` or the name of the `localStorage` item where you'd like the user details JSON to be stored.
   
@@ -75,13 +57,13 @@ externally (e.g. cookie or `SharedPreferences`).
 
 #### `debug: boolean`
 
-**Default: `false`**
+_Default_: `false`
 
 Enable additional logs.
 
 #### `inject: boolean`
 
-**Default: `false`**
+_Default_: `false`
 
 Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the background.
 
@@ -100,7 +82,7 @@ inside Othent's Auth0 tenant to personalize the logic experience (premium subscr
 
 #### `auth0Strategy: Auth0Strategy`
 
-**Default: `memory`**
+_Default_: `memory`
 
 Possible values are:
     
@@ -122,7 +104,7 @@ to read the user details (`.getUserDetails()` / `.getSyncUserDetails()`) and mak
 
 #### `auth0LogInMethod: Auth0LogInMethod`
 
-**Default: `popup`**
+_Default_: `popup`
 
 Possible values are:
 
@@ -139,7 +121,7 @@ https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithPopup
 
 #### `auth0RedirectURI: Auth0RedirectUri | null`
 
-**Default: `location.origin`** (when available in the platform)
+_Default_: `location.origin`** (when available in the platfor
 
 Auth0's callback URL (`redirect_uri`) used during the authentication flow.
 
@@ -147,7 +129,7 @@ See https://auth0.com/docs/authenticate/login/redirect-users-after-login
 
 #### `auth0ReturnToURI: Auth0RedirectUri | null`
 
-**Default: `location.origin`** (when available in the platform)
+_Default_: `location.origin`** (when available in the platfor
 
 Auth0's logout URL (`returnTo`) used during the logout flow.
 
@@ -155,7 +137,7 @@ See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
 
 #### `auth0RefreshTokenExpirationMs: number`:
    
-**Default: `1296000000` (2 weeks)**
+_Default_: `1296000000` (2 weeks)
 
 Refresh token expiration in milliseconds. This should/must match the value set in Auth0. On the client, this value is
 only used to set a timer to automatically log out users when their refresh token expires. Incorrectly setting this value
@@ -164,7 +146,7 @@ kind of action through Othent and get an error).
 
 #### `autoConnect: AutoConnect`
 
-**Default: `lazy`**
+_Default_: `lazy`
 
 Possible values are:
 
@@ -178,7 +160,7 @@ Possible values are:
 
 #### `throwErrors: boolean`
 
-**Default: `true`**
+_Default_: `true`
 
 All `Othent` methods could throw an error, so you should wrap them in `try-catch` blocks. Alternatively, you can set
 this option to `false` and the library will do this automatically, so no method will ever throw an error. In this case,
@@ -186,6 +168,6 @@ however, you must add at least one error event listener with `othent.addEventLis
 
 #### `tags: TagData[]`
   
-**Default: `[]`**
+_Default_: `[]`
 
 Additional tags to include in transactions signed or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.

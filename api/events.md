@@ -1,5 +1,5 @@
 ---
-description: Othent `error` and `auth` events.
+description: Othent custom events.
 ---
 
 # Events

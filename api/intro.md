@@ -32,9 +32,9 @@ import { Othent } from "@othent/kms";
 const othent = new Othent({ ... });
 ```
 
-Additionally, if you set the `persistLocalStorage` option to persist and/ sync user details across tabs, you need to call
-`startTabSynching` and make sure the cleanup function it returns is called once you no longer need the `Othent` instance
-you've created.
+Additionally, if you set the [`persistLocalStorage`](./constructor.md#persistlocalstorage-boolean--othentstoragekey)
+option to persist and/or sync user details across tabs, you need to call [`startTabSynching`](./start-tab-synching.md)
+and make sure the cleanup function it returns is called once you no longer need the `Othent` instance you've created.
 
 Here's an example inside a React component:
 
@@ -138,9 +138,9 @@ Once the transaction is signed, you can safely post it to the network.
 
 ## Indirect Usage (through ArweaveKit)
 
+{% hint style="warning" %}
 We are still working on this. We'll update the documentation soon.
-
-TODO: Implement AWK strategy.
+{% endhint %}
 
 ## Direct Usage (through `Othent` instance)
 

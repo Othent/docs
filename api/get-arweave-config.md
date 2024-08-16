@@ -2,26 +2,27 @@
 description: ArConnect Injected API getArweaveConfig() function
 ---
 
-# Retrive Gateway Config
+# Get Gateway Config
 
-It can be useful to know what Arweave gateway the extension uses for your application. You can set this when [connecting](connect.md#custom-gateway-config) your application to ArConnect, but the user can always update it later. Using the `getArweaveConfig()`, you can make sure your application works, no matter what gateway the extension uses.
+It can be useful to know what Arweave gateway the extension uses for your application.
 
-{% hint style="info" %}
-**Note:** This function requires the [`ACCESS_ARWEAVE_CONFIG`](connect.md#permissions) permission.
-{% endhint %}
+You can set this when [instantiating Othent](./constructor.md#gatewayconfig-gatewayconfig) or when calling
+[`connect()`](connect.md). 
+
+## API
+
+```ts
+getArweaveConfig(): Promise<GatewayConfig>;
+```
 
 ## Example usage
 
 ```ts
-import Arweave from "arweave";
+import { Othent } from "@othent/kms";
 
-// connect to the extension
-await window.arweaveWallet.connect(["ACCESS_ARWEAVE_CONFIG"]);
+const othent = new Othent({ ... });
 
-// get the current gateway
-const gateway = await window.arweaveWallet.getArweaveConfig();
+const gatewayConfig = await othent.getArweaveConfig();
 
-// setup an arweave-js client using
-// the obtained gateway 
-const client = new Arweave(gateway);
+console.log("Current gateway config =", gatewayConfig);
 ```

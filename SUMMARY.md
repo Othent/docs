@@ -45,9 +45,9 @@
 * [verifyMessage()](api/verify-message.md)
 * [privateHash()](api/private-hash.md)
 
-* [walletName]()
-* [walletVersion]()
-* [config]()
+* [walletName](api/wallet-name.md)
+* [walletVersion](api/wallet-version.md)
+* [config](api/config.md)
 * [getArweaveConfig()](api/get-arweave-config.md)
 * [getPermissions()](api/get-permissions.md)
 

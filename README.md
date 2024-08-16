@@ -123,6 +123,9 @@ users. Therefore, it doesn't currently support programmability oir transfer auto
 
 - **Custom encryption/decryption algorithm:** _Othent_ only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
 
+- **No customizable permissions**: _Othent_'s permissions are hardcoded and cannot be changed, as users are implicitly
+giving _Othent_ full control of their (custodial) wallets.
+
 ## 🌎 How does Othent work?
 
 ### **The Current Authentication Method:**&#x20;

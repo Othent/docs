@@ -2,15 +2,26 @@
 description: ArConnect Injected API getPermissions() function
 ---
 
-# Retrive permissions
+# Get Permissions
 
-As discussed [here](connect.md#permissions), ArConnect requires a specific type of permission for each API function that involves an action with the user's wallet. It is important for an application to be aware of the permissions given to them by the user. The `getPermissions()` function returns an array of permissions given to the current application. If the array is empty, it means that the app has not yet connected to the extension.
+As discussed in [`connect()`'s Permissions section](connect.md#permissions), _Othent_ being a custodial wallet, it
+implicitly requires all permission. Therefor, the `getPermissions()` function returns an array with all possible
+permissions.
+
+## API
+
+```ts
+getPermissions(): Promise<PermissionType[]>;
+```
 
 ## Example usage
 
 ```ts
-// get permissions
-const permissions = await window.arweaveWallet.getPermissions();
+import { Othent } from "@othent/kms";
 
-console.log("The app has the following permissions:", permissions);
+const othent = new Othent({ ... });
+
+const permissions = await othent.getPermissions();
+
+console.log(`Othent has the following permissions = ${ permissions.join(", ") }`);
 ```

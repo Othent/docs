@@ -1,6 +1,6 @@
----
+<br />
 description: Othent JS SDK constructor() function
----
+<br />
 
 # Constructor
 
@@ -23,14 +23,14 @@ When instantiating `Othent`, you can use the following options (`OthentOptions`)
 Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent using `Othent.sign`,
 `Othent.dispatch` or `Othent.signDataItem`.
 
----
+<br />
 
 #### `appVersion: string`
 
 Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed or sent using
 `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
 
----
+<br />
 
 #### `persistCookie: boolean | OthentStorageKey`
   
@@ -41,7 +41,7 @@ Set this to `true` or the name of the cookie where you'd like the user details J
 Note setting this option to `true` will set the cookie on the client / frontend, but it won't recover it on the server /
 backend. If you are using SSR, you need to use `cookie = true` in conjunction with `initialUserDetails`.
 
----
+<br />
 
 #### `persistLocalStorage: boolean | OthentStorageKey`
 
@@ -52,20 +52,20 @@ Set this to `true` or the name of the `localStorage` item where you'd like the u
 Note the stored values will be removed / discarded if more than `refreshTokenExpirationMs` have passed, but will remain
 in `localStorage` until then or until the user logs out.
 
----
+<br />
 
 #### `gatewayConfig?: GatewayConfig`
 
 Gateway config to connect to Arweave.
 
----
+<br />
 
 #### `initialUserDetails?: UserDetails | null`
 
 Initial user details. Useful for server-side rendered sites or native apps that might store the most recent user details
 externally (e.g. cookie or `SharedPreferences`).
 
----
+<br />
 
 #### `debug: boolean`
 
@@ -73,7 +73,7 @@ _Default_: `false`
 
 Enable additional logs.
 
----
+<br />
 
 #### `inject: boolean`
 
@@ -81,26 +81,26 @@ _Default_: `false`
 
 Inject Othent's instance as `window.arweaveWallet` so that `arweave-js` can use it on the background.
 
----
+<br />
 
 #### `serverBaseURL: string`
 
 API base URL. Needed if you are using a private/self-hosted API and Auth0 tenant.
 
----
+<br />
 
 #### `auth0Domain: string`
 
 Auth0 domain. Needed if you are using a private/self-hosted API and Auth0 tenant.
 
----
+<br />
 
 #### `auth0ClientId: string`
 
 Auth0 client ID. Needed if you are using a private/self-hosted API and Auth0 tenant, or if you have a dedicated App
 inside Othent's Auth0 tenant to personalize the logic experience (premium subscription).
 
----
+<br />
 
 #### `auth0Strategy: Auth0Strategy`
 
@@ -124,7 +124,7 @@ to read the user details (`.getUserDetails()` / `.getSyncUserDetails()`) and mak
   [`ICache`](https://auth0.github.io/auth0-spa-js/interfaces/ICache.html). Useful for mobile apps (e.g. React
   Native).
 
----
+<br />
 
 #### `auth0LogInMethod: Auth0LogInMethod`
 
@@ -143,7 +143,7 @@ See: https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithRedi
 https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback,
 https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#loginWithPopup
 
----
+<br />
 
 #### `auth0RedirectURI: Auth0RedirectUri | null`
 
@@ -153,7 +153,7 @@ Auth0's callback URL (`redirect_uri`) used during the authentication flow.
 
 See https://auth0.com/docs/authenticate/login/redirect-users-after-login
 
----
+<br />
 
 #### `auth0ReturnToURI: Auth0RedirectUri | null`
 
@@ -163,7 +163,7 @@ Auth0's logout URL (`returnTo`) used during the logout flow.
 
 See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
 
----
+<br />
 
 #### `auth0RefreshTokenExpirationMs: number`:
    
@@ -174,7 +174,7 @@ only used to set a timer to automatically log out users when their refresh token
 will make users think they are still logged in, even after their refresh token expires (until they try to perform any
 kind of action through Othent and get an error).
 
----
+<br />
 
 #### `autoConnect: AutoConnect`
 
@@ -190,7 +190,7 @@ Possible values are:
 - `off`: Do not log in automatically. Trying to perform any action through Othent before calling `connect()` or
   `requireAuth()` will result in an error.
 
----
+<br />
 
 #### `throwErrors: boolean`
 
@@ -200,7 +200,7 @@ All `Othent` methods could throw an error, so you should wrap them in `try-catch
 this option to `false` and the library will do this automatically, so no method will ever throw an error. In this case,
 however, you must add at least one error event listener with `othent.addEventListener("error", () => { ... })`.
 
----
+<br />
 
 #### `tags: TagData[]`
   

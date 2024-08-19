@@ -22,7 +22,7 @@ decrypt(ciphertext: BinaryDataType): Promise<string>;
 
 The data to be decrypted with the user's private key, which can be of type [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/ArrayBuffer), [`TypedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/TypedArray) or [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/DataView).
 
-### **Returns** `Promise<string>`
+### `return Promise<string>`
 
 A `Promise` containing the decrypted data as `string`.
 

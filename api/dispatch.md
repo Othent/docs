@@ -35,13 +35,13 @@ A valid Arweave [`Transaction`](https://github.com/arweaveTeam/arweave-js#transa
 
 - #### `options?.node?: UrlString` (`string`)
 
-  Node used for bundling transactions. Defaults to ArDrive Turbo's node. |
+  Node used for bundling transactions. Defaults to ArDrive Turbo's node.
 
 - #### [`options?.arweave?: Arweave`](https://github.com/arweaveTeam/arweave-js#initialisation)
 
   Custom Arweave instance. Defaults to an instance connected to https://arweave.net:443.
 
-### **Returns** `Promise<ArDriveBundledTransactionData | UploadedTransactionData>`
+### `return Promise<ArDriveBundledTransactionData | UploadedTransactionData>`
 
 A `Promise` containing the result of the upload request, including the ID of the submitted transaction, as as well as a
 `type` property indicating if it was uploaded by a bundle or directly to the base layer, as well as some additional

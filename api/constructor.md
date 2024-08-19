@@ -14,7 +14,7 @@ constructor(
 ): Othent;
 ```
 
-### `OthentOptions`
+### `options: OthentOptions`
 
 Options to customize `Othent`'s behavior when instantiating it.
 
@@ -165,7 +165,7 @@ inside Othent's Auth0 tenant to personalize the logic experience (premium subscr
   - `off`: Do not log in automatically. Trying to perform any action through Othent before calling `connect()` or
     `requireAuth()` will result in an error.
 
-  - #### `throwErrors: boolean`
+- #### `throwErrors: boolean`
 
   _Default_: `true`
  

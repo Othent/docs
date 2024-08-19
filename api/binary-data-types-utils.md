@@ -1,5 +1,5 @@
 ---
-description: https://github.com/Othent/package/<PATH_TO_UTILS>
+description: Othent binary data types and B64 conversion utils.
 ---
 
 ## Binary Data Types & B64 Conversion Utils

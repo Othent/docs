@@ -21,9 +21,13 @@ This is useful for applications such as private file storage apps or mail/messag
 encrypt(plaintext: string | BinaryDataType): Promise<Uint8Array>;
 ```
 
-| Argument    | Type                                                                                                                                                                                                                                                                                                                                     | Description                                                                        |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `data`      | [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/ArrayBuffer), [`TypedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/TypedArray) or [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/DataView) | The data to be encrypted with the user's private key                               |
+### `plaintext: string | BinaryDataType`
+
+The data to be encrypted with the user's private key, which can be of type `string`, [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/ArrayBuffer), [`TypedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/TypedArray) or [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/DataView).
+
+### **Returns** `Promise<Uint8Array>`
+
+A `Promise` containing the encrypted data as [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array).
 
 ## Example usage
 
@@ -32,7 +36,7 @@ encrypt(plaintext: string | BinaryDataType): Promise<Uint8Array>;
 await othent.requireAuth();
 
 // Encrypt data using RSA:
-const encrypted = await arweaveWallet.encrypt("This message will be encrypted");
+const encrypted = await othent.encrypt("This message will be encrypted");
 
 console.log("Encrypted bytes:", encrypted);
 ```

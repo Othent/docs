@@ -27,19 +27,25 @@ dispatch(
 ): Promise<ArDriveBundledTransactionData | UploadedTransactionData>;
 ```
 
-| Argument      | Type                                                                    | Description                                                  |
-| ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `transaction` | [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) | A valid Arweave transaction instance (**without a keyfile**) |
-| `options?.node?` | `UrlString` (`string`) | Node used for bundling transactions. Defaults to ArDrive Turbo's node. |
-| `options?.arweave?` | [`Arweave`](https://github.com/arweaveTeam/arweave-js#initialisation) | Custom Arweave instance. Defaults to an instance connected to http://arweave.net:443. |
+### `transaction: Transaction`
 
-**Returns:** A Promise containing the result of the upload request, either to the bundler node or directly to the
-Arweave network.
+A valid Arweave [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) instance, **without a keyfile**.
 
-## Dispatch result
+### `options?: DispatchOptions`
 
-The `dispatch()` function returns the result of the operation, including the ID of the submitted transaction, as well as
-if it was submitted in a bundle or on the base layer.
+- #### `options?.node?: UrlString` (`string`)
+
+  Node used for bundling transactions. Defaults to ArDrive Turbo's node. |
+
+- #### [`options?.arweave?: Arweave`](https://github.com/arweaveTeam/arweave-js#initialisation)
+
+  Custom Arweave instance. Defaults to an instance connected to https://arweave.net:443.
+
+### **Returns** `Promise<ArDriveBundledTransactionData | UploadedTransactionData>`
+
+A `Promise` containing the result of the upload request, including the ID of the submitted transaction, as as well as a
+`type` property indicating if it was uploaded by a bundle or directly to the base layer, as well as some additional
+properties:
 
 ```ts
 interface ArDriveBundledTransactionData {

@@ -1,6 +1,6 @@
-<br />
+---
 description: Othent JS SDK constructor() function
-<br />
+---
 
 # Constructor
 

@@ -26,10 +26,12 @@ caused by this change.
 
 ~~Often an application might need a piece of data that is created, authorized or confirmed by the owner of a wallet. The `signature()` function creates a cryptographical signature that allows applications to verify if a piece of data has been signed using a specific wallet. This function works similarly to the~~ [~~webcrypto sign API~~](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign)~~.~~
 
-{% hint style="info" %}
-~~**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).~~
+{% hint style="warning" %}
+~~This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).~~
+{% endhint %}
 
-~~**Note:** Not to be confused with the~~ [~~`sign()`~~](sign.md) ~~function that is created to sign Arweave transactions.~~
+{% hint style="info" %}
+~~**Tip:** Not to be confused with the [`sign()`](sign.md) function that is created to sign Arweave transactions.~~
 {% endhint %}
 
 ## ~~API~~

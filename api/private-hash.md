@@ -7,7 +7,7 @@ description: Othent JS SDK privateHash() function
 The `privateHash()` function allows you to create deterministic secrets (hashes) from some data.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 ## API

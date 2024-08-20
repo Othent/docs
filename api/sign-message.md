@@ -8,19 +8,19 @@ The `signMessage()` function creates a cryptographic signature of any data (afte
 using the active (authenticated) user's private key.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 
-**Note**: This function should only be used to allow data validation. It cannot be used for on-chain transactions,
+Also, this function should only be used to allow data validation. It cannot be used for on-chain transactions,
 interactions or bundles, for security reasons. Consider using [`sign()`](sign.md),
 [`signDataItem()`](sign-dataitem.md) or [dispatch()](dispatch.md) instead.
-
-**Note**: The function first hashes the input data for security reasons. We recommend using the built in
-[`verifyMessage()`](verify-message.md) function to validate the signature, or hashing the data the same way, before
-validation ([example](verify-message.md#verification-without-arconnect)).
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
+**Tip:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
+
+**Tip**: The function first hashes the input data for security reasons. We recommend using the built in
+[`verifyMessage()`](verify-message.md) function to validate the signature, or hashing the data the same way, before
+validation ([example](verify-message.md#verification-without-arconnect)).
 {% endhint %}
 
 ## API

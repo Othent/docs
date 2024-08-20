@@ -10,6 +10,13 @@ current user's private key. It's meant to replicate the behavior of the `transac
 object, it returns a new and signed transaction instance.
 
 {% hint style="warning" %}
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
+
+{% hint style="info" %}
+**Tip:** If you are trying to sign a larger piece of data (> 5 MB), make sure to notify the user to not switch / close
+the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
+
 **Tip:** A better alternative to this function is using the
 [`arweave-js`](https://github.com/arweaveTeam/arweave-js#sign-a-transaction) `transactions.sign()` instead. Just omit
 the second parameter (`JWK` key) when calling the method, and
@@ -17,11 +24,6 @@ the second parameter (`JWK` key) when calling the method, and
 instantiated with `inject = true`).
 
 See [Indirect Usage (through `arweave-js`)](./intro.md#indirect-usage-through-arweave-js)
-
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
-
-**Note:** If you are trying to sign a larger piece of data (> 5 MB), make sure to notify the user to not switch / close
-the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
 {% endhint %}
 
 ## API

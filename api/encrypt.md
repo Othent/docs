@@ -12,7 +12,7 @@ a current limitation of using _Othent_ is that the only available algorithm is R
 This is useful for applications such as private file storage apps or mail/messaging platforms.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 ## API

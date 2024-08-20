@@ -6,7 +6,7 @@ description: Othent JS SDK getAllAddresses() function
 
 Returns an array of Arweave wallet addresses associated with the active (authenticated) user account.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Othent does not currently support creating/storing more than one wallet associated to the same account, so this function
 will always return exactly one wallet address.
 {% endhint %}

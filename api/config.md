@@ -4,7 +4,7 @@ description: Othent JS SDK config property
 
 # Config
 
-Configuration object used by the current _Othent_ instance.
+Configuration object used by the current `Othent` instance.
 
 ## API
 

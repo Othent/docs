@@ -9,7 +9,7 @@ key, similarly to the [Web Crypto API's `decrypt()`](https://developer.mozilla.o
 However, note a current limitation of using _Othent_ is that the only available algorithm is RSA (`RSA-OAEP`).
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 ## API

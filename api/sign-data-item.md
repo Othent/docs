@@ -9,9 +9,11 @@ The `signDataItem()` function allows you to create and sign a `DataItem` object,
 [ANS-104](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md) compatible bundler.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
 
-**Note:** The function returns a buffer (`ArrayBufferLike`) of the signed data item. You'll need to manually load it
+{% hint style="info" %}
+**Tip:** The function returns a buffer (`ArrayBufferLike`) of the signed data item. You'll need to manually load it
 into an [`arbundles`](https://npmjs.com/arbundles) `DataItem` instance as seen in the
 [example usage](sign-dataitem.md#example-usage):
 {% endhint %}

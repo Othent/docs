@@ -8,11 +8,11 @@ The `verifyMessage()` function verifies a cryptographic signature created with t
 either from Othent or from any other wallet such as ArConnect.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
+**Tip:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
 {% endhint %}
 
 ## API

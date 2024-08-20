@@ -6,13 +6,13 @@ description: Othent JS SDK getWalletNames() function
 
 Similarly to ArConnect, each wallet in Othent has a nickname. This is either:
 
-- The user's [ANS](https://ans.gg) name. TODO: To be implemented...
+- The user's [ANS](https://ans.gg) name.
 - A platform + email identifying label (e.g. `Google (email@gmail.com)`, `Twitter (email@outlook.com)`...).
 
 To provide better UX, you can retrieve these names from the active (authenticated) user account and display them to make 
 it easier for the user to recognize which wallet they're using. 
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Othent does not currently support creating/storing more than one wallet associated to the same account, so this function
 will always return exactly one wallet address.
 {% endhint %}

@@ -1,5 +1,5 @@
 ---
-description: Using `@othent/kms`
+description: Using @othent/kms
 ---
 
 # 🥪 Othent JS SDK

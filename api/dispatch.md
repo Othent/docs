@@ -9,12 +9,14 @@ best for smaller datas and contract interactions. If the bundled transaction can
 base layer transaction. The function returns the [result](dispatch.md#dispatch-result) of the API call.
 
 {% hint style="warning" %}
-**Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
+{% endhint %}
 
-**Note:** If you are trying to sign a larger piece of data (> 5 MB), make sure to notify the user to not switch / close
+{% hint style="info" %}
+**Tip:** If you are trying to sign a larger piece of data (> 5 MB), make sure to notify the user to not switch / close
 the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
 
-**Note:** The function uses the default bundler node, or the one passed as an option. Consider using the
+**Tip:** The function uses the default bundler node, or the one passed as an option. Consider using the
 [`signDataItem()`](sign-dataitem.md) function to create and sign a `DataItem` and manually send it to a custom bundler.
 {% endhint %}
 

@@ -19,6 +19,10 @@ disconnect(): Promise<void>;
 ## Example usage
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
 // The user signed in/up before:
 await othent.connect();
 

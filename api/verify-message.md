@@ -57,6 +57,9 @@ A `Promise` containing `true` if the signature was verified successfully, or `fa
 ## Example usage
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
@@ -90,6 +93,9 @@ Below is the JavaScript (TypeScript) example implementation with the
 [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web\_Crypto\_API), using `SHA-256` hashing:
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

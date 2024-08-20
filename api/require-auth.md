@@ -41,11 +41,19 @@ requireAuth(): Promise<void>;
 ## Example usage
 
 ```ts
-const handleDispatchTx = () => {
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
+// ...
+
+const storeSecret = async (key: string, plaintext: string) => {
     // Make sure the user is authenticated, or prompt them to authenticate:
     await othent.requireAuth();
 
-    // Dispatch a transaction (requires being authenticated):
-    await othent.sign(tx);
+    // Now we can call other functions from Othent:
+    const encryptedData = await othent.encrypt(plaintext);
+
+    localStorage.set(key, encryptedData);
 }
 ```

@@ -31,6 +31,10 @@ A `Promise` containing an object that maps each wallet addresses of the active u
 ## Example usage
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
 

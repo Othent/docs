@@ -76,13 +76,15 @@ interface UploadedTransactionData {
 
 ```ts
 import Arweave from "arweave";
+import { Othent } from "@othent/kms";
 
-// Create an Arweave client:
 const arweave = new Arweave({
   host: "ar-io.net",
   port: 443,
   protocol: "https"
 });
+
+const othent = new Othent({ ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

@@ -32,6 +32,10 @@ A `Promise` containing all the user details of the active user, or `null` if the
 ## Example usage
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
 

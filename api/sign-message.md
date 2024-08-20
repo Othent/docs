@@ -54,6 +54,10 @@ A `Promise` containing an `Uint8Array` with the signed hash of the data, which c
 ## Example usage
 
 ```ts
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
 

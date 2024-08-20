@@ -93,16 +93,21 @@ A `Promise` with the `UserDetails` or `null` if the log in modal was closed, cou
 ## Example usage
 
 ```ts
-// connect to the extension
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
+
 await othent.connect(
-  // all permissions are implicit regardless
+  // All permissions are implicit regardless:
   undefined
-  // provide some extra info for our app
+
+  // Provide some extra info for our app, if not provided to the constructor:
   {
     name: "Super Cool App",
     version: "1.0.12"
   },
-  // custom gateway
+  
+  // Custom gateway, if not provided to the constructor:
   {
     host: "g8way.io",
     port: 443,

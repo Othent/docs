@@ -139,7 +139,7 @@ Once the transaction is signed, you can safely post it to the network.
 ## Indirect Usage (through ArweaveKit)
 
 {% hint style="warning" %}
-We are still working on this. We'll update the documentation soon.
+TODO: We are still working on this. We'll update the documentation soon.
 {% endhint %}
 
 ## Direct Usage (through `Othent` instance)

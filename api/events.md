@@ -12,28 +12,39 @@ Additionally, `addEventListener()` returns a cleanup function that, when called,
 ## `auth` Event:
 
 ```ts
-const othent = new Othent({ throwErrors: false });
+import { Othent } from "@othent/kms";
+
+const othent = new Othent({ ... });
 
 othent.addEventListener("auth", (userDetails: UserDetails | null, isAuthenticated: boolean) => {
   // If `userDetails != null` and `isAuthenticated = false`, this value comes from the cache.
 });
 
-othent.connect();
+await othent.connect();
 ```
 
 ## `error` Event:
 
 ```ts
+import { Othent } from "@othent/kms";
+
 const othent = new Othent({ throwErrors: false });
 
 othent.addEventListener("error", (err) => {
   // TODO: Handle error...
 });
 
-// This will throw an error:
-othent.sign({ foo: "bar" } as unknown as Transaction);
+// ...
+
+const throwAnError = async () => {
+  // Make sure the user is authenticated, or prompt them to authenticate:
+  await othent.requireAuth();
+
+  // This will throw an error:
+  await othent.sign({ foo: "bar" } as unknown as Transaction);
+}
 ```
 
 Note that `error` type events are only fired when you set [`throwErrors = false`](./constructor.md).
 
-See [Error Handling](#error-handling) above.
+See [Error Handling](#error-handling).

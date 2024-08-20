@@ -15,7 +15,7 @@ However, note a current limitation of using _Othent_ is that the only available 
 ## API
 
 ```ts
-decrypt(ciphertext: BinaryDataType): Promise<string>;
+decrypt(ciphertext: BinaryDataType): Promise<Uint8Array>;
 ```
 
 ### `ciphertext: BinaryDataType`

@@ -22,16 +22,11 @@ into an [`arbundles`](https://npmjs.com/arbundles) `DataItem` instance as seen i
 signDataItem(dataItem: DataItem): Promise<ArrayBufferLike>;
 ```
 
-| Argument   | Type                                     | Description                   |
-| ---------- | ---------------------------------------- | ----------------------------- |
-| `dataItem` | [`DataItem`](sign-dataitem.md#data-item) | The bundled data item to sign |
+### `dataItem: DataItem`
 
+The bundled data item's data (not [`arbundle`'s `DateItem` instance](https://github.com/Irys-xyz/arbundles)) to sign.
 
-## Data item
-
-This function requires a valid data item object, like so:
-
-```typescript
+```ts
 interface DataItem {
     data: string | Uint8Array;
     target?: string;
@@ -42,6 +37,10 @@ interface DataItem {
     }[];
 }
 ```
+
+### `return Promise<ArrayBufferLike>`
+
+A `Promise` containing an `ArrayBuffer` with the `DataItem`'s signed data, which can be loaded into a [`arbundle`'s `DateItem` instance](https://github.com/Irys-xyz/arbundles) for validation.
 
 ## Example usage
 
@@ -63,12 +62,17 @@ const signedDataItemBuffer = await othent.signDataItem({
 // Load the result into a DataItem instance:
 const dataItem = new DataItem(signedDataItemBuffer);
 
-// Submit it to a bundler:
-await fetch(`https://node2.bundlr.network/tx`, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/octet-stream"
-    },
-    body: dataItem.getRaw()
-});
+// Verify the DataItem's signature:
+const isValid = await dataItem.isValid();
+
+if (isValid) {
+    // Submit it to a bundler:
+    await fetch(`https://node2.bundlr.network/tx`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/octet-stream"
+        },
+        body: dataItem.getRaw()
+    });
+}
 ```

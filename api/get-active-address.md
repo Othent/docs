@@ -14,7 +14,9 @@ The wallet address is derived from the corresponding public key (see [`getActive
 getActiveAddress(): Promise<B64UrlString | "">;
 ```
 
-**Returns:** A Promise with the wallet address (Base64 URL-encoded `string`) of the active users, or `""` if the user
+### `return Promise<B64UrlString | "">`
+
+A `Promise` with the wallet address (Base64 URL-encoded `string`) of the active users, or an empty `string` if the user
 is not authenticated.
 
 ## Example usage

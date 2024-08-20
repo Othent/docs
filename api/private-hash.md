@@ -19,10 +19,23 @@ privateHash(
 ): Promise<Uint8Array>;
 ```
 
-| Argument  | Type                                            | Description                |
-| --------- | ----------------------------------------------- | -------------------------- |
-| `data`    | `ArrayBuffer`                                   | The data to hash           |
-| `options` | [`SignMessageOptions`](sign-message.md#options) | Configuration for the hash |
+### `data: string | BinaryDataType`
+
+The data to hash.
+
+### `options?: SignMessageOptions`
+
+The `options` argument is optional. If it is not provided, the extension will use the `SHA-256` hash algorithm.
+
+```ts
+interface SignMessageOptions {
+  hashAlgorithm?: "SHA-256" | "SHA-384" | "SHA-512";
+}
+```
+
+### `return Promise<Uint8Array>`
+
+A `Promise` containing a `Uint8Array` with the hashed data.
 
 ## Example usage
 

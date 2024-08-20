@@ -23,8 +23,10 @@ will always return exactly one wallet address.
 getWalletNames(): Promise<Record<B64UrlString, string>>;
 ```
 
-**Returns:** A Promise containing an object that maps each wallet addresses of the active user to their nickname, or
-`{}` if the user is not authenticated.
+### `return Promise<Record<B64UrlString, string>>`
+
+A `Promise` containing an object that maps each wallet addresses of the active user to their nickname, or an empty
+`Object` if the user is not authenticated.
 
 ## Example usage
 

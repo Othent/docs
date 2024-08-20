@@ -6,7 +6,7 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
 
 <figure>
     <img src=".gitbook/assets/Group 104.png" alt="">
-    <figcaption>_Othent_ is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
+    <figcaption>Othent is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
 </figure>
 
 _Othent_ is a service to manage Arweave custodial wallets backend by [Auth0](https://auth0.com/) and
@@ -44,8 +44,8 @@ can easily have access to an Arweave web3 wallet with their existing credentials
 </figure>
 
 **Existing private key wallets to onboard through social logins:**
-_
-Othent_ can be integrated by wallets and dApps to offer social logins and alternative authentications like API keys in
+
+_Othent_ can be integrated by wallets and dApps to offer social logins and alternative authentications like API keys in
 addition to self-custodial private keys. This can make the onboarding process smoother for users and enhance their
 reach to Web2.
 
@@ -112,6 +112,10 @@ signing.
 _Othent_ doesn't offer a Public Key Directory (PDK), so if you need to verify third-party signatures, you'll have to get
 the corresponding public keys from the original signer.
 
+**Subsidized transactions:**
+
+Coming soon through [`@othent/pay`](https://www.npmjs.com/package/@othent/pay).
+
 **Automatable money and smart contract wallets:**
 
 _Othent_ does not provide smart contract wallets, it's just a custodial wallet that manages the keys in behalf of its
@@ -128,67 +132,90 @@ giving _Othent_ full control of their (custodial) wallets.
 
 ## 🌎 How does Othent work?
 
-### **The Current Authentication Method:**&#x20;
-
-Blockchains need private keys to ensure secure ownership and control over individual accounts and transactions. Private
-keys play a crucial role in cryptography-based systems by providing a means of authentication and digital signature:
-
-They are used to verify the identity of the owner and authorize transactions on the blockchain. Without private keys,
-anyone could falsely claim ownership of someone else's assets or manipulate transactions. By requiring private keys,
-blockchains maintain the integrity and security of the decentralized ledger, enabling individuals to securely manage
-their digital assets and participate in trustless transactions.
-
 <figure>
   <img src=".gitbook/assets/Group 100.png" alt="">
-  <figcaption>TODO: Move to the first section</figcaption>
+  <figcaption>Signing and verifying transactions using a private and public key, respectively.</figcaption>
 </figure>
+
+Blockchains need private keys to ensure secure ownership and control over individual accounts and transactions. Private
+keys play a crucial role in cryptography-based systems by providing a means of authentication and digital signature,
+while public keys are used to identify the owner and verify transactions and other cryptographic operations on the
+blockchain.
+
+For instance, to authorize and submit a transaction to, or permanently store data on the Arweave network, it first has
+to be signed using the user's private key, and it can later be verified by other users using the signer's public key. 
+
+Without private keys, anyone could falsely claim ownership of someone else's assets or manipulate transactions. By
+requiring private keys, blockchains maintain the integrity and security of the decentralized ledger, enabling
+individuals to securely manage their digital assets and participate in trustless transactions.
 
 Therefore, storing private keys securely and keeping them secret is critical to protect your assets and data.
 
-> _Othent_ uses Smartweave contracts and the Arweave blockchain for secure transactions and permanent data storage.Each user has their own unique contract accessed only by their unique JWT authentication, ensuring secure transactions between contracts.&#x20;
-> 
-> Data uploads to Arweave are verified through data hashes embedded in JWTs. _Othent_ provides a simple and secure platform for transactions and data storage, prioritising user security and privacy.
+_Othent_ provides a simple and secure platform for transactions and data storage, prioritizing user security and privacy.
+
+### Othent under the hood
+
+<figure>
+  <img src=".gitbook/assets/Group 102.png" alt="">
+  <figcaption>TODO: UPDATE</figcaption>
+</figure>
+
+_Othent_ creates an Arweave wallet (an address plus its corresponding public-private key pair) for every account, either
+email-password or social login, and stores it in Google KMS.
+
+When users wants to do any cryptographic operation with their keys (sign a transaction or encrypt/decrypt/hash some
+data), they request an access token from Auth0, which contains a hash of the data to be used (the transaction or the
+dat to be encrypted/decrypted/hashed), and sends that, along with the data, to _Othent_'s API.
+
+_Othent_'s API can then use Auth0's JWT token to authenticate the user and perform the operation they requested. That 
+access token is then invalidated. This offers a tamper and reply proof system.
+
+## 🥊 Othent vs Alternatives
 
 <figure>
   <img src=".gitbook/assets/Group 101 (1).png" alt="">
   <figcaption></figcaption>
 </figure>
 
-**Single private key:**
+**Non-custodial / Self-custodial wallet (e.g. ArConnect):**
 
-A single private key has certain negatives associated with it. Firstly, there is a lack of redundancy, meaning that if the single private key is lost or compromised, there is no backup or alternative to recover the associated cryptocurrency funds. Secondly, a single private key is vulnerable to theft. If the key is stolen or accessed by unauthorised individuals, they gain complete control over the associated cryptocurrency funds. Lastly, managing a single private key requires careful handling, as a simple mistake such as misplacing or forgetting the key can lead to permanent loss of access to the funds.
+Non-custodial wallets / private keys has certain negatives associated with them:
 
-**Custodial private key:**
+- Firstly, there is a lack of redundancy, meaning that if the single private key is lost or compromised, there is no
+  backup or alternative to recover the associated cryptocurrency funds.
+  
+- Secondly, a single private key is vulnerable to theft. If the key is stolen or accessed by unauthorised individuals,
+  they gain complete control over the associated cryptocurrency funds.
+  
+- Lastly, managing a single private key requires careful handling, as a simple mistake such as misplacing or forgetting
+  the key can lead to permanent loss of access to the funds.
 
-Custodial private keys have their own set of drawbacks. Users who entrust their private key to a custodian relinquish control over their funds, as they must rely on the custodian's policies and procedures. This limits their autonomy in managing their own cryptocurrency assets. Additionally, there are security risks involved with custodial private keys. Despite efforts by custodians to implement robust security measures, there is always a risk of hacking or internal breaches that could compromise the custodial private key and result in the loss of funds.
+**Custodial wallet (e.g. Othent):**
 
-**MPC private key:**
+Users who entrust their wallets / private keys to a custodian relinquish control over their funds, as they must rely on
+the custodian's policies and procedures. This limits their autonomy in managing their own cryptocurrency assets, but
+also allows them to use traditional authentication methods such as email and password, 2FA, social login,
+password/account recovery...
+  
+However, there are still security risks involved with custodial private keys. Despite efforts by custodians to
+implement robust security measures, there is always a risk of hacking or internal breaches that could compromise the
+custodial private key and result in the loss of funds.
 
-MPC (Multi-Party Computation) private keys come with their own challenges. Firstly, there is added complexity compared to traditional single private keys. The setup and infrastructure required for MPC can be more intricate, making it harder for average users to understand and implement. Secondly, there is a potential for coordination failure. MPC relies on the cooperation of multiple parties to compute and manage the private key securely.&#x20;
+**MPC wallet:**
 
-Any failure or compromise in the MPC protocol or the participating parties could result in the loss or exposure of the private key and the associated funds. Lastly, MPC private keys may have a performance overhead, as they often require higher computational resources compared to single private keys, which can impact the speed and efficiency of transactions.
+MPC (Multi-Party Computation) wallets / private keys come with their own challenges:
 
-<figure><img src=".gitbook/assets/Group 102.png" alt=""><figcaption></figcaption></figure>
+- Firstly, there is added complexity compared to traditional single private keys. The setup and infrastructure required
+  for MPC can be more intricate, making it harder for average users to understand and implement.
 
-> ### **Othent Smart Contract Transactions:**&#x20;
-> 
-> _Othent_ utilizes smart contracts to enable secure and direct transactions between different contracts. Each user is assigned a unique smart contract that can only be accessed through a social login JSON Web Token (JWT). Here's an explanation of the key components and processes involved:
-> 
-> a. JSON Web Token (JWT): A JSON Web Token (JWT) is a compact and URL-safe means of representing claims between two parties. In Othent, a JWT serves as a secure authentication mechanism for accessing user-specific smart contracts. It is issued by the web2 platform upon successful social login and contains encoded information about the users desired transaction. A JWTs consist of three parts: header, payload, and signature. The header specifies the token type and signing algorithm, the payload contains the user-specific claims, and the signature ensures the integrity of the token. _Othent_ then adds the users desired transaction metadata in the payload, thus allowing their contract to verify the users need.
-> 
-> b. User Smart Contracts: For each user, _Othent_ deploys a unique smart contract. This contract is accessible only through the associated users JWT. The smart contract stores relevant user information such as their web2 ID and provides functionalities to facilitate contract to contract transactions. Users can interact with their respective contracts by signing transactions using their desired web2 service into a JWT.
-> 
-> c. Contract to Contract Transactions: With the use of their JWT, users can initiate transactions between different smart contracts. These transactions are executed securely and transparently, _Othent_ ensures the integrity and authenticity of these transactions through RS256 JWTs.
-> 
-> ### **Othent Data Transactions to Arweave:**&#x20;
-> 
-> _Othent_ also supports data uploads to the Arweave blockchain, a decentralised storage network. This feature allows users to store data securely and retrieve it whenever needed. Here's an overview of the process:
-> 
-> a. Data Hashing: Before uploading data to Arweave, _Othent_ generates a hash of the data. This hash acts as a unique identifier for the data and ensures its integrity. The hashing algorithm used by _Othent_ follows industry best practices to generate secure and collision-resistant hashes.
-> 
-> b. JWT Integration: To establish a verifiable link between a user and the uploaded data, _Othent_ embeds the data hash within the user's JWT. This inclusion ensures that the user has authorised the data upload and enables easy verification of the transaction.
-> 
-> c. Transaction Tagging: _Othent_ includes the JWT, containing the data hash, as a tag within the Arweave transaction. This allows anyone with access to the transaction to validate that the user has signed off on the data upload. By combining the benefits of blockchain and cryptographic techniques, _Othent_ enhances data integrity and transparency.
+- Secondly, there is a potential for coordination failure. MPC relies on the cooperation of multiple parties to compute
+  and manage the private key securely.
+
+  Any failure or compromise in the MPC protocol or the participating parties could result in the loss or exposure of the
+  private key and the associated funds.
+
+- Lastly, MPC private keys may have a performance overhead, as they often require higher computational resources
+  compared to single private keys, which can impact the speed and efficiency of transactions.
 
 ## 🧑‍⚖️ License
 

@@ -34,26 +34,9 @@ connect(
 ): Promise<UserDetails | null>;
 ```
 
-| Argument      | Type                                                       | Description                                                                       |
-| ------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `permissions` | [`Array<PermissionType>`](connect.md#permissions)          | An array of permission to request from the user (at least one has to be included) |
-| `appInfo?`    | [`AppInfo`](connect.md#additional-application-information) | Additional information about the app                                              |
-| `gateway?`    | [`Gateway`](connect.md#custom-gateway-config)              | Custom gateway config                                                             |
+### `permissions?: PermissionType[]`
 
-**Returns:** A Promise with the `UserDetails` or `null` if the log in modal was closed, could not even be opened or authentication failed.
-
-{% hint style="info" %}
-The `appInfo` argument is optional. If it is not provided, the SDK will use the `appInfo` provided when you instantiated it.
-{% endhint %}
-
-{% hint style="info" %}
-The `gateway` argument is optional. If it is not provided, the SDK will use the default `arweave.net` gateway.
-{% endhint %}
-
-## Permissions
-
-These are all the permissions Othent implicitly requires from the user for each interaction that involves the usage of
-their wallet:
+An array of permission to request from the user. Note _Othent_ implicitly requires all permissions:
 
 | Permission              | Description                                                             |
 | ----------------------- | ----------------------------------------------------------------------- |
@@ -67,33 +50,45 @@ their wallet:
 | `ACCESS_ARWEAVE_CONFIG` | Enable the app to access the current gateway config                     |
 | `DISPATCH`              | Allow the app to dispatch a transaction (bundle or base layer)          |
 
-## Additional application information
+Passing anything else will throw an error, so only `undefined` or an array with all permissions are valid.
 
-You can provide your application's name and version to the SDK. These two values are required when instantiating the SDK
-and will be added as tags (`App-Version: <appVersion>` and `App-Version: <appVersion>`, respectively) to any transaction
-signed or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+### `appInfo?: AppInfo`
 
+You must provide your application's name and version, and optionally logo, to the SDK when instantiating it. These
+values can also be changed when calling `connect()`, to make _Othent_ compatible with projects using _ArConnect_.
+
+The name and version will be added as tags (`App-Version: <appVersion>` and `App-Version: <appVersion>`, respectively)
+to any transaction signed or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`. The logo is optional
+and not used for now.
 
 ```ts
 interface AppInfo {
-  name?: string;     // optional application name
-  version?: string;  // optional application version
+  name: string;
+  version: string;
+  logo?: string;
 }
 ```
 
-## Custom gateway config
+### `gateway?: GatewayConfig`
 
 If your application requires the usage of a special gateway or you want to test with an
 [ArLocal](https://github.com/textury/arlocal) testnet gateway, you'll have to provide some information about it when
 connecting to Othent's SDK.
 
+You can set this value when instantiating `Othent` and also change it when calling `connect()`, to make _Othent_
+compatible with projects using _ArConnect_.
+
 ```ts
-interface Gateway {
+interface GatewayConfig {
   host: string;
   port: number;
   protocol: "http" | "https";
 }
 ```
+
+### `return Promise<UserDetails | null>`
+
+A `Promise` with the `UserDetails` or `null` if the log in modal was closed, could not even be opened or authentication failed.
 
 ## Example usage
 

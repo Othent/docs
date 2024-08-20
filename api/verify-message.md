@@ -12,12 +12,6 @@ either from Othent or from any other wallet such as ArConnect.
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** The `publicKey` argument is optional, if it is not provided, the extension will use the active user's public
-key. You might only need this if the message to be verified was not made by the authenticated user.
-
-**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
-options (default hash algorithm: `SHA-256`) to sign the data.
-
 **Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
 {% endhint %}
 
@@ -28,16 +22,37 @@ verifyMessage(
   data: string | BinaryDataType,
   signature: string | BinaryDataType,
   publicKey?: B64UrlString,
-  options: SignMessageOptions = { hashAlgorithm: "SHA-256" },
+  options: SignMessageOptions,
 ): Promise<boolean>;
 ```
 
-| Argument     | Type                                            | Description                                                                                                     |
-| ------------ | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `data`       | `ArrayBuffer`                                   | The data to verify the signature for                                                                            |
-| `signature`  | `ArrayBuffer \| string`                         | The signature to validate                                                                                       |
-| `publicKey?` | `string`                                        | Arweave wallet `JWK.n` field, transaction owner field or [public key from ArConnect](get-active-public-key.md). |
-| `options?`   | [`SignMessageOptions`](sign-message.md#options) | Configuration for the signature                                                                                 |
+### `data: string | BinaryDataType`
+
+The data to verify the signature for.
+
+### `signature: string | BinaryDataType`
+
+The signature to validate.
+
+### `publicKey?: B64UrlString`
+
+The `publicKey` argument is optional. If it is not provided, the extension will use the currently authenticated user's
+public key. You might only need this if the message to be verified was not made by the authenticated user. In that case,
+this is the Arweave wallet `JWK.n` field or transaction owner field.
+
+### `options: SignMessageOptions`
+
+The `options` argument is optional. If it is not provided, the extension will use the `SHA-256` hash algorithm.
+
+```ts
+interface SignMessageOptions {
+  hashAlgorithm?: "SHA-256" | "SHA-384" | "SHA-512";
+}
+```
+
+### `return Promise<boolean>`
+
+A `Promise` containing `true` if the signature was verified successfully, or `false` otherwise.
 
 ## Example usage
 

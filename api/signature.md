@@ -32,21 +32,23 @@ caused by this change.
 ~~**Note:** Not to be confused with the~~ [~~`sign()`~~](sign.md) ~~function that is created to sign Arweave transactions.~~
 {% endhint %}
 
-## API
+## ~~API~~
 
 ```ts
 signature(data: string | BinaryDataType): Promise<Uint8Array>;
 ```
 
-| Argument        | Type                                                                                                                                                                                                                                                                                                                                                         | Description                                                                            |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| ~~`data`~~      | [~~`ArrayBuffer`~~](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/ArrayBuffer)~~,~~ [~~`TypedArray`~~](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/TypedArray) ~~or~~ [~~`DataView`~~](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/DataView) | ~~The encrypted data to be signed with the user's private key~~                        |
-| ~~`algorithm`~~ | [~~`RsaPssParams`~~](https://developer.mozilla.org/en-US/docs/Web/API/RsaPssParams)~~, `AesCmacParams` or~~ [~~`EcdsaParams`~~](https://developer.mozilla.org/en-US/docs/Web/API/EcdsaParams)                                                                                                                                                                | ~~An object specifying the algorithm to be used and any extra parameters if required~~ |
+### ~~`data: string | BinaryDataType`~~
+
+~~The data to be signed with the user's private key.~~ 
+
+### ~~`return Promise<Uint8Array>`~~
+
+ ~~A `Promise` containing a `Uint8Array` with the signed data.~~ 
 
 ## ~~Example usage~~
 
 ```ts
-
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
 

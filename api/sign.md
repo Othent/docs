@@ -4,13 +4,8 @@ description: Othent JS SDK sign() function
 
 # Sign Transaction
 
-TODO: Maybe this should be mentioned in the How it works section, not here:
-
-To submit a transaction to the Arweave Network, it first has to be signed using a private key. Othent creates a private
-key / Arweave wallet for every account and stores it in Google KMS. The wallet associated with the active user account
-is used to sign transactions using the `sign()` function.
-
-The `sign()` function is meant to replicate the behavior of the `transactions.sign()` function of
+The `sign()` function signs an Arweave [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) using the
+current user's private key. It's meant to replicate the behavior of the `transactions.sign()` function of
 [`arweave-js`](https://github.com/arweaveTeam/arweave-js#sign-a-transaction), but instead of mutating the transaction
 object, it returns a new and signed transaction instance.
 
@@ -18,7 +13,10 @@ object, it returns a new and signed transaction instance.
 **Tip:** A better alternative to this function is using the
 [`arweave-js`](https://github.com/arweaveTeam/arweave-js#sign-a-transaction) `transactions.sign()` instead. Just omit
 the second parameter (`JWK` key) when calling the method, and
-[`arweave-js`](https://github.com/arweaveTeam/arweave-js#sign-a-transaction) will automatically use `Othent`.
+[`arweave-js`](https://github.com/arweaveTeam/arweave-js#sign-a-transaction) will automatically use `Othent` (if it was
+instantiated with `inject = true`).
+
+See [Indirect Usage (through `arweave-js`)](./intro.md#indirect-usage-through-arweave-js)
 
 **Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 
@@ -26,21 +24,19 @@ the second parameter (`JWK` key) when calling the method, and
 the browser tab. Larger transactions are split into chunks in the background and will take longer to sign.
 {% endhint %}
 
-TODO: Right now we actually mutate the same transaction.
-
-TODO: Check if we can make Othent work like in the first hint.
-
 ## API
 
 ```ts
 sign(transaction: Transaction): Promise<Transaction>;
 ```
 
-| Argument      | Type                                                                                                                     | Description                                                  |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| `transaction` | [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions)                                                  | A valid Arweave transaction instance (**without a keyfile**) |
+### `transaction: Transaction`
 
-**Returns:** A Promise containing a new signed `Transaction` instance.
+A valid Arweave [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) instance, **without a keyfile**.
+
+### `return Promise<Transaction>`
+
+A `Promise` containing a new signed [`Transaction`](https://github.com/arweaveTeam/arweave-js#transactions) instance.
 
 ## Example usage
 

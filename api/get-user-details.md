@@ -25,7 +25,9 @@ Returns an object with all the user details (`UserDetails`) of the active (authe
 getUserDetails(): Promise<UserDetails | null>;
 ```
 
-**Returns:** A Promise containing all the user details of the active user, or `null` if the user is not authenticated.
+### `return Promise<UserDetails | null>`
+
+A `Promise` containing all the user details of the active user, or `null` if the user is not authenticated.
 
 ## Example usage
 

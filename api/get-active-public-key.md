@@ -12,8 +12,10 @@ Returns the public key (`jwk.n` field) associated with the active (authenticated
 getActivePublicKey(): Promise<B64UrlString | "">;
 ```
 
-**Returns:** A Promise with the owner public key (`jwk.n` field, as a Base64 URL-encoded `string`) of the active
-(authenticated) user, or `""` if the user is not authenticated.
+### `return Promise<B64UrlString | "">`
+
+A `Promise` with the owner public key (`jwk.n` field, as a Base64 URL-encoded `string`) of the active (authenticated)
+user, or an empty `string` if the user is not authenticated.
 
 ## Example usage
 

@@ -11,8 +11,8 @@ using the active (authenticated) user's private key.
 **Note:** This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 
 **Note**: This function should only be used to allow data validation. It cannot be used for on-chain transactions,
-interactions or bundles, for security reasons. Consider implementing [`sign()`](sign.md),
-[`signDataItem()`](sign-dataitem.md) or [dispatch()](dispatch.md).
+interactions or bundles, for security reasons. Consider using [`sign()`](sign.md),
+[`signDataItem()`](sign-dataitem.md) or [dispatch()](dispatch.md) instead.
 
 **Note**: The function first hashes the input data for security reasons. We recommend using the built in
 [`verifyMessage()`](verify-message.md) function to validate the signature, or hashing the data the same way, before
@@ -20,9 +20,6 @@ validation ([example](verify-message.md#verification-without-arconnect)).
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** The `options` argument is optional, if it is not provided, the extension will use the default signature
-options (default hash algorithm: `SHA-256`) to sign the data.
-
 **Note:** This function's implementation is compatible with ArConnect's `signMessage()` and `verifyMessage()`'s.
 {% endhint %}
 
@@ -35,25 +32,28 @@ signMessage(
 ): Promise<Uint8Array>;
 ```
 
-| Argument   | Type                                            | Description                            |
-| ---------- | ----------------------------------------------- | -------------------------------------- |
-| `data`     | `ArrayBuffer`                                   | The data to generate the signature for |
-| `options?` | [`SignMessageOptions`](sign-message.md#options) | Configuration for the signature        |
+### `data: string | BinaryDataType`
 
-## Options
+The data to generate the signature for.
 
-Currently ArConnect allows you to customize the hash algorithm (`SHA-256` by default):
+### `options?: SignMessageOptions`
 
-```typescript
-export interface SignMessageOptions {
+The `options` argument is optional. If it is not provided, the extension will use the `SHA-256` hash algorithm.
+
+```ts
+interface SignMessageOptions {
   hashAlgorithm?: "SHA-256" | "SHA-384" | "SHA-512";
 }
 ```
 
+### `return Promise<Uint8Array>`
+
+A `Promise` containing an `Uint8Array` with the signed hash of the data, which can be verified with
+[`Othent.verifyMessage`](./verify-message.md).
+
 ## Example usage
 
 ```ts
-
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
 

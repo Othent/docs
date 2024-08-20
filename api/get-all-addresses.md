@@ -17,7 +17,9 @@ will always return exactly one wallet address.
 getAllAddresses(): Promise<B64UrlString[]>;
 ```
 
-**Returns:** A Promise with an array of all wallet addresses of the active (authenticated) user, or `[]` if the user is
+### `return Promise<B64UrlString[]>`
+
+A `Promise` with an array of all wallet addresses of the active (authenticated) user, or an empty `Array` if the user is
 no authenticated.
 
 ## Example usage

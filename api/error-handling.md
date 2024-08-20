@@ -29,8 +29,11 @@ const throwAnError = async () => {
 
 ## `throwErrors = false`
 
-Alternatively, you can set [`throwErrors = false`](./constructor.md) to let `Othent` wrap all functions in `try-catch`
-blocks automatically. In this case, you must subscribe to `error` events using the `addEventListener()` function:
+Alternatively, you can set [`throwErrors = false`](./constructor.md) to let `Othent` wrap all functions (except for
+[`startTabSynching`](./start-tab-synching.md) and [`completeConnectionAfterRedirect`](./complete-connection-after-redirect.md))
+in `try-catch` blocks automatically.
+
+In this case, you must subscribe to `error` events using the `addEventListener()` function:
 
 ```ts
 import { Othent } from "@othent/kms";

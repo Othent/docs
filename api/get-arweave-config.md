@@ -20,7 +20,7 @@ getArweaveConfig(): Promise<GatewayConfig>;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 const gatewayConfig = await othent.getArweaveConfig();
 

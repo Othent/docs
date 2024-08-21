@@ -5,12 +5,17 @@ description: Othent error handling.
 # Error Handling
 
 All public `Othent` methods, except for the getters and properties, can throw an error when called under various
-circumstances, so you should wrap them in `try-catch` blocks and handle errors appropriately:
+circumstances, so you should wrap them in `try-catch` blocks and handle errors appropriately.
+
+{% hint style="warning" %}
+Note throwing errors (`throwErrors: true`) is the default behavior unless you explicitly set `throwErrors: false`. Also
+note that, for simplicity, all the examples in the docs use `throwErrors: false`.
+{% endhint %}
 
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: true, ... });
 
 // ...
 
@@ -38,7 +43,7 @@ In this case, you must subscribe to `error` events using the `addEventListener()
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ throwErrors: false });
+const othent = new Othent({ appInfo, throwErrors: false });
 
 othent.addEventListener("error", (err) => {
   // TODO: Handle error...
@@ -61,4 +66,6 @@ const throwAnError = async () => {
 
 {% hint style="warning" %}
 TODO: We are still working on this. We'll update the documentation soon.
+
+Track the progress on this in this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/22).
 {% endhint %}

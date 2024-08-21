@@ -17,7 +17,7 @@ isAuthenticated: boolean;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // ...
 

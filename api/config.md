@@ -26,7 +26,7 @@ for additional details.
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 console.log("Current config =", othent.config);
 ```

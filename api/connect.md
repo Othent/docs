@@ -57,15 +57,34 @@ Passing anything else will throw an error, so only `undefined` or an array with 
 You must provide your application's name and version, and optionally logo, to the SDK when instantiating it. These
 values can also be changed when calling `connect()`, to make _Othent_ compatible with projects using _ArConnect_.
 
-The name and version will be added as tags (`App-Version: <appVersion>` and `App-Version: <appVersion>`, respectively)
-to any transaction signed or sent using `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`. The logo is optional
-and not used for now.
-
 ```ts
 interface AppInfo {
+  /**
+   * Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent using `Othent.sign`,
+   * `Othent.dispatch` or `Othent.signDataItem`.
+   */
   name: string;
+
+  /**
+   * Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed or sent using
+   * `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+   */
   version: string;
-  logo?: string;
+
+  /**
+   * Environment your app is currently running on (e.g. "development", "staging", "production", ...). This will add a
+   * tag `App-Env: <appEnv>` to any transaction signed or sent using `Othent.sign`, `Othent.dispatch` or
+   * `Othent.signDataItem`.
+   *
+   * If no value (empty `string`) is provided, this will automatically be set to `"development"` if
+   * `location.hostname = "localhost"` or `"production"` otherwise.
+   */
+  env: string;
+
+  /**
+   * Image with the logo of your app. Optional and not used for now.
+   */
+  logo?: UrlString;
 }
 ```
 
@@ -95,7 +114,7 @@ A `Promise` with the `UserDetails` or `null` if the log in modal was closed, cou
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 await othent.connect(
   // All permissions are implicit regardless:
@@ -104,7 +123,8 @@ await othent.connect(
   // Provide some extra info for our app, if not provided to the constructor:
   {
     name: "Super Cool App",
-    version: "1.0.12"
+    version: "1.0.12",
+    env: "production",
   },
   
   // Custom gateway, if not provided to the constructor:

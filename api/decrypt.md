@@ -31,7 +31,7 @@ A `Promise` containing the decrypted data as [`Uint8Array`](https://developer.mo
 ```typescript
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

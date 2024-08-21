@@ -10,8 +10,6 @@ _Othent_:
 
 - `autoConnect = "off"`: Calling `requireAuth()` will always throw an error if the user is not already authenticated.
 
-  TODO: Change this in the implementation, as this should not be the case in the public version of the function.
-
   In this case, you should check [`isAuthenticated`](is-authenticated.md) yourself, and call [`connect()`](connect.md)
   if the user is not authenticated, before attempting to perform any operation with _Othent_.
 
@@ -43,7 +41,7 @@ requireAuth(): Promise<void>;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // ...
 

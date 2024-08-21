@@ -21,7 +21,6 @@ The safety of our users' wallets is our top priority, so we've decided to deprec
 following the example of _ArConnect_ and _Arweave.app_ and we expect other Arweave wallets now or in the future to do
 the same. Eventually, this should be a smooth transition to the new alternatives. We are sorry for any inconveniences
 caused by this change.
-
 {% endhint %}
 
 ~~Often an application might need a piece of data that is created, authorized or confirmed by the owner of a wallet. The `signature()` function creates a cryptographical signature that allows applications to verify if a piece of data has been signed using a specific wallet. This function works similarly to the~~ [~~webcrypto sign API~~](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign)~~.~~
@@ -53,7 +52,7 @@ signature(data: string | BinaryDataType): Promise<Uint8Array>;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

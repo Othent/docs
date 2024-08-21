@@ -21,7 +21,7 @@ console.log(`Wallet Name = ${ Othent.walletName }`);
 
 // or:
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 console.log(`Wallet Name = ${ othent.walletName }`);
 ```

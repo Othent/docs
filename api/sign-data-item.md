@@ -8,6 +8,13 @@ The `signDataItem()` function allows you to create and sign a `DataItem` object,
 [`arbundles`](https://npmjs.com/arbundles). These data items can then be submitted to an
 [ANS-104](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md) compatible bundler.
 
+{% hint style="danger" %}
+**Bug:** Using `signDataItem()` and then calling `dataItem.isValid()` always returns `false`, so the example below will never
+submit the data item to a bundler.
+
+Track the progress on this bug in this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/23).
+{% endhint %}
+
 {% hint style="warning" %}
 This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}
@@ -50,7 +57,7 @@ A `Promise` containing an `ArrayBuffer` with the `DataItem`'s signed data, which
 import { DataItem } from "arbundles";
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

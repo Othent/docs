@@ -29,7 +29,7 @@ Next, simply instantiate `Othent` with [any options you need](./constructor.md):
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, ... });
 ```
 
 Additionally, if you set the [`persistLocalStorage`](./constructor.md#persistlocalstorage-boolean--othentstoragekey)
@@ -119,7 +119,7 @@ To use Othent library like this:
 ```ts
 import { Othent } from "@othent/kms";
 
-new Othent({ inject: true, ... });
+new Othent({ appInfo, inject: true, ... });
 
 // Create an Arweave transaction:
 const tx = await arweave.createTransaction({ /* Transaction options */ });
@@ -160,7 +160,7 @@ See here for a basic example:
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // [...]
 

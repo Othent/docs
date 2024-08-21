@@ -23,17 +23,40 @@ Take a look at the [TypeScript `OthentOptions` and `OthentConfig` interfaces on 
 for additional details.
 {% endhint %}
 
+// TODO: Update all docs examples to use try-catch and pass appInfo
+
 The following options are available:
 
-- #### `appName: string`
+- #### `appInfo: AppInfo`
 
-  Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent using `Othent.sign`,
-  `Othent.dispatch` or `Othent.signDataItem`.
+  Must / can contain the following properties:
 
-- #### `appVersion: string`
+  - `name: string`
 
-  Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed or sent using
-  `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+    Name of your app. This will add a tag `App-Name: <appName>` to any transaction signed or sent using `Othent.sign`,
+    `Othent.dispatch` or `Othent.signDataItem`.
+
+  - `version: string`
+
+    Version of your app. This will add a tag `App-Version: <appVersion>` to any transaction signed or sent using
+    `Othent.sign`, `Othent.dispatch` or `Othent.signDataItem`.
+
+  - `env: string`
+
+    Environment your app is currently running on (e.g. "development", "staging", "production", ...). This will add a
+    tag `App-Env: <appEnv>` to any transaction signed or sent using `Othent.sign`, `Othent.dispatch` or
+    `Othent.signDataItem`.
+
+    If no value (empty `string`) is provided, this will automatically be set to `"development"` if
+    `location.hostname = "localhost"` or `"production"` otherwise.
+
+  - `logo?: UrlString`
+
+    Image with the logo of your app. Optional and not used for now.
+
+- #### `gatewayConfig?: GatewayConfig`
+
+  Gateway config to connect to Arweave.
 
 - #### `persistCookie: boolean | OthentStorageKey`
   
@@ -52,10 +75,6 @@ The following options are available:
   
   Note the stored values will be removed / discarded if more than `refreshTokenExpirationMs` have passed, but will remain
   in `localStorage` until then or until the user logs out.
-
-- #### `gatewayConfig?: GatewayConfig`
-
-  Gateway config to connect to Arweave.
 
 - #### `initialUserDetails?: UserDetails | null`
 
@@ -88,6 +107,17 @@ The following options are available:
 inside Othent's Auth0 tenant to personalize the logic experience (premium subscription).
 
 - #### `auth0Strategy: Auth0Strategy`
+
+  _Default_: `refresh-tokens`
+
+  Possible values are:
+
+  - `refresh-tokens`: Use refresh tokens for authentication. This is the most secure and robust option.
+
+  - `cross-site-cookies`: Use cross-site cookies for authentication. Not recommended, as this won't work in browsers
+    that block cross-site cookies, such as Brave.
+
+- #### `auth0Cache: Auth0CacheType`
 
   _Default_: `memory`
 
@@ -157,10 +187,12 @@ inside Othent's Auth0 tenant to personalize the logic experience (premium subscr
 
   Possible values are:
 
-  - `eager`: Try to log in as soon as the page loads. This won't work when using `auth0Strategy = "refresh-memory"`.
+  - `eager`: Try to log in as soon as the page loads. This won't work when using `auth0Strategy = "refresh-tokens"` and
+    `auth0Cache = "memory"`.
 
-  - `lazy` Try to log in as soon as there's an attempt to perform any action through Othent. This will only work with
-    `auth0Strategy = "refresh-memory"` if the first action is preceded by a user action (e.g. click on a button).
+  - `lazy` Try to log in as soon as any `Othent` method is called. This will only work with
+    `auth0Strategy = "refresh-tokens"` and `auth0Cache = "memory"` if the calling the `Othent` method is preceded by a
+    user action (e.g. click on a button).
 
   - `off`: Do not log in automatically. Trying to perform any action through Othent before calling `connect()` or
     `requireAuth()` will result in an error.

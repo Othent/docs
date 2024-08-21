@@ -59,7 +59,7 @@ A `Promise` containing `true` if the signature was verified successfully, or `fa
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();
@@ -95,7 +95,7 @@ Below is the JavaScript (TypeScript) example implementation with the
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

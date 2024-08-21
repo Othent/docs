@@ -19,7 +19,7 @@ getPermissions(): Promise<PermissionType[]>;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 const permissions = await othent.getPermissions();
 

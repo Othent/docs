@@ -33,7 +33,7 @@ A `Promise` containing an object that maps each wallet addresses of the active u
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // Make sure the user is authenticated, or prompt them to authenticate:
 await othent.requireAuth();

@@ -14,7 +14,7 @@ Additionally, `addEventListener()` returns a cleanup function that, when called,
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 othent.addEventListener("auth", (userDetails: UserDetails | null, isAuthenticated: boolean) => {
   // If `userDetails != null` and `isAuthenticated = false`, this value comes from the cache.
@@ -28,7 +28,7 @@ await othent.connect();
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ throwErrors: false });
+const othent = new Othent({ appInfo, throwErrors: false });
 
 othent.addEventListener("error", (err) => {
   // TODO: Handle error...

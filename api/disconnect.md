@@ -21,7 +21,7 @@ disconnect(): Promise<void>;
 ```ts
 import { Othent } from "@othent/kms";
 
-const othent = new Othent({ ... });
+const othent = new Othent({ appInfo, throwErrors: false, ... });
 
 // The user signed in/up before:
 await othent.connect();

@@ -6,6 +6,22 @@ description: Othent JS SDK getUserDetails() function
 
 Returns an object with all the user details (`UserDetails`) of the active (authenticated) user account.
 
+{% hint style="warning" %}
+The value you get when calling `getUserDetails()` or when subscribing to the `auth` event before authenticating by
+calling `connect()` or `requireAuth()` (either manually or automatically by setting `autoConnect = "eager"`), will be
+(in this order of priority):
+
+- The value you pass as `initialUserDetails`, if any. 
+- The value stored in `localStorage`, if you set `persistLocalStorage`.
+- `null` otherwise.
+
+`@othent/kms` does not performs any type of validation when reading the user details from these sources, and therefore
+you should treat that data as untrusted and make sure you sanitize it appropriately.
+
+Failing to do that could result in your application being vulnerable to XSS if an attacker manages to tamper with these
+values.
+{% endhint %}
+
 ## API
 
 ```ts

@@ -136,7 +136,13 @@ which has been exposed at `window.arweaveWallet`, to sign the transaction in the
 
 Once the transaction is signed, you can safely post it to the network.
 
-## Indirect Usage (through ArweaveKit)
+## Indirect Usage (through Arweave Wallet Kit)
+
+[Arweave Wallet Kit](https://docs.arweavekit.com/wallets/wallet-kit) provides a set of React Hooks and Components for
+better interaction with Arweave wallets.
+
+Note, however, that there might be some limitations, like some methods like `signDataItem`, `signMessage` or
+`verifyMessage` not being (currently) available.
 
 {% hint style="warning" %}
 TODO: We are still working on this. We'll update the documentation soon.
@@ -158,11 +164,19 @@ To use Othent library like this:
 See here for a basic example:
 
 ```ts
-import { Othent } from "@othent/kms";
+import { Othent, AppInfo } from "@othent/kms";
+
+const appInfo: AppInfo = {
+  name: "My Awesome App",
+  version: "1.0.0",
+  env: "production",
+};
 
 const othent = new Othent({ appInfo, throwErrors: false, ... });
 
-// [...]
+othent.addEventLister("error", (err) => {
+  console.error(err);
+});
 
 await othent.connect();
 
@@ -172,5 +186,8 @@ const transaction = await arweave.createTransaction({
   data: imySecret,
 });
 
-await othent.dispatch(transaction);
+const result = await othent.dispatch(transaction);
+const transactionURL = `https://viewblock.io/arweave/tx/${result.id}`;
+
+console.log(transactionURL);
 ```

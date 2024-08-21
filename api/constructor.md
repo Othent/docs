@@ -23,8 +23,6 @@ Take a look at the [TypeScript `OthentOptions` and `OthentConfig` interfaces on 
 for additional details.
 {% endhint %}
 
-// TODO: Update all docs examples to use try-catch and pass appInfo
-
 The following options are available:
 
 - #### `appInfo: AppInfo`

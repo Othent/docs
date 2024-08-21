@@ -9,6 +9,7 @@
 * [Error Handling](api/error-handling.md)
 * [Binary Data Types Utils](api/binary-data-types-utils.md)
 * [TypeScript Types](api/typescript-types.md)
+* [Config Constants](api/config-constants.md)
 
 ## 🥪 JS SDK API
 

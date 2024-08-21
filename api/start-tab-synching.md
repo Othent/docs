@@ -30,6 +30,6 @@ const MyComponent = () => {
     return () => {
       cleanupFn();
     };
-  }, [othent])
+  }, [othent]);
 }
 ```

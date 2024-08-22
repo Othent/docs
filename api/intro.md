@@ -19,6 +19,10 @@ pnpm i @othent/kms
 yarn i @othent/kms
 ```
 
+{% hint style="warning" %}
+Make sure peer dependencies (`arweave`, `axios` and `warp-arbundles`) are also installed.
+{% endhint %}
+
 {% hint style="info" %}
 TypeScript types are included in the `@othent/kms` package. You can find an exhaustive list in
 [TypeScript Types](./typescript-types.md).

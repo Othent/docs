@@ -9,7 +9,7 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
     <figcaption>Othent is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
 </figure>
 
-_Othent_ is a service to manage Arweave custodial wallets backend by [Auth0](https://auth0.com/) and
+_Othent_ is a service to manage Arweave & ao custodial wallets backend by [Auth0](https://auth0.com/) and
 [Google Key Management Service](https://cloud.google.com/kms/docs/key-management-service), enabling access to blockchain
 networks using alternative methods beyond self-custodial private keys, making blockchain more widely accessible by
 customizing the authentication process.
@@ -34,7 +34,7 @@ by Auth0 using the users choice of traditional log in service, such as but not l
 - Apple
 
 We currently have support for 64 social connections, which is over 5B user log ins! Meaning over 5 billion people now
-can easily have access to an Arweave web3 wallet with their existing credentials.
+can easily have access to an Arweave & ao web3 wallet with their existing credentials.
 
 ## 🥗 Othent's Features
 
@@ -82,7 +82,7 @@ their password, they can simply reset it, just like they are used to.
 
 **Support for other blockchains:**
 
-At the moment, _Othent_ is only available on [the Arweave network](https://www.arweave.org/).
+At the moment, _Othent_ is only available on [the Arweave network](https://www.arweave.org/) and [ao network](https://ao.arweave.dev/).
 
 **Multiple addresses:**
 
@@ -119,7 +119,7 @@ Coming soon through [`@othent/pay`](https://www.npmjs.com/package/@othent/pay).
 **Automatable money and smart contract wallets:**
 
 _Othent_ does not provide smart contract wallets, it's just a custodial wallet that manages the keys in behalf of its
-users. Therefore, it doesn't currently support programmability oir transfer automation.
+users. Therefore, it doesn't currently support programmability or transfer automation.
 
 **Wallet functionality limitations:**
 

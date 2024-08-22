@@ -11,6 +11,12 @@ a current limitation of using _Othent_ is that the only available algorithm is R
 
 This is useful for applications such as private file storage apps or mail/messaging platforms.
 
+{% hint style="danger" %}
+**Limitation:** There's currently an 8KB limit in data size when using Othent, but this is currently being worked on.
+
+Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/30).
+{% endhint %}
+
 {% hint style="warning" %}
 This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}

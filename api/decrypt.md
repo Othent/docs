@@ -8,6 +8,12 @@ The `decrypt()` function allows applications to decrypt data that has been encry
 key, similarly to the [Web Crypto API's `decrypt()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt).
 However, note a current limitation of using _Othent_ is that the only available algorithm is RSA (`RSA-OAEP`).
 
+{% hint style="danger" %}
+**Limitation:** There's currently an 8KB limit in data size when using Othent, but this is currently being worked on.
+
+Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/30).
+{% endhint %}
+
 {% hint style="warning" %}
 This function assumes (and requires) a user is authenticated. See [`requireAuth()`](require-auth.md).
 {% endhint %}

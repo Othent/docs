@@ -12,7 +12,7 @@ The `signDataItem()` function allows you to create and sign a `DataItem` object,
 **Bug:** Using `signDataItem()` and then calling `dataItem.isValid()` always returns `false`, so the example below will never
 submit the data item to a bundler.
 
-Track the progress on this bug in this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/23).
+Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/23).
 {% endhint %}
 
 {% hint style="warning" %}

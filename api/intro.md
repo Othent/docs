@@ -65,8 +65,18 @@ To use Othent in `localhost` / development, you can use ports `3000` or `8081`.
 {% endhint %}
 
 {% hint style="warning" %}
-To use Othent in production, you'll have to reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5)
-to get your domain whitelisted.
+To use Othent in production in your own web2 domain, you'll have to reach out to the
+[Othent team on Discord](https://discord.gg/gWDmJep5) to get your domain whitelisted.
+
+However, if your dApp uses an [ArNS domain](https://arns.app/) instead of a regular web2 one, it will work automatically
+as long as you are using one of the following gateways to access it:
+
+- https://arweave.ar
+- https://arweave.net
+- https://ar-io.net
+- https://g8way.io/
+
+Otherwise, reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5) too.
 {% endhint %}
 
 ### React

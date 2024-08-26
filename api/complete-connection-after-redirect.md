@@ -5,7 +5,7 @@ description: Othent JS SDK completeConnectionAfterRedirect() function
 # Complete Connection After Redirect
 
 If and only if you set the [`auth0LogInMethod = "redirect"`](./constructor.md#auth0loginmethod-auth0loginmethod) option,
-users will be redirected to Auth0 to authenticate and then back to your application. When they land bank in your
+users will be redirected to Auth0 to authenticate and then back to your application. When they land back in your
 application, you must call `completeConnectionAfterRedirect()` to complete the authentication process.
 
 By default, `callbackUriWithParams = location.href`, if you environment supports it. Otherwise, you'll have to manually
@@ -20,6 +20,16 @@ completeConnectionAfterRedirect(
   callbackUriWithParams?: Auth0RedirectUriWithParams,
 ): Promise<UserDetails | null>;
 ```
+
+### `callbackUriWithParams?: Auth0RedirectUriWithParams`
+  
+_Default_: `location.href`
+
+URI with `code` and `state` params provided by Auth0.
+
+### `return Promise<UserDetails | null>`
+
+A `Promise` with the `UserDetails` or `null` if the log in modal was closed, could not even be opened or authentication failed.
 
 ## Example usage
 

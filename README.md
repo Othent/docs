@@ -5,18 +5,13 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
 # 👋 Welcome to Othent
 
 <figure>
-    <img src=".gitbook/assets/Group 104.png" alt="">
+    <img src=".gitbook/assets/othent.png" alt="">
     <figcaption>Othent is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
 </figure>
 
 _Othent_ is a service to manage Arweave & ao wallets backend by [Auth0](https://auth0.com/) and
 [Google Key Management Service](https://cloud.google.com/kms/docs/key-management-service), enabling access to blockchain
 networks and making blockchain more widely accessible by customizing the authentication process.
-
-<figure>
-    <img src=".gitbook/assets/Group 98.png" alt="">
-    <figcaption>TODO: UPDATE</figcaption>
-</figure>
 
 _Othent_ offers a powerful and user-friendly way for individuals and developers to access blockchain networks and create
 web3 applications. With its design and seamless integration with existing Web2 technologies, Othent is targeting the
@@ -38,8 +33,8 @@ can easily have access to an Arweave & ao web3 wallet with their existing creden
 ## 🥗 Othent's Features
 
 <figure>
-  <img src=".gitbook/assets/Group 108.png" alt="">
-  <figcaption></figcaption>
+  <img src=".gitbook/assets/web2-wallet.png" alt="">
+  <figcaption>Examples of some of the social logins Othent supports.</figcaption>
 </figure>
 
 **Onboard through social logins:**
@@ -137,7 +132,7 @@ automation.
 ## 🌎 How does Othent work?
 
 <figure>
-  <img src=".gitbook/assets/Group 100.png" alt="">
+  <img src=".gitbook/assets/key-pairs.png" alt="">
   <figcaption>Signing and verifying transactions using a private and public key, respectively.</figcaption>
 </figure>
 
@@ -160,8 +155,8 @@ _Othent_ provides a simple and secure platform for transactions and data storage
 ### Othent under the hood
 
 <figure>
-  <img src=".gitbook/assets/Group 102.png" alt="">
-  <figcaption>TODO: UPDATE</figcaption>
+  <img src=".gitbook/assets/transaction-flow-2.png" alt="">
+  <figcaption>Othent's transaction flow leveraging Google KMS and Auth0.</figcaption>
 </figure>
 
 _Othent_ creates an Arweave wallet (an address plus its corresponding public-private key pair) for every account, either
@@ -177,8 +172,8 @@ access token is then invalidated. This offers a tamper and reply proof system.
 ## 🥊 Othent vs Alternatives
 
 <figure>
-  <img src=".gitbook/assets/Group 101 (1).png" alt="">
-  <figcaption></figcaption>
+  <img src=".gitbook/assets/existing-key-storage-methods.png" alt="">
+  <figcaption>Wallet types or key storage / custody methods.</figcaption>
 </figure>
 
 **Non-custodial / Self-custodial wallet (e.g. ArConnect):**

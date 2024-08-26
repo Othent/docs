@@ -64,7 +64,7 @@ const MyComponent = () => {
 
 #### Development
 
-You must use `localhost:3000`, `localhost:5173` or `localhost:8081`.
+You must use `http://localhost:3000`, `http://localhost:5173` or `http://localhost:8081`.
 
 #### Production (web2 domain)
 

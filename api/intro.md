@@ -68,15 +68,25 @@ To use Othent in `localhost` / development, you can use ports `3000` or `8081`.
 To use Othent in production in your own web2 domain, you'll have to reach out to the
 [Othent team on Discord](https://discord.gg/gWDmJep5) to get your domain whitelisted.
 
-However, if your dApp uses an [ArNS domain](https://arns.app/) instead of a regular web2 one, it will work automatically
-as long as you are using one of the following gateways to access it:
+However, using the `ar://` protocol with a [ArNS domain](https://arns.app/), will already work as long as you use any of
+these gateways which are whitelisted:
 
 - https://arweave.ar
-- https://arweave.net
-- https://ar-io.net
-- https://g8way.io/
+- https://arweave.net / https://arweave.dev
+- https://ar-io.net / https://ar-io.dev
+- https://g8way.io
 
-Otherwise, reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5) too.
+Whitelisting a `ar://` URI is technically possible too, but:
+
+- Your dApp won't work for users using
+  [`AR.IO Wayfinder`](https://chromewebstore.google.com/detail/ario-wayfinder/hnhmeknhajanolcoihhkkaaimapnmgil) if they
+  are routed through a different non-whitelisted gateway.
+
+- You'll have to use your `ar://` URI as [`auth0RedirectURI`](./constructor.md#auth0redirecturi-auth0redirecturi--null)
+  and [`auth0ReturnToURI`](./constructor.md#auth0returntouri-auth0redirecturi--null), so, depending on your Othent
+  configuration, your users might be redirected to a different gateway after signing in / out.
+
+Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/32).
 {% endhint %}
 
 ### React

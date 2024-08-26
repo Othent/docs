@@ -84,15 +84,19 @@ whitelisted gateways:
 #### Production (`ar://` URI)
 
 {% hint style="danger" %}
-Whitelisting a `ar://` URI is technically possible too, but:
+Whitelisting a `ar://` URI is technically possible too, but due to the way
+[`AR.IO Wayfinder`](https://chromewebstore.google.com/detail/ario-wayfinder/hnhmeknhajanolcoihhkkaaimapnmgil) works,
+Othent won't work properly.
 
-- Your dApp won't work for users using
-  [`AR.IO Wayfinder`](https://chromewebstore.google.com/detail/ario-wayfinder/hnhmeknhajanolcoihhkkaaimapnmgil) if they
-  are routed through a different non-whitelisted gateway.
+While you can use your `ar://` URI as [`auth0RedirectURI`](./constructor.md#auth0redirecturi-auth0redirecturi--null) and
+[`auth0ReturnToURI`](./constructor.md#auth0returntouri-auth0redirecturi--null), that won't currently work as expected
+because request made from your dApp will never originate from your `ar://` domain, but from the gateway's domain
+[`AR.IO Wayfinder`](https://chromewebstore.google.com/detail/ario-wayfinder/hnhmeknhajanolcoihhkkaaimapnmgil) randomly
+picked.
 
-- You'll have to use your `ar://` URI as [`auth0RedirectURI`](./constructor.md#auth0redirecturi-auth0redirecturi--null)
-  and [`auth0ReturnToURI`](./constructor.md#auth0returntouri-auth0redirecturi--null), so, depending on your Othent
-  configuration, your users might be redirected to a different gateway after signing in / out.
+Moreover, your dApp won't work for users using
+[`AR.IO Wayfinder`](https://chromewebstore.google.com/detail/ario-wayfinder/hnhmeknhajanolcoihhkkaaimapnmgil) if they
+are routed through a different non-whitelisted gateway.
 
 Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/32).
 {% endhint %}

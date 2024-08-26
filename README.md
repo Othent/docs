@@ -9,10 +9,9 @@ description: Merging Web2 to Web3 user logins with a familiar and simple interfa
     <figcaption>Othent is pronounced OH-thent is a neologism of "OAuth" and "Authenticate".</figcaption>
 </figure>
 
-_Othent_ is a service to manage Arweave & ao custodial wallets backend by [Auth0](https://auth0.com/) and
+_Othent_ is a service to manage Arweave & ao wallets backend by [Auth0](https://auth0.com/) and
 [Google Key Management Service](https://cloud.google.com/kms/docs/key-management-service), enabling access to blockchain
-networks using alternative methods beyond self-custodial private keys, making blockchain more widely accessible by
-customizing the authentication process.
+networks and making blockchain more widely accessible by customizing the authentication process.
 
 <figure>
     <img src=".gitbook/assets/Group 98.png" alt="">
@@ -43,11 +42,10 @@ can easily have access to an Arweave & ao web3 wallet with their existing creden
   <figcaption></figcaption>
 </figure>
 
-**Existing private key wallets to onboard through social logins:**
+**Onboard through social logins:**
 
-_Othent_ can be integrated by wallets and dApps to offer social logins and alternative authentications like API keys in
-addition to self-custodial private keys. This can make the onboarding process smoother for users and enhance their
-reach to Web2.
+_Othent_ can be integrated by wallets and dApps to offer social logins. This can make the onboarding process smoother
+for users and enhance their reach to Web2.
 
 **Allow dApps to onboard through Web2:**
 
@@ -101,6 +99,11 @@ Right now, the most similar thing to this is using [Arweave Wallet (arweave.app)
 address, but you won't be able to transact using that wallet. Note ArConnect does not currently support watching public
 addresses.
 
+**Permission management**:
+
+_Othent_'s permissions are hardcoded and cannot be changed. Users using _Othent_ are giving dApps that use _Othent_
+full control of their wallet, as discussed in [`connect()`](./api/connect.md).
+
 **Public key encryption:**
   
 _Othent_ currently support symmetric encryption, using the currently authenticated user's AES-256 private keys. It does
@@ -118,17 +121,14 @@ Coming soon through [`@othent/pay`](https://www.npmjs.com/package/@othent/pay).
 
 **Automatable money and smart contract wallets:**
 
-_Othent_ does not provide smart contract wallets, it's just a custodial wallet that manages the keys in behalf of its
-users. Therefore, it doesn't currently support programmability or transfer automation.
+_Othent_ does not provide smart contract wallets. Therefore, it doesn't currently support programmability or transfer
+automation.
 
-**Wallet functionality limitations:**
+**Cryptographic algorithms limitations:**
 
 - **Custom salt length for signing:** _Othent_ doesn't support passing in a custom salt length when calling `sign()`.
 
 - **Custom encryption/decryption algorithm:** _Othent_ only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
-
-- **No customizable permissions**: _Othent_'s permissions are hardcoded and cannot be changed, as users are implicitly
-giving _Othent_ full control of their (custodial) wallets.
 
 ## 🌎 How does Othent work?
 
@@ -190,16 +190,12 @@ Non-custodial wallets / private keys has certain negatives associated with them:
 - Lastly, managing a single private key requires careful handling, as a simple mistake such as misplacing or forgetting
   the key can lead to permanent loss of access to the funds.
 
-**Custodial wallet (e.g. Othent):**
+**Othent:**
 
-Users who entrust their wallets / private keys to a custodian relinquish control over their funds, as they must rely on
-the custodian's policies and procedures. This limits their autonomy in managing their own cryptocurrency assets, but
-also allows them to use traditional authentication methods such as email and password, 2FA, social login,
-password/account recovery...
+While Othent limits users autonomy in managing their own cryptocurrency assets, it also allows them to use traditional
+authentication methods such as email and password, 2FA, social login, password/account recovery...
   
-However, there are still security risks involved with custodial private keys. Despite efforts by custodians to
-implement robust security measures, there is always a risk of hacking or internal breaches that could compromise the
-custodial private key and result in the loss of funds.
+However, there are still security risks involved, and end users must secure their accounts and credentials properly.
 
 **MPC wallet:**
 

@@ -4,9 +4,10 @@ description: ArConnect Injected API getPermissions() function
 
 # Get Permissions
 
-As discussed in [`connect()`'s Permissions section](connect.md#permissions), _Othent_ being a custodial wallet, it
-implicitly requires all permission. Therefor, the `getPermissions()` function returns an array with all possible
-permissions.
+As discussed in [`connect()`'s Permissions section](connect.md#permissions), users using _Othent_ are implicitly giving
+dApps that use _Othent_ full control of their wallets. 
+
+Therefor, the `getPermissions()` function always returns an array with all possible permissions.
 
 ## API
 

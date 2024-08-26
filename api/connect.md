@@ -8,14 +8,17 @@ Prompts the user to sign in/up (connects the user's wallet) using
 [_Auth0_'s popup](https://auth0.com/docs/libraries/lock/lock-authentication-modes#popup-mode).
 
 Note that while `connect()`'s function signature is identical to that of
-[_ArConnect_'s `connect()`](https://docs.arconnect.io/api/connect), you don't need to request permissions from the user to
-interact with their wallets, as it's already implicit that users are giving _Othent_ full control of their wallet.
+[_ArConnect_'s `connect()`](https://docs.arconnect.io/api/connect), you don't need to request permissions from the user
+to interact with their wallets, as _Othent_ implicitly requires all permissions.
+
+{% hint style="danger" %}
+**Caution:** Users using _Othent_ are giving dApps that use _Othent_ full control of their wallet.
+{% endhint %}
 
 This function will throw an error in the following cases:
 
-- When passing `permissions` different to `undefined` and the default value  (all permissions). While that parameter has
-  been added for signature compatibility with _ArConnect_ and other wallets, _Othent_ implicitly requires all
-  permissions. Passing anything else will throw an error.
+- When passing `permissions` different to `undefined` and the default value (all permissions). Passing anything else
+  will throw an error.
 
 - When this function is called before the user interacts with the page (e.g. by clicking on a button), as that will
   result in a `Unable to open a popup` error.
@@ -36,7 +39,8 @@ connect(
 
 ### `permissions?: PermissionType[]`
 
-An array of permission to request from the user. Note _Othent_ implicitly requires all permissions:
+An array of permission to request from the user, but only `undefined` or an array with all permissions are valid.
+Passing anything else will throw an error.
 
 | Permission              | Description                                                             |
 | ----------------------- | ----------------------------------------------------------------------- |
@@ -50,7 +54,9 @@ An array of permission to request from the user. Note _Othent_ implicitly requir
 | `ACCESS_ARWEAVE_CONFIG` | Enable the app to access the current gateway config                     |
 | `DISPATCH`              | Allow the app to dispatch a transaction (bundle or base layer)          |
 
-Passing anything else will throw an error, so only `undefined` or an array with all permissions are valid.
+{% hint style="danger" %}
+**Caution:** Users using _Othent_ are giving dApps that use _Othent_ full control of their wallet.
+{% endhint %}
 
 ### `appInfo?: AppInfo`
 

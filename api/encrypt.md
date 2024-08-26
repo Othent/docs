@@ -13,7 +13,6 @@ This is useful for applications such as private file storage apps or mail/messag
 
 {% hint style="danger" %}
 **Limitation:** There's currently an 8KB limit in data size when using Othent, but this is currently being worked on.
-
 Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/30).
 {% endhint %}
 

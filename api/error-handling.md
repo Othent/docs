@@ -65,7 +65,6 @@ const throwAnError = async () => {
 `OthentError` is a custom JS/TS `class` extending `Error`.
 
 {% hint style="warning" %}
-TODO: We are still working on this. We'll update the documentation soon.
-
-Track the progress on this in this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/22).
+TODO: We are still working on this. We'll update the documentation soon. Track the progress on this in this
+[GitHub issue](https://github.com/Othent/KeyManagementService/issues/22).
 {% endhint %}

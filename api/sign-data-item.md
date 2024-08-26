@@ -9,10 +9,9 @@ The `signDataItem()` function allows you to create and sign a `DataItem` object,
 [ANS-104](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md) compatible bundler.
 
 {% hint style="danger" %}
-**Bug:** Using `signDataItem()` and then calling `dataItem.isValid()` always returns `false`, so the example below will never
-submit the data item to a bundler.
-
-Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/23).
+**Bug:** Using `signDataItem()` and then calling `dataItem.isValid()` always returns `false`, so the example below will
+never submit the data item to a bundler. Track the progress on this
+[GitHub issue](https://github.com/Othent/KeyManagementService/issues/23).
 {% endhint %}
 
 {% hint style="warning" %}

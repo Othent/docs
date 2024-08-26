@@ -101,8 +101,12 @@ addresses.
 
 **Permission management**:
 
-_Othent_'s permissions are hardcoded and cannot be changed. Users using _Othent_ are giving dApps that use _Othent_
-full control of their wallet, as discussed in [`connect()`](./api/connect.md).
+_Othent_'s permissions are hardcoded and cannot be changed.
+
+{% hint style="danger" %}
+**Caution:** Users using _Othent_ are giving dApps that use _Othent_ full control of their wallet , as discussed in
+[`connect()`](./api/connect.md).
+{% endhint %}
 
 **Public key encryption:**
   

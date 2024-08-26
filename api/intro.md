@@ -60,6 +60,10 @@ const MyComponent = () => {
 }
 ```
 
+{% hint style="info" %}
+To use Othent in `localhost` / development, you can use ports `3000` or `8081`.
+{% endhint %}
+
 {% hint style="warning" %}
 To use Othent in production, you'll have to reach out to the [Othent team on Discord](https://discord.gg/gWDmJep5)
 to get your domain whitelisted.

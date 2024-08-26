@@ -60,22 +60,30 @@ const MyComponent = () => {
 }
 ```
 
-{% hint style="info" %}
-To use Othent in `localhost` / development, you can use ports `3000` or `8081`.
-{% endhint %}
+### Whitelisting your domain
 
-{% hint style="warning" %}
+#### Development
+
+You must use ports `localhost:3000` or `localhost:8081`.
+
+#### Production (web2 domain)
+
 To use Othent in production in your own web2 domain, you'll have to reach out to the
 [Othent team on Discord](https://discord.gg/gWDmJep5) to get your domain whitelisted.
 
-However, using the `ar://` protocol with a [ArNS domain](https://arns.app/), will already work as long as you use any of
-these gateways which are whitelisted:
+#### Production (gateway + ArNS subdomain)
+
+To use Othent in production through a gateway with your [ArNS subdomain](https://arns.app/), you must use one of these
+whitelisted gateways:
 
 - https://arweave.ar
 - https://arweave.net / https://arweave.dev
 - https://ar-io.net / https://ar-io.dev
 - https://g8way.io
 
+#### Production (`ar://` URI)
+
+{% hint style="danger" %}
 Whitelisting a `ar://` URI is technically possible too, but:
 
 - Your dApp won't work for users using

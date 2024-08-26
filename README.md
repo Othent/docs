@@ -107,9 +107,9 @@ _Othent_ currently support symmetric encryption, using the currently authenticat
 not support asymmetric encryption using third party's public encryption RSAES keys, even thought it does use RSA for
 signing.
 
-**Public Key Directory (PDK):**
+**Public Key Directory (PKD):**
 
-_Othent_ doesn't offer a Public Key Directory (PDK), so if you need to verify third-party signatures, you'll have to get
+_Othent_ doesn't offer a Public Key Directory (PKD), so if you need to verify third-party signatures, you'll have to get
 the corresponding public keys from the original signer.
 
 **Subsidized transactions:**
@@ -165,7 +165,7 @@ email-password or social login, and stores it in Google KMS.
 
 When users wants to do any cryptographic operation with their keys (sign a transaction or encrypt/decrypt/hash some
 data), they request an access token from Auth0, which contains a hash of the data to be used (the transaction or the
-dat to be encrypted/decrypted/hashed), and sends that, along with the data, to _Othent_'s API.
+data to be encrypted/decrypted/hashed), and sends that, along with the data, to _Othent_'s API.
 
 _Othent_'s API can then use Auth0's JWT token to authenticate the user and perform the operation they requested. That 
 access token is then invalidated. This offers a tamper and reply proof system.

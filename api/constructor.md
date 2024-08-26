@@ -162,19 +162,19 @@ inside Othent's Auth0 tenant to personalize the logic experience (premium subscr
 
 - #### `auth0RedirectURI: Auth0RedirectUri | null`
 
-  _Default_: `location.origin`** (when available in the platfor
+  _Default_: `location.origin`** (when available in the platform) **
 
   Auth0's callback URL (`redirect_uri`) used during the authentication flow.
 
-  See https://auth0.com/docs/authenticate/login/redirect-users-after-login
+  See [Auth0's Redirect users after login](https://auth0.com/docs/authenticate/login/redirect-users-after-login)
 
 - #### `auth0ReturnToURI: Auth0RedirectUri | null`
 
-  _Default_: `location.origin`** (when available in the platfor
+  _Default_: `location.origin`** (when available in the platform) **
 
   Auth0's logout URL (`returnTo`) used during the logout flow.
 
-  See https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout
+  See [Auth0's Redirect users after logout](https://auth0.com/docs/authenticate/login/logout/redirect-users-after-logout)
 
 - #### `auth0RefreshTokenExpirationMs: number`:
    

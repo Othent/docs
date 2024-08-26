@@ -16,7 +16,7 @@ To use the library in your project, you first need to install it using `npm` / `
 ```bash
 npm i @othent/kms
 pnpm i @othent/kms
-yarn i @othent/kms
+yarn add @othent/kms
 ```
 
 {% hint style="warning" %}
@@ -187,7 +187,7 @@ await othent.connect();
 const mySecret = await othent.encrypt("My secret");
 
 const transaction = await arweave.createTransaction({
-  data: imySecret,
+  data: mySecret,
 });
 
 const result = await othent.dispatch(transaction);

@@ -31,7 +31,13 @@ TypeScript types are included in the `@othent/kms` package. You can find an exha
 Next, simply instantiate `Othent` with [any options you need](./constructor.md):
 
 ```ts
-import { Othent } from "@othent/kms";
+import { Othent, AppInfo } from "@othent/kms";
+
+const appInfo: AppInfo = {
+  name: "My Awesome App",
+  version: "1.0.0",
+  env: "production",
+};
 
 const othent = new Othent({ appInfo, ... });
 ```
@@ -106,13 +112,35 @@ Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagemen
 
 ### React
 
-If you are using Othent with React, you might want to consider using
+If you are using Othent with _React_, you might want to consider using
 [React's Context](https://react.dev/learn/passing-data-deeply-with-context) to use a single `Othent` instance for your
 whole app, or decoupling it even more by using a state management library like [MobX](https://mobx.js.org/README.html),
 [TanStack Query](https://tanstack.com/query/latest) or [Redux](https://redux.js.org/). 
 
 Alternatively, you might prefer to use [ArweaveKit](https://docs.arweavekit.com/wallets/wallet-kit). See
 [Indirect Usage (through ArweaveKit)](#indirect-usage-through-arweavekit) below.
+
+### Next.js
+
+On top of the information on the _React_ section above, when using Next.js you don't need / cannot instantiate `Othent`
+on he server, as that will throw an error coming from `@auth0+auth0-spa-js`:
+
+    unhandledRejection: ReferenceError: document is not defined
+      at getAll (.../node_modules/@auth0/auth0-spa-js/dist/lib/auth0-spa-js.cjs.js:1324:22)
+
+Make sure you add a check to only instantiate `Othent` on the client:
+
+```ts
+import { Othent, AppInfo } from '@othent/kms';
+
+const appInfo: AppInfo = {
+  name: "My Awesome App",
+  version: "1.0.0",
+  env: "production",
+};
+
+export const othent = typeof window === "undefined" ? null : new Othent({ appInfo, ... });
+```
 
 ### React Native
 
@@ -160,7 +188,13 @@ To use Othent library like this:
   3. Now you can use [`arweave-js`](https://npmjs.com/arweave), which will use Othent in the background.
 
 ```ts
-import { Othent } from "@othent/kms";
+import { Othent, AppInfo } from "@othent/kms";
+
+const appInfo: AppInfo = {
+  name: "My Awesome App",
+  version: "1.0.0",
+  env: "production",
+};
 
 new Othent({ appInfo, inject: true, ... });
 

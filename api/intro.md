@@ -66,9 +66,11 @@ const MyComponent = () => {
 
 You must use `http://localhost:3000`, `http://localhost:5173` or `http://localhost:8081`.
 
+Deploying to a preview environment on Vercel will also work, all `https://*.vercel.app` domains are whitelisted.
+
 #### Production (web2 domain)
 
-To use Othent in production in your own web2 domain, you'll have to reach out to the
+To use Othent in production on your own web2 domain, you'll have to reach out to the
 [Othent team on Discord](https://discord.gg/gWDmJep5) to get your domain whitelisted.
 
 #### Production (gateway + ArNS subdomain)
@@ -80,6 +82,7 @@ whitelisted gateways:
 - https://arweave.net / https://arweave.dev
 - https://ar-io.net / https://ar-io.dev
 - https://g8way.io
+- https://ar.io
 
 #### Production (`ar://` URI)
 

@@ -155,7 +155,7 @@ _Othent_ provides a simple and secure platform for transactions and data storage
 ### Othent under the hood
 
 <figure>
-  <img src=".gitbook/assets/transaction-flow-2.png" alt="">
+  <img src=".gitbook/assets/transaction-flow.png" alt="">
   <figcaption>Othent's transaction flow leveraging Google KMS and Auth0.</figcaption>
 </figure>
 

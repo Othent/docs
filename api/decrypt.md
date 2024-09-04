@@ -6,11 +6,12 @@ description: Othent JS SDK decrypt() function
 
 The `decrypt()` function allows applications to decrypt data that has been encrypted using the active user's private
 key, similarly to the [Web Crypto API's `decrypt()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt).
-However, note a current limitation of using _Othent_ is that the only available algorithm is RSA (`RSA-OAEP`).
 
 {% hint style="danger" %}
 **Limitation:** There's currently an 8KB limit in data size when using Othent, but this is currently being worked on.
 Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/30).
+
+**Limitation:** Also, the only currently available encryption/decryption algorithm is AES (`AES256-GCM`).
 {% endhint %}
 
 {% hint style="warning" %}

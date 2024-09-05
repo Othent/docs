@@ -6,14 +6,15 @@ description: Othent JS SDK encrypt() function
 
 The `encrypt()` function encrypts the data using the active user's private key so that, when stored on Arweave, it is
 only accessible to that specific user, similarly to the
-[Web Crypto API's `encrypt()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt). However, note
-a current limitation of using _Othent_ is that the only available algorithm is RSA (`RSA-OAEP`).
+[Web Crypto API's `encrypt()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt).
 
 This is useful for applications such as private file storage apps or mail/messaging platforms.
 
 {% hint style="danger" %}
 **Limitation:** There's currently an 8KB limit in data size when using Othent, but this is currently being worked on.
 Track the progress on this [GitHub issue](https://github.com/Othent/KeyManagementService/issues/30).
+
+**Limitation:** Also, the only currently available encryption/decryption algorithm is AES (`AES256-GCM`).
 {% endhint %}
 
 {% hint style="warning" %}

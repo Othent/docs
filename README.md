@@ -73,11 +73,11 @@ their password, they can simply reset it, just like they are used to.
 
 ## 👻 Othent's Missing and Upcoming Features
 
-**Support for other blockchains:**
+**No support for other blockchains:**
 
 At the moment, _Othent_ is only available on [the Arweave network](https://www.arweave.org/) and [ao network](https://ao.arweave.dev/).
 
-**Multiple addresses:**
+**No support for multiple addresses:**
 
 _Othent_ does not currently support creating and managing multiple private keys on the same account, or manually linking
 different addresses to a specific account.
@@ -85,16 +85,27 @@ different addresses to a specific account.
 Right now, the only workaround around this is signing up using a different provider, which creates a different private
 key and links the corresponding address to that new account.
 
-**Importing and exporting private keys:**
+**No support for importing and exporting private keys:**
 
-Similarly, _Othent_ doesn't currently support managing multiple private keys in any way not exposed in the API showcased
-in these docs, including importing and exporting. 
+Similarly, _Othent_ doesn't currently support importing or exporting users' private keys, not even when they are first
+created. Their public RSA key is accessible, thought.
 
 Right now, the most similar thing to this is using [Arweave Wallet (arweave.app)](https://arweave.app) to watch a public
-address, but you won't be able to transact using that wallet. Note ArConnect does not currently support watching public
-addresses.
+address, but you won't be able to transact using that wallet. Note _ArConnect_ does not currently support watching
+public addresses.
 
-**Permission management**:
+**No support for asymmetric / public key encryption / decryption:**
+  
+_Othent_ currently only supports symmetric / private key encryption when using `encrypt()` and `decrypt()`, using the
+currently authenticated user's AES (`AES256-GCM`) private keys. It does not support asymmetric encryption, neither using
+the authenticated user's RSA key, which is only used for signing, nor any third party's public RSA keys.
+
+**No support for custom salt length for signing:**
+
+_Othent_ doesn't support passing in a custom salt length when calling `sign()`.
+
+
+**No permission management**:
 
 _Othent_'s permissions are hardcoded and cannot be changed.
 
@@ -103,31 +114,19 @@ _Othent_'s permissions are hardcoded and cannot be changed.
 [`connect()`](./api/connect.md).
 {% endhint %}
 
-**Public key encryption:**
-  
-_Othent_ currently support symmetric encryption, using the currently authenticated user's AES-256 private keys. It does
-not support asymmetric encryption using third party's public encryption RSAES keys, even thought it does use RSA for
-signing.
-
-**Public Key Directory (PKD):**
+**No public Key Directory (PKD):**
 
 _Othent_ doesn't offer a Public Key Directory (PKD), so if you need to verify third-party signatures, you'll have to get
 the corresponding public keys from the original signer.
 
-**Subsidized transactions:**
+**No subsidized transactions:**
 
 Coming soon through [`@othent/pay`](https://www.npmjs.com/package/@othent/pay).
 
-**Automatable money and smart contract wallets:**
+**No automatable money or smart contract wallets:**
 
 _Othent_ does not provide smart contract wallets. Therefore, it doesn't currently support programmability or transfer
 automation.
-
-**Cryptographic algorithms limitations:**
-
-- **Custom salt length for signing:** _Othent_ doesn't support passing in a custom salt length when calling `sign()`.
-
-- **Custom encryption/decryption algorithm:** _Othent_ only supports `RSA-OAEP` when using `encrypt()` and `decrypt()`.
 
 ## 🌎 How does Othent work?
 
